@@ -1,0 +1,10 @@
+##############################################################################
+## Filename:          /home/vens/classes/Fall2014/cpre488/labs/mp1/MP-1/system/pcores/axi_ppm_v1_00_a/data/axi_ppm_v2_1_0.pao
+## Description:       Peripheral Analysis Order
+## Date:              Wed Sep 17 15:16:20 2014 (by Create and Import Peripheral Wizard)
+##############################################################################
+
+lib proc_common_v3_00_a  all 
+lib axi_lite_ipif_v1_01_a  all 
+lib axi_ppm_v1_00_a user_logic vhdl
+lib axi_ppm_v1_00_a axi_ppm vhdl

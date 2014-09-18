@@ -1,0 +1,15 @@
+##############################################################################
+## Filename:          /home/vens/classes/Fall2014/cpre488/labs/mp1/MP-1/system/drivers/axi_ppm_v1_00_a/data/axi_ppm_v2_1_0.mdd
+## Description:       Microprocessor Driver Definition
+## Date:              Wed Sep 17 15:16:32 2014 (by Create and Import Peripheral Wizard)
+##############################################################################
+
+OPTION psf_version = 2.1.0;
+
+BEGIN DRIVER axi_ppm
+
+  OPTION supported_peripherals = (axi_ppm);
+  OPTION depends = (common_v1_00_a);
+  OPTION copyfiles = all;
+
+END DRIVER

@@ -1,0 +1,19 @@
+Xilinx Platform Studio (XPS)
+Xilinx EDK 14.6 Build EDK_P.68d
+Copyright (c) 1995-2012 Xilinx, Inc.  All rights reserved.
+
+WARNING:EDK:3712 - IPNAME: axi_interconnect, INSTANCE: axi4lite_0 - Frequency of the interconnect's clock port could not be determined. All IPs in the design will be considered to be asynchronous with respect to the interconnect. This will lead to more resource usage. You can avoid this by specifying the clock frequency on the port that the interconnect's clock is connected to.
+WARNING:EDK:4092 - IPNAME: axi_gpio, INSTANCE: SWs_8Bits - Pre-Production version not verified on hardware for architecture 'zynq' - /home/vens/classes/Fall2014/cpre488/labs/mp1/MP-1/system/_xps_tempmhsfilename.mhs line 39 
+WARNING:EDK:4092 - IPNAME: axi_gpio, INSTANCE: LEDs_8Bits - Pre-Production version not verified on hardware for architecture 'zynq' - /home/vens/classes/Fall2014/cpre488/labs/mp1/MP-1/system/_xps_tempmhsfilename.mhs line 53 
+WARNING:EDK:4092 - IPNAME: axi_gpio, INSTANCE: BTNs_5Bits - Pre-Production version not verified on hardware for architecture 'zynq' - /home/vens/classes/Fall2014/cpre488/labs/mp1/MP-1/system/_xps_tempmhsfilename.mhs line 67 
+WARNING:EDK:4092 - IPNAME: processing_system7, INSTANCE: processing_system7_0 - Pre-Production version not verified on hardware for architecture 'zynq' - /home/vens/classes/Fall2014/cpre488/labs/mp1/MP-1/system/_xps_tempmhsfilename.mhs line 81 
+Writing filter settings....
+Done writing filter settings to:
+	/home/vens/classes/Fall2014/cpre488/labs/mp1/MP-1/system/etc/system.filters
+Done writing Tab View settings to:
+	/home/vens/classes/Fall2014/cpre488/labs/mp1/MP-1/system/etc/system.gui
+Writing filter settings....
+Done writing filter settings to:
+	/home/vens/classes/Fall2014/cpre488/labs/mp1/MP-1/system/etc/system.filters
+Done writing Tab View settings to:
+	/home/vens/classes/Fall2014/cpre488/labs/mp1/MP-1/system/etc/system.gui
