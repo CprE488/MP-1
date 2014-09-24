@@ -134,32 +134,32 @@ architecture IMP of user_logic is
   ------------------------------------------
   -- Signals for user logic slave model s/w accessible register example
   ------------------------------------------
-  signal slv_reg0                       : std_logic_vector(C_SLV_DWIDTH-1 downto 0);
-  signal slv_reg1                       : std_logic_vector(C_SLV_DWIDTH-1 downto 0);
-  signal slv_reg2                       : std_logic_vector(C_SLV_DWIDTH-1 downto 0);
-  signal slv_reg3                       : std_logic_vector(C_SLV_DWIDTH-1 downto 0);
-  signal slv_reg4                       : std_logic_vector(C_SLV_DWIDTH-1 downto 0);
-  signal slv_reg5                       : std_logic_vector(C_SLV_DWIDTH-1 downto 0);
-  signal slv_reg6                       : std_logic_vector(C_SLV_DWIDTH-1 downto 0);
+  signal reg_control                    : std_logic_vector(C_SLV_DWIDTH-1 downto 0);
+  signal reg_capture_count              : std_logic_vector(C_SLV_DWIDTH-1 downto 0);
+  signal reg_capture_fsm_state          : std_logic_vector(C_SLV_DWIDTH-1 downto 0);
+  signal reg_generage_fsm_state         : std_logic_vector(C_SLV_DWIDTH-1 downto 0);
+  signal reg_capture_sync_length        : std_logic_vector(C_SLV_DWIDTH-1 downto 0);
+  signal reg_generate_idle_length       : std_logic_vector(C_SLV_DWIDTH-1 downto 0);
+  signal reg_generate_frame_length      : std_logic_vector(C_SLV_DWIDTH-1 downto 0);
   signal slv_reg7                       : std_logic_vector(C_SLV_DWIDTH-1 downto 0);
   signal slv_reg8                       : std_logic_vector(C_SLV_DWIDTH-1 downto 0);
   signal slv_reg9                       : std_logic_vector(C_SLV_DWIDTH-1 downto 0);
-  signal slv_reg10                      : std_logic_vector(C_SLV_DWIDTH-1 downto 0);
-  signal slv_reg11                      : std_logic_vector(C_SLV_DWIDTH-1 downto 0);
-  signal slv_reg12                      : std_logic_vector(C_SLV_DWIDTH-1 downto 0);
-  signal slv_reg13                      : std_logic_vector(C_SLV_DWIDTH-1 downto 0);
-  signal slv_reg14                      : std_logic_vector(C_SLV_DWIDTH-1 downto 0);
-  signal slv_reg15                      : std_logic_vector(C_SLV_DWIDTH-1 downto 0);
+  signal reg_capture_a                  : std_logic_vector(C_SLV_DWIDTH-1 downto 0);
+  signal reg_capture_b                  : std_logic_vector(C_SLV_DWIDTH-1 downto 0);
+  signal reg_capture_c                  : std_logic_vector(C_SLV_DWIDTH-1 downto 0);
+  signal reg_capture_d                  : std_logic_vector(C_SLV_DWIDTH-1 downto 0);
+  signal reg_capture_e                  : std_logic_vector(C_SLV_DWIDTH-1 downto 0);
+  signal reg_capture_f                  : std_logic_vector(C_SLV_DWIDTH-1 downto 0);
   signal slv_reg16                      : std_logic_vector(C_SLV_DWIDTH-1 downto 0);
   signal slv_reg17                      : std_logic_vector(C_SLV_DWIDTH-1 downto 0);
   signal slv_reg18                      : std_logic_vector(C_SLV_DWIDTH-1 downto 0);
   signal slv_reg19                      : std_logic_vector(C_SLV_DWIDTH-1 downto 0);
-  signal slv_reg20                      : std_logic_vector(C_SLV_DWIDTH-1 downto 0);
-  signal slv_reg21                      : std_logic_vector(C_SLV_DWIDTH-1 downto 0);
-  signal slv_reg22                      : std_logic_vector(C_SLV_DWIDTH-1 downto 0);
-  signal slv_reg23                      : std_logic_vector(C_SLV_DWIDTH-1 downto 0);
-  signal slv_reg24                      : std_logic_vector(C_SLV_DWIDTH-1 downto 0);
-  signal slv_reg25                      : std_logic_vector(C_SLV_DWIDTH-1 downto 0);
+  signal reg_generate_a                 : std_logic_vector(C_SLV_DWIDTH-1 downto 0);
+  signal reg_generate_b                 : std_logic_vector(C_SLV_DWIDTH-1 downto 0);
+  signal reg_generate_c                 : std_logic_vector(C_SLV_DWIDTH-1 downto 0);
+  signal reg_generate_d                 : std_logic_vector(C_SLV_DWIDTH-1 downto 0);
+  signal reg_generate_e                 : std_logic_vector(C_SLV_DWIDTH-1 downto 0);
+  signal reg_generate_f                 : std_logic_vector(C_SLV_DWIDTH-1 downto 0);
   signal slv_reg26                      : std_logic_vector(C_SLV_DWIDTH-1 downto 0);
   signal slv_reg27                      : std_logic_vector(C_SLV_DWIDTH-1 downto 0);
   signal slv_reg28                      : std_logic_vector(C_SLV_DWIDTH-1 downto 0);
@@ -360,32 +360,32 @@ begin
 
     if Bus2IP_Clk'event and Bus2IP_Clk = '1' then
       if Bus2IP_Resetn = '0' then
-        slv_reg0 <= (others => '0');
-        slv_reg1 <= (others => '0');
-        slv_reg2 <= (others => '0');
-        slv_reg3 <= (others => '0');
-        slv_reg4 <= (others => '0');
-        slv_reg5 <= (others => '0');
-        slv_reg6 <= (others => '0');
+        reg_control <= (others => '0');
+        reg_capture_count <= (others => '0');
+        reg_capture_fsm_state <= (others => '0');
+        reg_generage_fsm_state <= (others => '0');
+        reg_capture_sync_length <= (others => '0');
+        reg_generate_idle_length <= (others => '0');
+        reg_generate_frame_length <= (others => '0');
         slv_reg7 <= (others => '0');
         slv_reg8 <= (others => '0');
         slv_reg9 <= (others => '0');
-        slv_reg10 <= (others => '0');
-        slv_reg11 <= (others => '0');
-        slv_reg12 <= (others => '0');
-        slv_reg13 <= (others => '0');
-        slv_reg14 <= (others => '0');
-        slv_reg15 <= (others => '0');
+        reg_capture_a <= (others => '0');
+        reg_capture_b <= (others => '0');
+        reg_capture_c <= (others => '0');
+        reg_capture_d <= (others => '0');
+        reg_capture_e <= (others => '0');
+        reg_capture_f <= (others => '0');
         slv_reg16 <= (others => '0');
         slv_reg17 <= (others => '0');
         slv_reg18 <= (others => '0');
         slv_reg19 <= (others => '0');
-        slv_reg20 <= (others => '0');
-        slv_reg21 <= (others => '0');
-        slv_reg22 <= (others => '0');
-        slv_reg23 <= (others => '0');
-        slv_reg24 <= (others => '0');
-        slv_reg25 <= (others => '0');
+        reg_generate_a <= (others => '0');
+        reg_generate_b <= (others => '0');
+        reg_generate_c <= (others => '0');
+        reg_generate_d <= (others => '0');
+        reg_generate_e <= (others => '0');
+        reg_generate_f <= (others => '0');
         slv_reg26 <= (others => '0');
         slv_reg27 <= (others => '0');
         slv_reg28 <= (others => '0');
@@ -397,43 +397,43 @@ begin
           when "10000000000000000000000000000000" =>
             for byte_index in 0 to (C_SLV_DWIDTH/8)-1 loop
               if ( Bus2IP_BE(byte_index) = '1' ) then
-                slv_reg0(byte_index*8+7 downto byte_index*8) <= Bus2IP_Data(byte_index*8+7 downto byte_index*8);
+                reg_control(byte_index*8+7 downto byte_index*8) <= Bus2IP_Data(byte_index*8+7 downto byte_index*8);
               end if;
             end loop;
           when "01000000000000000000000000000000" =>
             for byte_index in 0 to (C_SLV_DWIDTH/8)-1 loop
               if ( Bus2IP_BE(byte_index) = '1' ) then
-                slv_reg1(byte_index*8+7 downto byte_index*8) <= Bus2IP_Data(byte_index*8+7 downto byte_index*8);
+                reg_capture_count(byte_index*8+7 downto byte_index*8) <= Bus2IP_Data(byte_index*8+7 downto byte_index*8);
               end if;
             end loop;
           when "00100000000000000000000000000000" =>
             for byte_index in 0 to (C_SLV_DWIDTH/8)-1 loop
               if ( Bus2IP_BE(byte_index) = '1' ) then
-                slv_reg2(byte_index*8+7 downto byte_index*8) <= Bus2IP_Data(byte_index*8+7 downto byte_index*8);
+                reg_capture_fsm_state(byte_index*8+7 downto byte_index*8) <= Bus2IP_Data(byte_index*8+7 downto byte_index*8);
               end if;
             end loop;
           when "00010000000000000000000000000000" =>
             for byte_index in 0 to (C_SLV_DWIDTH/8)-1 loop
               if ( Bus2IP_BE(byte_index) = '1' ) then
-                slv_reg3(byte_index*8+7 downto byte_index*8) <= Bus2IP_Data(byte_index*8+7 downto byte_index*8);
+                reg_generage_fsm_state(byte_index*8+7 downto byte_index*8) <= Bus2IP_Data(byte_index*8+7 downto byte_index*8);
               end if;
             end loop;
           when "00001000000000000000000000000000" =>
             for byte_index in 0 to (C_SLV_DWIDTH/8)-1 loop
               if ( Bus2IP_BE(byte_index) = '1' ) then
-                slv_reg4(byte_index*8+7 downto byte_index*8) <= Bus2IP_Data(byte_index*8+7 downto byte_index*8);
+                reg_capture_sync_length(byte_index*8+7 downto byte_index*8) <= Bus2IP_Data(byte_index*8+7 downto byte_index*8);
               end if;
             end loop;
           when "00000100000000000000000000000000" =>
             for byte_index in 0 to (C_SLV_DWIDTH/8)-1 loop
               if ( Bus2IP_BE(byte_index) = '1' ) then
-                slv_reg5(byte_index*8+7 downto byte_index*8) <= Bus2IP_Data(byte_index*8+7 downto byte_index*8);
+                reg_generate_idle_length(byte_index*8+7 downto byte_index*8) <= Bus2IP_Data(byte_index*8+7 downto byte_index*8);
               end if;
             end loop;
           when "00000010000000000000000000000000" =>
             for byte_index in 0 to (C_SLV_DWIDTH/8)-1 loop
               if ( Bus2IP_BE(byte_index) = '1' ) then
-                slv_reg6(byte_index*8+7 downto byte_index*8) <= Bus2IP_Data(byte_index*8+7 downto byte_index*8);
+                reg_generate_frame_length(byte_index*8+7 downto byte_index*8) <= Bus2IP_Data(byte_index*8+7 downto byte_index*8);
               end if;
             end loop;
           when "00000001000000000000000000000000" =>
@@ -457,37 +457,37 @@ begin
           when "00000000001000000000000000000000" =>
             for byte_index in 0 to (C_SLV_DWIDTH/8)-1 loop
               if ( Bus2IP_BE(byte_index) = '1' ) then
-                slv_reg10(byte_index*8+7 downto byte_index*8) <= Bus2IP_Data(byte_index*8+7 downto byte_index*8);
+                reg_capture_a(byte_index*8+7 downto byte_index*8) <= Bus2IP_Data(byte_index*8+7 downto byte_index*8);
               end if;
             end loop;
           when "00000000000100000000000000000000" =>
             for byte_index in 0 to (C_SLV_DWIDTH/8)-1 loop
               if ( Bus2IP_BE(byte_index) = '1' ) then
-                slv_reg11(byte_index*8+7 downto byte_index*8) <= Bus2IP_Data(byte_index*8+7 downto byte_index*8);
+                reg_capture_b(byte_index*8+7 downto byte_index*8) <= Bus2IP_Data(byte_index*8+7 downto byte_index*8);
               end if;
             end loop;
           when "00000000000010000000000000000000" =>
             for byte_index in 0 to (C_SLV_DWIDTH/8)-1 loop
               if ( Bus2IP_BE(byte_index) = '1' ) then
-                slv_reg12(byte_index*8+7 downto byte_index*8) <= Bus2IP_Data(byte_index*8+7 downto byte_index*8);
+                reg_capture_c(byte_index*8+7 downto byte_index*8) <= Bus2IP_Data(byte_index*8+7 downto byte_index*8);
               end if;
             end loop;
           when "00000000000001000000000000000000" =>
             for byte_index in 0 to (C_SLV_DWIDTH/8)-1 loop
               if ( Bus2IP_BE(byte_index) = '1' ) then
-                slv_reg13(byte_index*8+7 downto byte_index*8) <= Bus2IP_Data(byte_index*8+7 downto byte_index*8);
+                reg_capture_d(byte_index*8+7 downto byte_index*8) <= Bus2IP_Data(byte_index*8+7 downto byte_index*8);
               end if;
             end loop;
           when "00000000000000100000000000000000" =>
             for byte_index in 0 to (C_SLV_DWIDTH/8)-1 loop
               if ( Bus2IP_BE(byte_index) = '1' ) then
-                slv_reg14(byte_index*8+7 downto byte_index*8) <= Bus2IP_Data(byte_index*8+7 downto byte_index*8);
+                reg_capture_e(byte_index*8+7 downto byte_index*8) <= Bus2IP_Data(byte_index*8+7 downto byte_index*8);
               end if;
             end loop;
           when "00000000000000010000000000000000" =>
             for byte_index in 0 to (C_SLV_DWIDTH/8)-1 loop
               if ( Bus2IP_BE(byte_index) = '1' ) then
-                slv_reg15(byte_index*8+7 downto byte_index*8) <= Bus2IP_Data(byte_index*8+7 downto byte_index*8);
+                reg_capture_f(byte_index*8+7 downto byte_index*8) <= Bus2IP_Data(byte_index*8+7 downto byte_index*8);
               end if;
             end loop;
           when "00000000000000001000000000000000" =>
@@ -517,37 +517,37 @@ begin
           when "00000000000000000000100000000000" =>
             for byte_index in 0 to (C_SLV_DWIDTH/8)-1 loop
               if ( Bus2IP_BE(byte_index) = '1' ) then
-                slv_reg20(byte_index*8+7 downto byte_index*8) <= Bus2IP_Data(byte_index*8+7 downto byte_index*8);
+                reg_generate_a(byte_index*8+7 downto byte_index*8) <= Bus2IP_Data(byte_index*8+7 downto byte_index*8);
               end if;
             end loop;
           when "00000000000000000000010000000000" =>
             for byte_index in 0 to (C_SLV_DWIDTH/8)-1 loop
               if ( Bus2IP_BE(byte_index) = '1' ) then
-                slv_reg21(byte_index*8+7 downto byte_index*8) <= Bus2IP_Data(byte_index*8+7 downto byte_index*8);
+                reg_generate_b(byte_index*8+7 downto byte_index*8) <= Bus2IP_Data(byte_index*8+7 downto byte_index*8);
               end if;
             end loop;
           when "00000000000000000000001000000000" =>
             for byte_index in 0 to (C_SLV_DWIDTH/8)-1 loop
               if ( Bus2IP_BE(byte_index) = '1' ) then
-                slv_reg22(byte_index*8+7 downto byte_index*8) <= Bus2IP_Data(byte_index*8+7 downto byte_index*8);
+                reg_generate_c(byte_index*8+7 downto byte_index*8) <= Bus2IP_Data(byte_index*8+7 downto byte_index*8);
               end if;
             end loop;
           when "00000000000000000000000100000000" =>
             for byte_index in 0 to (C_SLV_DWIDTH/8)-1 loop
               if ( Bus2IP_BE(byte_index) = '1' ) then
-                slv_reg23(byte_index*8+7 downto byte_index*8) <= Bus2IP_Data(byte_index*8+7 downto byte_index*8);
+                reg_generate_d(byte_index*8+7 downto byte_index*8) <= Bus2IP_Data(byte_index*8+7 downto byte_index*8);
               end if;
             end loop;
           when "00000000000000000000000010000000" =>
             for byte_index in 0 to (C_SLV_DWIDTH/8)-1 loop
               if ( Bus2IP_BE(byte_index) = '1' ) then
-                slv_reg24(byte_index*8+7 downto byte_index*8) <= Bus2IP_Data(byte_index*8+7 downto byte_index*8);
+                reg_generate_e(byte_index*8+7 downto byte_index*8) <= Bus2IP_Data(byte_index*8+7 downto byte_index*8);
               end if;
             end loop;
           when "00000000000000000000000001000000" =>
             for byte_index in 0 to (C_SLV_DWIDTH/8)-1 loop
               if ( Bus2IP_BE(byte_index) = '1' ) then
-                slv_reg25(byte_index*8+7 downto byte_index*8) <= Bus2IP_Data(byte_index*8+7 downto byte_index*8);
+                reg_generate_f(byte_index*8+7 downto byte_index*8) <= Bus2IP_Data(byte_index*8+7 downto byte_index*8);
               end if;
             end loop;
           when "00000000000000000000000000100000" =>
@@ -594,36 +594,36 @@ begin
   end process SLAVE_REG_WRITE_PROC;
 
   -- implement slave model software accessible register(s) read mux
-  SLAVE_REG_READ_PROC : process( slv_reg_read_sel, slv_reg0, slv_reg1, slv_reg2, slv_reg3, slv_reg4, slv_reg5, slv_reg6, slv_reg7, slv_reg8, slv_reg9, slv_reg10, slv_reg11, slv_reg12, slv_reg13, slv_reg14, slv_reg15, slv_reg16, slv_reg17, slv_reg18, slv_reg19, slv_reg20, slv_reg21, slv_reg22, slv_reg23, slv_reg24, slv_reg25, slv_reg26, slv_reg27, slv_reg28, slv_reg29, slv_reg30, slv_reg31 ) is
+  SLAVE_REG_READ_PROC : process( slv_reg_read_sel, reg_control, reg_capture_count, reg_capture_fsm_state, reg_generage_fsm_state, reg_capture_sync_length, reg_generate_idle_length, reg_generate_frame_length, slv_reg7, slv_reg8, slv_reg9, reg_capture_a, reg_capture_b, reg_capture_c, reg_capture_d, reg_capture_e, reg_capture_f, slv_reg16, slv_reg17, slv_reg18, slv_reg19, reg_generate_a, reg_generate_b, reg_generate_c, reg_generate_d, reg_generate_e, reg_generate_f, slv_reg26, slv_reg27, slv_reg28, slv_reg29, slv_reg30, slv_reg31 ) is
   begin
 
     case slv_reg_read_sel is
-      when "10000000000000000000000000000000" => slv_ip2bus_data <= slv_reg0;
-      when "01000000000000000000000000000000" => slv_ip2bus_data <= slv_reg1;
-      when "00100000000000000000000000000000" => slv_ip2bus_data <= slv_reg2;
-      when "00010000000000000000000000000000" => slv_ip2bus_data <= slv_reg3;
-      when "00001000000000000000000000000000" => slv_ip2bus_data <= slv_reg4;
-      when "00000100000000000000000000000000" => slv_ip2bus_data <= slv_reg5;
-      when "00000010000000000000000000000000" => slv_ip2bus_data <= slv_reg6;
+      when "10000000000000000000000000000000" => slv_ip2bus_data <= reg_control;
+      when "01000000000000000000000000000000" => slv_ip2bus_data <= reg_capture_count;
+      when "00100000000000000000000000000000" => slv_ip2bus_data <= reg_capture_fsm_state;
+      when "00010000000000000000000000000000" => slv_ip2bus_data <= reg_generage_fsm_state;
+      when "00001000000000000000000000000000" => slv_ip2bus_data <= reg_capture_sync_length;
+      when "00000100000000000000000000000000" => slv_ip2bus_data <= reg_generate_idle_length;
+      when "00000010000000000000000000000000" => slv_ip2bus_data <= reg_generate_frame_length;
       when "00000001000000000000000000000000" => slv_ip2bus_data <= slv_reg7;
       when "00000000100000000000000000000000" => slv_ip2bus_data <= slv_reg8;
       when "00000000010000000000000000000000" => slv_ip2bus_data <= slv_reg9;
-      when "00000000001000000000000000000000" => slv_ip2bus_data <= slv_reg10;
-      when "00000000000100000000000000000000" => slv_ip2bus_data <= slv_reg11;
-      when "00000000000010000000000000000000" => slv_ip2bus_data <= slv_reg12;
-      when "00000000000001000000000000000000" => slv_ip2bus_data <= slv_reg13;
-      when "00000000000000100000000000000000" => slv_ip2bus_data <= slv_reg14;
-      when "00000000000000010000000000000000" => slv_ip2bus_data <= slv_reg15;
+      when "00000000001000000000000000000000" => slv_ip2bus_data <= reg_capture_a;
+      when "00000000000100000000000000000000" => slv_ip2bus_data <= reg_capture_b;
+      when "00000000000010000000000000000000" => slv_ip2bus_data <= reg_capture_c;
+      when "00000000000001000000000000000000" => slv_ip2bus_data <= reg_capture_d;
+      when "00000000000000100000000000000000" => slv_ip2bus_data <= reg_capture_e;
+      when "00000000000000010000000000000000" => slv_ip2bus_data <= reg_capture_f;
       when "00000000000000001000000000000000" => slv_ip2bus_data <= slv_reg16;
       when "00000000000000000100000000000000" => slv_ip2bus_data <= slv_reg17;
       when "00000000000000000010000000000000" => slv_ip2bus_data <= slv_reg18;
       when "00000000000000000001000000000000" => slv_ip2bus_data <= slv_reg19;
-      when "00000000000000000000100000000000" => slv_ip2bus_data <= slv_reg20;
-      when "00000000000000000000010000000000" => slv_ip2bus_data <= slv_reg21;
-      when "00000000000000000000001000000000" => slv_ip2bus_data <= slv_reg22;
-      when "00000000000000000000000100000000" => slv_ip2bus_data <= slv_reg23;
-      when "00000000000000000000000010000000" => slv_ip2bus_data <= slv_reg24;
-      when "00000000000000000000000001000000" => slv_ip2bus_data <= slv_reg25;
+      when "00000000000000000000100000000000" => slv_ip2bus_data <= reg_generate_a;
+      when "00000000000000000000010000000000" => slv_ip2bus_data <= reg_generate_b;
+      when "00000000000000000000001000000000" => slv_ip2bus_data <= reg_generate_c;
+      when "00000000000000000000000100000000" => slv_ip2bus_data <= reg_generate_d;
+      when "00000000000000000000000010000000" => slv_ip2bus_data <= reg_generate_e;
+      when "00000000000000000000000001000000" => slv_ip2bus_data <= reg_generate_f;
       when "00000000000000000000000000100000" => slv_ip2bus_data <= slv_reg26;
       when "00000000000000000000000000010000" => slv_ip2bus_data <= slv_reg27;
       when "00000000000000000000000000001000" => slv_ip2bus_data <= slv_reg28;
