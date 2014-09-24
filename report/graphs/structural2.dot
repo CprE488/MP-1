@@ -1,0 +1,231 @@
+digraph g {
+    graph [
+        rankdir = "LR"
+    ];
+    nodesep = ".5"
+    ranksep = "2.5"
+    //pack = 50
+    node [
+        fontsize = "16"
+        shape = "ellipse"
+    ];
+
+    edge [
+    ];
+    
+    {rank=source;
+    Clock [shape=cds]
+    Reset [shape=cds]
+    PPM_in [shape=cds]
+    }
+    {rank=sink;
+	PPM_out [shape=cds, rank=sink]
+    }
+    
+    "filter" [
+        label = "Filter | { { <i0>clk | <i1>rst | <i2>data } | <o0>output}"
+        shape = "record"
+    ];
+    
+    "capture_ppm" [
+        label = "Capture PPM| {{ <i0>clk | <i1>rst | <i2>PPM | <i3>sync } | { <o0>count_rst | <o1>count_en | <o6>Frame Finished | <o4>Synced | <o5>state | <o2>reg_num | <o3>reg_latch}}"
+        shape = "record"
+    ];
+    
+    "count1" [
+        label = "Counter 1 | {{ <i0>clk | <i1>rst | <i2>en | <i3>top } | { <o0>count | <o1>top_reached }}"
+        shape = "record"
+    ];
+    
+    "count2" [
+        label = "Counter 2 | {{ <i0>clk | <i1>rst | <i2>en | <i3>top } | { <o0>count | <o1>top_reached }}"
+        shape = "record"
+    ];
+    
+    "count3" [
+        label = "Counter 3 | {{ <i0>clk | <i1>rst | <i2>en | <i3>top } | { <o0>count | <o1>top_reached }}"
+        shape = "record"
+    ];
+    
+    "count4" [
+        label = "Counter 3 | {{ <i0>clk | <i1>rst | <i2>en | <i3>top } | { <o0>count | <o1>top_reached }}"
+        shape = "record"
+    ];
+    
+    "reg" [
+        label = "Registers | { RESERVED | <r02>reset | <r01>synced | <r00>mode } | <r1>CaptureCount | <r2>CaptureFsmState | <r3>GenerateFsmState | <r4>CaptureSyncLenght | <r5>GenerateIdleLength | <r6>GenerateFrameLength | <r10>CaptureChannelA | <r11>CaptureChannelB | <r12>CaptureChannelC | <r13>CaptureChannelD | <r14>CaptureChannelE | <r15>CaptureChannelF | <r20>GenerateChannelA | <r21>GenerateChannelB | <r22>GenerateChannelC | <r23>GenerateChannelD | <r24>GenerateChannelE | <r25>GenerateChannelF"
+        shape = "record"
+    ];
+    
+    write_register [
+        label = "Temp Registers | {{ <i0>clk | <i5> reset | <i1>value | <i2>register | <i3>latch | <i4>latch all} | {<o0>ChannelA | <o1>ChannelB | <o2>ChannelC | <o3>ChannelD | <o4>ChannelE | <o5>ChannelF }}"
+        shape = "record"
+    ];
+    
+    read_register [
+        label = "Read Registers | {{ <i0>clk | <i1>register | <i2>IdleLength | <i3>ChannelA | <i4>ChannelB | <i5>ChannelC | <i6>ChannelD | <i7>ChannelE | <i8>ChannelF } | { <o0>Value}}";
+        shape = "record"
+    ];
+    
+    "generate_ppm" [
+        label = "Generate PPM | {{ <i0>clk | <i1>rst | <i2>top_reached | <i3>frame_over } | { <o0>frame_count_rst | <o1>frame_count_en | <o2>count_rst | <o3>clock_en | <o4>register_number | <o6>state | <o5>ppm_out }}"
+        shape = "record"
+    ];
+    
+    "output_mux" [
+        label = " Output Mux | {{ <i0>select | <i1>hardware | <i2>software } | {<o0>output}}"
+        shape = "record"
+    ];
+    
+    "reset_or" [
+        label = "OR | {{ <i0>in 1 | <i1>in 2 } | { <o0>out }}"
+        shape = "record"
+    ];
+    
+    PPM_in -> "filter":i2[color=violet];
+    /*Clock -> filter:i0;
+    Clock -> capture_ppm:i0;
+    Clock -> count1:i0;
+    Clock -> count2:i0;*/
+    Reset -> reset_or:i1[color=red];
+    reset_or:o0 -> filter:i1[color=red];
+    reset_or:o0 -> capture_ppm:i1[color=red];
+    reset_or:o0 -> count4:i1[color=red];
+    reset_or:o0 -> generate_ppm:i1[color=red];
+    reset_or:o0 -> write_register:i5[color=red];
+    reg:r02 -> reset_or:i0[color=red];
+    
+    write_register:o0 -> reg:r10[color=blue];
+    write_register:o1 -> reg:r11[color=blue];
+    write_register:o2 -> reg:r12[color=blue];
+    write_register:o3 -> reg:r13[color=blue];
+    write_register:o4 -> reg:r14[color=blue];
+    write_register:o5 -> reg:r15[color=blue];
+    
+    reg:r5 -> read_register:i2[color=blue];
+    reg:r20 -> read_register:i3[color=blue];
+    reg:r21 -> read_register:i4[color=blue];
+    reg:r22 -> read_register:i5[color=blue];
+    reg:r23 -> read_register:i6[color=blue];
+    reg:r24 -> read_register:i7[color=blue];
+    reg:r25 -> read_register:i8[color=blue];
+    
+    "filter":o0 -> "capture_ppm":i2[color=violet];
+    "capture_ppm":o0 -> "count1":i1;
+    "capture_ppm":o1 -> "count1":i2;
+    "count1":o1 -> "capture_ppm":i3;
+    "count1":o0 -> write_register:i1[color=blue];
+    capture_ppm:o4 -> reg:r01;
+    capture_ppm:o5 -> reg:r2[color=green];
+    capture_ppm:o2 -> write_register:i2[color=blue];
+    capture_ppm:o3 -> write_register:i3;
+    reg:r4 -> count1:i3[color=blue];
+    
+    read_register:o0 -> count2:i3[color=blue];
+    
+    count2:o1 -> generate_ppm:i2;
+    
+    count3:o1 -> generate_ppm:i3;
+    reg:r6 -> count3:i3[color=blue];
+    generate_ppm:o0 -> count3:i1;
+    generate_ppm:o1 -> count3:i2;
+    generate_ppm:o2 -> count2:i1;
+    generate_ppm:o3 -> count2:i2;
+    generate_ppm:o4 -> read_register:i1[color=blue];
+    
+    reg:r00 -> output_mux:i0;
+    PPM_in -> output_mux:i1[color=violet];
+    generate_ppm:o5 -> output_mux:i2[color=violet];
+    output_mux:o0 -> PPM_out[color=violet];
+    generate_ppm:o6 -> reg:r3[color=green];
+    
+    capture_ppm:o6 -> count4:i0;
+    count4:o0 -> reg:r1;
+    capture_ppm:o6 -> write_register:i4;
+    /*
+    
+    
+    "node5" [
+        label = "<f0> (nil)| | |-1"
+        shape = "record"
+    ];
+    "node6" [
+        label = "<f0> 0xf7fc4380| <f1> | <f2> |1"
+        shape = "record"
+    ];
+    "node7" [
+        label = "<f0> 0xf7fc4380| <f1> | <f2> |2"
+        shape = "record"
+    ];
+    "node8" [
+        label = "<f0> (nil)| | |-1"
+        shape = "record"
+    ];
+    "node9" [
+        label = "<f0> (nil)| | |-1"
+        shape = "record"
+    ];
+    "node10" [
+        label = "<f0> (nil)| <f1> | <f2> |-1"
+        shape = "record"
+    ];
+    "node11" [
+        label = "<f0> (nil)| <f1> | <f2> |-1"
+        shape = "record"
+    ];
+    "node12" [
+        label = "<f0> 0xf7fc43e0| | |1"
+        shape = "record"
+    ];*/
+/*"node0":f0 -> "node1":f0 [
+id = 0
+];
+"node0":f1 -> "node2":f0 [
+id = 1
+];
+"node1":f0 -> "node3":f0 [
+id = 2
+];
+"node1":f1 -> "node4":f0 [
+id = 3
+];
+"node1":f2 -> "node5":f0 [
+id = 4
+];
+"node4":f0 -> "node3":f0 [
+id = 5
+];
+"node4":f1 -> "node6":f0 [
+id = 6
+];
+"node4":f2 -> "node10":f0 [
+id = 7
+];
+"node6":f0 -> "node3":f0 [
+id = 8
+];
+"node6":f1 -> "node7":f0 [
+id = 9
+];
+"node6":f2 -> "node9":f0 [
+id = 10
+];
+"node7":f0 -> "node3":f0 [
+id = 11
+];
+"node7":f1 -> "node1":f0 [
+id = 12
+];
+"node7":f2 -> "node8":f0 [
+id = 13
+];
+"node10":f1 -> "node11":f0 [
+id = 14
+];
+"node10":f2 -> "node12":f0 [
+id = 15
+];
+"node11":f2 -> "node1":f0 [
+id = 16
+];*/
+}

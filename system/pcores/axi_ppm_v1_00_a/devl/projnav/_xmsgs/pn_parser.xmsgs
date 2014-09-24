@@ -8,97 +8,49 @@
 <!-- Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.    -->
 
 <messages>
+<msg type="info" file="ProjectMgmt" num="1061" ><arg fmt="%s" index="1">Parsing VHDL file &quot;/home/vens/classes/Fall2014/cpre488/labs/mp1/MP-1/system/pcores/axi_ppm_v1_00_a/devl/projnav/counter.vhd&quot; into library work</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1061" ><arg fmt="%s" index="1">Parsing VHDL file &quot;/home/vens/classes/Fall2014/cpre488/labs/mp1/MP-1/system/pcores/axi_ppm_v1_00_a/hdl/vhdl/axi_ppm.vhd&quot; into library axi_ppm_v1_00_a</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1061" ><arg fmt="%s" index="1">Parsing VHDL file &quot;/home/vens/classes/Fall2014/cpre488/labs/mp1/MP-1/system/pcores/axi_ppm_v1_00_a/hdl/vhdl/filter.vhd&quot; into library work</arg>
+</msg>
+
 <msg type="info" file="ProjectMgmt" num="1061" ><arg fmt="%s" index="1">Parsing VHDL file &quot;/home/vens/classes/Fall2014/cpre488/labs/mp1/MP-1/system/pcores/axi_ppm_v1_00_a/hdl/vhdl/user_logic.vhd&quot; into library axi_ppm_v1_00_a</arg>
 </msg>
 
-<msg type="error" file="ProjectMgmt" num="806" >&quot;<arg fmt="%s" index="1">/home/vens/classes/Fall2014/cpre488/labs/mp1/MP-1/system/pcores/axi_ppm_v1_00_a/hdl/vhdl/user_logic.vhd</arg>&quot; Line <arg fmt="%d" index="2">206</arg>. <arg fmt="%s" index="3">Syntax error near &quot;when&quot;.</arg>
+<msg type="info" file="ProjectMgmt" num="1061" ><arg fmt="%s" index="1">Parsing VHDL file &quot;/remote/Xilinx/14.6/EDK/hw/XilinxProcessorIPLib/pcores/axi_lite_ipif_v1_01_a/hdl/vhdl/address_decoder.vhd&quot; into library axi_lite_ipif_v1_01_a</arg>
 </msg>
 
-<msg type="error" file="ProjectMgmt" num="806" >&quot;<arg fmt="%s" index="1">/home/vens/classes/Fall2014/cpre488/labs/mp1/MP-1/system/pcores/axi_ppm_v1_00_a/hdl/vhdl/user_logic.vhd</arg>&quot; Line <arg fmt="%d" index="2">210</arg>. <arg fmt="%s" index="3">Syntax error near &quot;when&quot;.</arg>
+<msg type="info" file="ProjectMgmt" num="1061" ><arg fmt="%s" index="1">Parsing VHDL file &quot;/remote/Xilinx/14.6/EDK/hw/XilinxProcessorIPLib/pcores/axi_lite_ipif_v1_01_a/hdl/vhdl/axi_lite_ipif.vhd&quot; into library axi_lite_ipif_v1_01_a</arg>
 </msg>
 
-<msg type="error" file="ProjectMgmt" num="806" >&quot;<arg fmt="%s" index="1">/home/vens/classes/Fall2014/cpre488/labs/mp1/MP-1/system/pcores/axi_ppm_v1_00_a/hdl/vhdl/user_logic.vhd</arg>&quot; Line <arg fmt="%d" index="2">213</arg>. <arg fmt="%s" index="3">Syntax error near &quot;when&quot;.</arg>
+<msg type="info" file="ProjectMgmt" num="1061" ><arg fmt="%s" index="1">Parsing VHDL file &quot;/remote/Xilinx/14.6/EDK/hw/XilinxProcessorIPLib/pcores/axi_lite_ipif_v1_01_a/hdl/vhdl/slave_attachment.vhd&quot; into library axi_lite_ipif_v1_01_a</arg>
 </msg>
 
-<msg type="error" file="ProjectMgmt" num="806" >&quot;<arg fmt="%s" index="1">/home/vens/classes/Fall2014/cpre488/labs/mp1/MP-1/system/pcores/axi_ppm_v1_00_a/hdl/vhdl/user_logic.vhd</arg>&quot; Line <arg fmt="%d" index="2">216</arg>. <arg fmt="%s" index="3">Syntax error near &quot;when&quot;.</arg>
+<msg type="info" file="ProjectMgmt" num="1061" ><arg fmt="%s" index="1">Parsing VHDL file &quot;/remote/Xilinx/14.6/EDK/hw/XilinxProcessorIPLib/pcores/proc_common_v3_00_a/hdl/vhdl/counter_f.vhd&quot; into library proc_common_v3_00_a</arg>
 </msg>
 
-<msg type="error" file="ProjectMgmt" num="806" >&quot;<arg fmt="%s" index="1">/home/vens/classes/Fall2014/cpre488/labs/mp1/MP-1/system/pcores/axi_ppm_v1_00_a/hdl/vhdl/user_logic.vhd</arg>&quot; Line <arg fmt="%d" index="2">219</arg>. <arg fmt="%s" index="3">Syntax error near &quot;when&quot;.</arg>
+<msg type="info" file="ProjectMgmt" num="1061" ><arg fmt="%s" index="1">Parsing VHDL file &quot;/remote/Xilinx/14.6/EDK/hw/XilinxProcessorIPLib/pcores/proc_common_v3_00_a/hdl/vhdl/family_support.vhd&quot; into library proc_common_v3_00_a</arg>
 </msg>
 
-<msg type="error" file="ProjectMgmt" num="806" >&quot;<arg fmt="%s" index="1">/home/vens/classes/Fall2014/cpre488/labs/mp1/MP-1/system/pcores/axi_ppm_v1_00_a/hdl/vhdl/user_logic.vhd</arg>&quot; Line <arg fmt="%d" index="2">222</arg>. <arg fmt="%s" index="3">Syntax error near &quot;when&quot;.</arg>
+<msg type="info" file="ProjectMgmt" num="1061" ><arg fmt="%s" index="1">Parsing VHDL file &quot;/remote/Xilinx/14.6/EDK/hw/XilinxProcessorIPLib/pcores/proc_common_v3_00_a/hdl/vhdl/ipif_pkg.vhd&quot; into library proc_common_v3_00_a</arg>
 </msg>
 
-<msg type="error" file="ProjectMgmt" num="806" >&quot;<arg fmt="%s" index="1">/home/vens/classes/Fall2014/cpre488/labs/mp1/MP-1/system/pcores/axi_ppm_v1_00_a/hdl/vhdl/user_logic.vhd</arg>&quot; Line <arg fmt="%d" index="2">225</arg>. <arg fmt="%s" index="3">Syntax error near &quot;when&quot;.</arg>
+<msg type="info" file="ProjectMgmt" num="1061" ><arg fmt="%s" index="1">Parsing VHDL file &quot;/remote/Xilinx/14.6/EDK/hw/XilinxProcessorIPLib/pcores/proc_common_v3_00_a/hdl/vhdl/or_gate128.vhd&quot; into library proc_common_v3_00_a</arg>
 </msg>
 
-<msg type="error" file="ProjectMgmt" num="806" >&quot;<arg fmt="%s" index="1">/home/vens/classes/Fall2014/cpre488/labs/mp1/MP-1/system/pcores/axi_ppm_v1_00_a/hdl/vhdl/user_logic.vhd</arg>&quot; Line <arg fmt="%d" index="2">228</arg>. <arg fmt="%s" index="3">Syntax error near &quot;when&quot;.</arg>
+<msg type="info" file="ProjectMgmt" num="1061" ><arg fmt="%s" index="1">Parsing VHDL file &quot;/remote/Xilinx/14.6/EDK/hw/XilinxProcessorIPLib/pcores/proc_common_v3_00_a/hdl/vhdl/or_muxcy.vhd&quot; into library proc_common_v3_00_a</arg>
 </msg>
 
-<msg type="error" file="ProjectMgmt" num="806" >&quot;<arg fmt="%s" index="1">/home/vens/classes/Fall2014/cpre488/labs/mp1/MP-1/system/pcores/axi_ppm_v1_00_a/hdl/vhdl/user_logic.vhd</arg>&quot; Line <arg fmt="%d" index="2">231</arg>. <arg fmt="%s" index="3">Syntax error near &quot;when&quot;.</arg>
+<msg type="info" file="ProjectMgmt" num="1061" ><arg fmt="%s" index="1">Parsing VHDL file &quot;/remote/Xilinx/14.6/EDK/hw/XilinxProcessorIPLib/pcores/proc_common_v3_00_a/hdl/vhdl/proc_common_pkg.vhd&quot; into library proc_common_v3_00_a</arg>
 </msg>
 
-<msg type="error" file="ProjectMgmt" num="806" >&quot;<arg fmt="%s" index="1">/home/vens/classes/Fall2014/cpre488/labs/mp1/MP-1/system/pcores/axi_ppm_v1_00_a/hdl/vhdl/user_logic.vhd</arg>&quot; Line <arg fmt="%d" index="2">234</arg>. <arg fmt="%s" index="3">Syntax error near &quot;when&quot;.</arg>
+<msg type="info" file="ProjectMgmt" num="1061" ><arg fmt="%s" index="1">Parsing VHDL file &quot;/remote/Xilinx/14.6/EDK/hw/XilinxProcessorIPLib/pcores/proc_common_v3_00_a/hdl/vhdl/pselect_f.vhd&quot; into library proc_common_v3_00_a</arg>
 </msg>
 
-<msg type="error" file="ProjectMgmt" num="806" >&quot;<arg fmt="%s" index="1">/home/vens/classes/Fall2014/cpre488/labs/mp1/MP-1/system/pcores/axi_ppm_v1_00_a/hdl/vhdl/user_logic.vhd</arg>&quot; Line <arg fmt="%d" index="2">237</arg>. <arg fmt="%s" index="3">Syntax error near &quot;when&quot;.</arg>
-</msg>
-
-<msg type="error" file="ProjectMgmt" num="806" >&quot;<arg fmt="%s" index="1">/home/vens/classes/Fall2014/cpre488/labs/mp1/MP-1/system/pcores/axi_ppm_v1_00_a/hdl/vhdl/user_logic.vhd</arg>&quot; Line <arg fmt="%d" index="2">240</arg>. <arg fmt="%s" index="3">Syntax error near &quot;when&quot;.</arg>
-</msg>
-
-<msg type="error" file="ProjectMgmt" num="806" >&quot;<arg fmt="%s" index="1">/home/vens/classes/Fall2014/cpre488/labs/mp1/MP-1/system/pcores/axi_ppm_v1_00_a/hdl/vhdl/user_logic.vhd</arg>&quot; Line <arg fmt="%d" index="2">243</arg>. <arg fmt="%s" index="3">Syntax error near &quot;when&quot;.</arg>
-</msg>
-
-<msg type="error" file="ProjectMgmt" num="806" >&quot;<arg fmt="%s" index="1">/home/vens/classes/Fall2014/cpre488/labs/mp1/MP-1/system/pcores/axi_ppm_v1_00_a/hdl/vhdl/user_logic.vhd</arg>&quot; Line <arg fmt="%d" index="2">246</arg>. <arg fmt="%s" index="3">Syntax error near &quot;when&quot;.</arg>
-</msg>
-
-<msg type="error" file="ProjectMgmt" num="806" >&quot;<arg fmt="%s" index="1">/home/vens/classes/Fall2014/cpre488/labs/mp1/MP-1/system/pcores/axi_ppm_v1_00_a/hdl/vhdl/user_logic.vhd</arg>&quot; Line <arg fmt="%d" index="2">249</arg>. <arg fmt="%s" index="3">Syntax error near &quot;when&quot;.</arg>
-</msg>
-
-<msg type="error" file="ProjectMgmt" num="806" >&quot;<arg fmt="%s" index="1">/home/vens/classes/Fall2014/cpre488/labs/mp1/MP-1/system/pcores/axi_ppm_v1_00_a/hdl/vhdl/user_logic.vhd</arg>&quot; Line <arg fmt="%d" index="2">252</arg>. <arg fmt="%s" index="3">Syntax error near &quot;when&quot;.</arg>
-</msg>
-
-<msg type="error" file="ProjectMgmt" num="806" >&quot;<arg fmt="%s" index="1">/home/vens/classes/Fall2014/cpre488/labs/mp1/MP-1/system/pcores/axi_ppm_v1_00_a/hdl/vhdl/user_logic.vhd</arg>&quot; Line <arg fmt="%d" index="2">255</arg>. <arg fmt="%s" index="3">Syntax error near &quot;when&quot;.</arg>
-</msg>
-
-<msg type="error" file="ProjectMgmt" num="806" >&quot;<arg fmt="%s" index="1">/home/vens/classes/Fall2014/cpre488/labs/mp1/MP-1/system/pcores/axi_ppm_v1_00_a/hdl/vhdl/user_logic.vhd</arg>&quot; Line <arg fmt="%d" index="2">258</arg>. <arg fmt="%s" index="3">Syntax error near &quot;when&quot;.</arg>
-</msg>
-
-<msg type="error" file="ProjectMgmt" num="806" >&quot;<arg fmt="%s" index="1">/home/vens/classes/Fall2014/cpre488/labs/mp1/MP-1/system/pcores/axi_ppm_v1_00_a/hdl/vhdl/user_logic.vhd</arg>&quot; Line <arg fmt="%d" index="2">261</arg>. <arg fmt="%s" index="3">Syntax error near &quot;when&quot;.</arg>
-</msg>
-
-<msg type="error" file="ProjectMgmt" num="806" >&quot;<arg fmt="%s" index="1">/home/vens/classes/Fall2014/cpre488/labs/mp1/MP-1/system/pcores/axi_ppm_v1_00_a/hdl/vhdl/user_logic.vhd</arg>&quot; Line <arg fmt="%d" index="2">264</arg>. <arg fmt="%s" index="3">Syntax error near &quot;when&quot;.</arg>
-</msg>
-
-<msg type="error" file="ProjectMgmt" num="806" >&quot;<arg fmt="%s" index="1">/home/vens/classes/Fall2014/cpre488/labs/mp1/MP-1/system/pcores/axi_ppm_v1_00_a/hdl/vhdl/user_logic.vhd</arg>&quot; Line <arg fmt="%d" index="2">267</arg>. <arg fmt="%s" index="3">Syntax error near &quot;when&quot;.</arg>
-</msg>
-
-<msg type="error" file="ProjectMgmt" num="806" >&quot;<arg fmt="%s" index="1">/home/vens/classes/Fall2014/cpre488/labs/mp1/MP-1/system/pcores/axi_ppm_v1_00_a/hdl/vhdl/user_logic.vhd</arg>&quot; Line <arg fmt="%d" index="2">270</arg>. <arg fmt="%s" index="3">Syntax error near &quot;when&quot;.</arg>
-</msg>
-
-<msg type="error" file="ProjectMgmt" num="806" >&quot;<arg fmt="%s" index="1">/home/vens/classes/Fall2014/cpre488/labs/mp1/MP-1/system/pcores/axi_ppm_v1_00_a/hdl/vhdl/user_logic.vhd</arg>&quot; Line <arg fmt="%d" index="2">273</arg>. <arg fmt="%s" index="3">Syntax error near &quot;when&quot;.</arg>
-</msg>
-
-<msg type="error" file="ProjectMgmt" num="806" >&quot;<arg fmt="%s" index="1">/home/vens/classes/Fall2014/cpre488/labs/mp1/MP-1/system/pcores/axi_ppm_v1_00_a/hdl/vhdl/user_logic.vhd</arg>&quot; Line <arg fmt="%d" index="2">276</arg>. <arg fmt="%s" index="3">Syntax error near &quot;when&quot;.</arg>
-</msg>
-
-<msg type="error" file="ProjectMgmt" num="806" >&quot;<arg fmt="%s" index="1">/home/vens/classes/Fall2014/cpre488/labs/mp1/MP-1/system/pcores/axi_ppm_v1_00_a/hdl/vhdl/user_logic.vhd</arg>&quot; Line <arg fmt="%d" index="2">281</arg>. <arg fmt="%s" index="3">Syntax error near &quot;case&quot;.</arg>
-</msg>
-
-<msg type="error" file="ProjectMgmt" num="806" >&quot;<arg fmt="%s" index="1">/home/vens/classes/Fall2014/cpre488/labs/mp1/MP-1/system/pcores/axi_ppm_v1_00_a/hdl/vhdl/user_logic.vhd</arg>&quot; Line <arg fmt="%d" index="2">310</arg>. <arg fmt="%s" index="3">Syntax error near &quot;process&quot;.</arg>
-</msg>
-
-<msg type="error" file="ProjectMgmt" num="806" >&quot;<arg fmt="%s" index="1">/home/vens/classes/Fall2014/cpre488/labs/mp1/MP-1/system/pcores/axi_ppm_v1_00_a/hdl/vhdl/user_logic.vhd</arg>&quot; Line <arg fmt="%d" index="2">546</arg>. <arg fmt="%s" index="3">Syntax error near &quot;process&quot;.</arg>
-</msg>
-
-<msg type="error" file="ProjectMgmt" num="806" >&quot;<arg fmt="%s" index="1">/home/vens/classes/Fall2014/cpre488/labs/mp1/MP-1/system/pcores/axi_ppm_v1_00_a/hdl/vhdl/user_logic.vhd</arg>&quot; Line <arg fmt="%d" index="2">549</arg>. <arg fmt="%s" index="3">Syntax error near &quot;process&quot;.</arg>
-</msg>
-
-<msg type="error" file="ProjectMgmt" num="806" >&quot;<arg fmt="%s" index="1">/home/vens/classes/Fall2014/cpre488/labs/mp1/MP-1/system/pcores/axi_ppm_v1_00_a/hdl/vhdl/user_logic.vhd</arg>&quot; Line <arg fmt="%d" index="2">588</arg>. <arg fmt="%s" index="3">Syntax error near &quot;process&quot;.</arg>
-</msg>
-
-<msg type="error" file="ProjectMgmt" num="806" >&quot;<arg fmt="%s" index="1">/home/vens/classes/Fall2014/cpre488/labs/mp1/MP-1/system/pcores/axi_ppm_v1_00_a/hdl/vhdl/user_logic.vhd</arg>&quot; Line <arg fmt="%d" index="2">600</arg>. <arg fmt="%s" index="3">Syntax error near &quot;IMP&quot;.</arg>
+<msg type="info" file="ProjectMgmt" num="1061" ><arg fmt="%s" index="1">Parsing VHDL file &quot;/remote/Xilinx/14.6/EDK/hw/XilinxProcessorIPLib/pcores/proc_common_v3_00_a/hdl/vhdl/soft_reset.vhd&quot; into library proc_common_v3_00_a</arg>
 </msg>
 
 </messages>

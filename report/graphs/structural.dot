@@ -1,0 +1,39 @@
+digraph Structural {
+    
+    rankdir=LR;
+    splines=ortho;
+	PPM_in -> shift_reg;
+	PPM_in -> multiplexer -> PPM_out;
+	
+	subgraph cluster_0 {
+		subgraph cluster_0_0 {
+		    //=UD;
+		    shift_reg -> capture_ppm;
+		    capture_ppm -> counter1;
+		    capture_ppm -> counter1;
+		    label = "Capture";
+		}
+		//shift_reg -> registers;
+		subgraph cluster_0_1 {
+		    //rankdir=UD;
+		    generate_ppm -> counter2;
+		    label = "Generate";
+		}
+		//subgraph cluster_0_2 {
+		//    registers -> invis;
+		//}
+		capture_ppm -> registers;
+		generate_ppm -> registers
+		//invis [style=invis];
+		//registers -> invis ;//[style=invis];
+	    //invis -> counter1 //[style=invis];
+	    //invis -> counter2 //[style=invis];
+		generate_ppm -> multiplexer;
+        label = "user_logic";
+	}
+	
+	
+	PPM_in [shape=cds]
+	PPM_out [shape=cds]
+	
+}

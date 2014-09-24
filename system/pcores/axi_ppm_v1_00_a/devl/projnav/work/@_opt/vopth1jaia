@@ -1,0 +1,86 @@
+m255
+K3
+13
+cModel Technology
+Z0 d/home/vens/classes/Fall2014/cpre488/labs/mp1/MP-1/system/pcores/axi_ppm_v1_00_a/devl/projnav
+T_opt
+VGHcCTDBA@]TF_mfd]0n9b3
+04 10 8 work tb_counter behavior 1
+=1-000000000000-54223265-6c8a4-1212
+o-quiet -auto_acc_if_foreign -work work +acc
+n@_opt
+OL;O;10.1c;51
+Ecounter
+Z1 w1411525475
+Z2 DPx4 ieee 11 numeric_std 0 22 O3PF8EB`?j9=z7KT`fn941
+Z3 DPx3 std 6 textio 0 22 5>J:;AW>W0[[dW0I6EN1Q0
+Z4 DPx4 ieee 14 std_logic_1164 0 22 5=aWaoGZSMWIcH0i^f`XF1
+Z5 d/home/vens/classes/Fall2014/cpre488/labs/mp1/MP-1/system/pcores/axi_ppm_v1_00_a/devl/projnav
+Z6 8counter.vhd
+Z7 Fcounter.vhd
+l0
+L32
+V7J2_MF7?VMR_O^;z=Tj?Q3
+Z8 OL;C;10.1c;51
+31
+Z9 !s108 1411527268.903591
+Z10 !s90 -reportprogress|300|-explicit|-93|counter.vhd|
+Z11 !s107 counter.vhd|
+Z12 o-explicit -93
+Z13 tExplicit 1
+!s100 kg;XLNhK8>7lHYzWLQYKc1
+!i10b 1
+Abehavioral
+R2
+R3
+R4
+DEx4 work 7 counter 0 22 7J2_MF7?VMR_O^;z=Tj?Q3
+l44
+L41
+V:@`:`;?[4]Y6cVXLH_K;V0
+R8
+31
+R9
+R10
+R11
+R12
+R13
+!s100 nSiP[feCmf_]MX89M3@SJ3
+!i10b 1
+Etb_counter
+Z14 w1411527235
+R2
+R3
+R4
+R5
+Z15 8../../hdl/vhdl/Testbenches/tb_counter.vhd
+Z16 F../../hdl/vhdl/Testbenches/tb_counter.vhd
+l0
+L35
+VnKZENhBA2?b7PU:ghPfa>0
+R8
+31
+Z17 !s108 1411527269.126133
+Z18 !s90 -reportprogress|300|-explicit|-93|../../hdl/vhdl/Testbenches/tb_counter.vhd|
+Z19 !s107 ../../hdl/vhdl/Testbenches/tb_counter.vhd|
+R12
+R13
+!s100 P<aJdTdIHTSnZLKN0lNa<0
+!i10b 1
+Abehavior
+R2
+R3
+R4
+DEx4 work 10 tb_counter 0 22 nKZENhBA2?b7PU:ghPfa>0
+l67
+L38
+VK4TmYD=QV[]RY<9NKT1NK1
+R8
+31
+R17
+R18
+R19
+R12
+R13
+!s100 C7Pz]A=Cc:L@h6^PWIFaQ2
+!i10b 1

@@ -1,0 +1,71 @@
+# //  ModelSim SE-64 10.1c Jul 27 2012 Linux 2.6.32-431.29.2.el6.x86_64
+# //
+# //  Copyright 1991-2012 Mentor Graphics Corporation
+# //  All Rights Reserved.
+# //
+# //  THIS WORK CONTAINS TRADE SECRET AND PROPRIETARY INFORMATION
+# //  WHICH IS THE PROPERTY OF MENTOR GRAPHICS CORPORATION OR ITS
+# //  LICENSORS AND IS SUBJECT TO LICENSE TERMS.
+# //
+# do {tb_filter.fdo} 
+# ** Warning: (vlib-34) Library already exists at "work".
+# Model Technology ModelSim SE-64 vcom 10.1c Compiler 2012.07 Jul 27 2012
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Compiling entity filter
+# ** Error: ../../hdl/vhdl/filter.vhd(44): near "fsdfe": syntax error
+# ** Error: /remote/Modelsim/10.1c/modeltech/linux_x86_64/vcom failed.
+# Error in macro ./tb_filter.fdo line 23
+# /remote/Modelsim/10.1c/modeltech/linux_x86_64/vcom failed.
+#     while executing
+# "vcom -explicit  -93 "../../hdl/vhdl/filter.vhd""
+do {tb_filter.fdo}
+# ** Warning: (vlib-34) Library already exists at "work".
+# Model Technology ModelSim SE-64 vcom 10.1c Compiler 2012.07 Jul 27 2012
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Compiling entity filter
+# -- Compiling architecture Behavioral of filter
+# ** Error: ../../hdl/vhdl/filter.vhd(44): (vcom-1136) Unknown identifier "C_NUM_BITS".
+# ** Error: ../../hdl/vhdl/filter.vhd(44): Bad expression in left bound of range expression.
+# ** Error: ../../hdl/vhdl/filter.vhd(44): Type error in range expression.
+# ** Error: ../../hdl/vhdl/filter.vhd(74): (vcom-1136) Unknown identifier "C_NUM_BITS".
+# ** Error: ../../hdl/vhdl/filter.vhd(74): Bad expression in left bound of range expression.
+# ** Error: ../../hdl/vhdl/filter.vhd(74): Type error in range expression.
+# ** Error: ../../hdl/vhdl/filter.vhd(74): (vcom-1076) OTHERS choice cannot be used in unconstrained array aggregate.
+# ** Error: ../../hdl/vhdl/filter.vhd(77): (vcom-1136) Unknown identifier "C_NUM_BITS".
+# ** Error: ../../hdl/vhdl/filter.vhd(77): Bad expression in left bound of range expression.
+# ** Error: ../../hdl/vhdl/filter.vhd(77): Type error in range expression.
+# ** Error: ../../hdl/vhdl/filter.vhd(90): VHDL Compiler exiting
+# ** Error: /remote/Modelsim/10.1c/modeltech/linux_x86_64/vcom failed.
+# Error in macro ./tb_filter.fdo line 23
+# /remote/Modelsim/10.1c/modeltech/linux_x86_64/vcom failed.
+#     while executing
+# "vcom -explicit  -93 "../../hdl/vhdl/filter.vhd""
+do {tb_filter.fdo}
+# ** Warning: (vlib-34) Library already exists at "work".
+# Model Technology ModelSim SE-64 vcom 10.1c Compiler 2012.07 Jul 27 2012
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Compiling entity filter
+# -- Compiling architecture Behavioral of filter
+# Model Technology ModelSim SE-64 vcom 10.1c Compiler 2012.07 Jul 27 2012
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Compiling entity tb_filter
+# -- Compiling architecture behavior of tb_filter
+# vsim -lib work -voptargs=\"+acc\" -t 1ps work.tb_filter 
+# ** Note: (vsim-3812) Design is being optimized...
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading work.tb_filter(behavior)#1
+# Loading work.filter(behavioral)#1
+# .main_pane.wave.interior.cs.body.pw.wf
+# .main_pane.structure.interior.cs.body.struct
+# .main_pane.objects.interior.cs.body.tree
+run

@@ -1,0 +1,60 @@
+digraph finite_state_machine {
+	rankdir=UD;
+	node [shape = record, style = rounded];
+	
+	reset [ label = "{ Reset | { 0 | 0 | 0 | 0 }}" ];
+	
+	idle_sync [ label = "{ Idle Sync | { 1 | 1 | 6 | 0 }}" ];
+	idle_a [ label = "{ Idle A | { 1 | 1 | 6 | 0 }}" ];
+	idle_b [ label = "{ Idle B | { 1 | 1 | 6 | 0 }}" ];
+	idle_c [ label = "{ Idle C | { 1 | 1 | 6 | 0 }}" ];
+	idle_d [ label = "{ Idle D | { 1 | 1 | 6 | 0 }}" ];
+	idle_e [ label = "{ Idle E | { 1 | 1 | 6 | 0 }}" ];
+	idle_f [ label = "{ Idle F | { 1 | 1 | 6 | 0 }}" ];
+	
+	pulse_a [ label = "{ Pulse A | { 1 | 1 | 0 | 1 }}" ];
+	pulse_b [ label = "{ Pulse B | { 1 | 1 | 1 | 1 }}" ];
+	pulse_c [ label = "{ Pulse C | { 1 | 1 | 2 | 1 }}" ];
+	pulse_d [ label = "{ Pulse D | { 1 | 1 | 3 | 1 }}" ];
+	pulse_e [ label = "{ Pulse E | { 1 | 1 | 4 | 1 }}" ];
+	pulse_f [ label = "{ Pulse F | { 1 | 1 | 5 | 1 }}" ];
+	
+	sync [ label = "{ Sync | { 0 | 1 | 0 | 1 }}" ];
+	{rank=source;
+	legend [ label = "{State | {COUNT_EN | FRAME_COUNT_EN | REG_NUM | PPM_OUTPUT}}" ];
+	}
+	legend -> legend [label = "input(TOP_REACHED,FRAME_OVER)/output(COUNT_RESET, FRAME_COUNT_RESET)" ];
+	
+	reset -> idle_sync [ label = "x,x/1,1" ];
+	idle_sync -> pulse_a [ label = "1,x/1,0" ];
+	pulse_a -> idle_a [ label = "1,x/1,0" ];
+	idle_a -> pulse_b [ label = "1,x/1,0" ];
+	pulse_b -> idle_b [ label = "1,x/1,0" ];
+	idle_b -> pulse_c [ label = "1,x/1,0" ];
+	pulse_c -> idle_c [ label = "1,x/1,0" ];
+	idle_c -> pulse_d [ label = "1,x/1,0" ];
+	pulse_d -> idle_d [ label = "1,x/1,0" ];
+	idle_d -> pulse_e [ label = "1,x/1,0" ];
+	pulse_e -> idle_e [ label = "1,x/1,0" ];
+	idle_e -> pulse_f [ label = "1,x/1,0" ];
+	pulse_f -> idle_f [ label = "1,x/1,0" ];
+	idle_f -> sync [ label = "1,x/1,0" ];
+	sync -> idle_sync [ label = "x,1/1,1" ];
+	
+	idle_sync -> idle_sync [ label = "0,x/0,0" ];
+	idle_a -> idle_a [ label = "0,x/0,0" ];
+	idle_b -> idle_b [ label = "0,x/0,0" ];
+	idle_c -> idle_c [ label = "0,x/0,0" ];
+	idle_d -> idle_d [ label = "0,x/0,0" ];
+	idle_e -> idle_e [ label = "0,x/0,0" ];
+	idle_f -> idle_f [ label = "0,x/0,0" ];
+	
+	pulse_a -> pulse_a [ label = "0,x/0,0" ];
+	pulse_b -> pulse_b [ label = "0,x/0,0" ];
+	pulse_c -> pulse_c [ label = "0,x/0,0" ];
+	pulse_d -> pulse_d [ label = "0,x/0,0" ];
+	pulse_e -> pulse_e [ label = "0,x/0,0" ];
+	pulse_f -> pulse_f [ label = "0,x/0,0" ];
+	
+	sync -> sync [ label = "x,0/0,0" ];
+}

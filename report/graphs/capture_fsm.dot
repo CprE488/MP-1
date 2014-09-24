@@ -1,0 +1,87 @@
+digraph finite_state_machine {
+	rankdir=UD;
+	node [shape = record, style = rounded];
+	reset [ label = "{Reset | {0 | 0}}" ];
+	sync [ label = "{Sync | { 1 | 0 }}" ];
+	sync_miss [ label = "{Sync Miss | {0 | 0}}"];
+	wait [ label = "{Wait | {0 | 0}}" ];
+	PA [ label = "{Pulse A | { 1 | 0 }}" ];
+	PB [ label = "{Pulse B | { 1 | 1 }}" ];
+	PC [ label = "{Pulse C | { 1 | 2 }}" ];
+	PD [ label = "{Pulse D | { 1 | 3 }}" ];
+	PE [ label = "{Pulse E | { 1 | 4 }}" ];
+	PF [ label = "{Pulse F | { 1 | 5 }}" ];
+	
+	IA [ label = "{Idle A | {0 | 0}}" ];
+	IB [ label = "{Idle B | {0 | 1}}" ];
+	IC [ label = "{Idle C | {0 | 2}}" ];
+	ID [ label = "{Idle D | {0 | 3}}" ];
+	IE [ label = "{Idle E | {0 | 4}}" ];
+	IF [ label = "{Idle F | {0 | 5}}" ];
+	IS [ label = "{Idle Sync | {0 | 0}}" ];
+	
+	SA [ label = "{Save A | {0 | 0}}" ];
+	SB [ label = "{Save B | {0 | 1}}" ];
+	SC [ label = "{Save C | {0 | 2}}" ];
+	SD [ label = "{Save D | {0 | 3}}" ];
+	SE [ label = "{Save E | {0 | 4}}" ];
+	SF [ label = "{Save F | {0 | 5}}" ];
+		
+	legend [ label = "{State | {COUNT_EN | REG_NUM}}" ];
+	legend -> legend [label = "input(INPUT,SYNC)/output(COUNT_RESET, REG_LATCH, FRAME_FINISHED)" ];
+	
+	reset -> reset          [ label = "0,x/0,0,0" ];
+	reset -> sync [ label = "1,x/1,0,0" ];
+	sync -> wait [ label = "x,1/1,0,0" ];
+	sync -> sync [ label = "1,0/0,0,0" ];
+	sync -> sync_miss [ label = "0,0/1,0,0" ];
+	sync_miss -> sync_miss [ label = "0,x/0,0,0" ];
+	sync_miss -> sync [ label = "1,x/1,0,0" ];
+	wait -> wait [ label = "1,x/0,0,0" ];
+	wait -> IS [ label = "0,x/0,0,0" ];
+	IS -> IS [ label = "0,x/0,0,0"];
+	
+	IS -> PA [ label = "1,x/1,0,0"];
+	PA -> PA [ label = "1,0/0,0,0"];
+	PA -> wait [ label = "x,1/1,0,0"];
+	PA -> SA [ label = "0,x/0,1,0"];
+	SA -> IA [ label = "x,x/1,0,0"];
+	IA -> IA [ label = "0,x/0,0,0"];
+	
+	IA -> PB [ label = "1,x/1,0,0"];
+	PB -> PB [ label = "1,0/0,0,0"];
+	PB -> wait [ label = "x,1/1,0,0"];
+	PB -> SB [ label = "0,x/0,1,0"];
+	SB -> IB [ label = "x,x/1,0,0"];
+	IB -> IB [ label = "0,x/0,0,0"];
+	
+	IB -> PC [ label = "1,x/1,0,0"];
+	PC -> PC [ label = "1,0/0,0,0"];
+	PC -> wait [ label = "x,1/1,0,0"];
+	PC -> SC [ label = "0,x/0,1,0"];
+	SC -> IC [ label = "x,x/1,0,0"];
+	IC -> IC [ label = "0,x/0,0,0"];
+	
+	IC -> PD [ label = "1,x/1,0,0"];
+	PD -> PD [ label = "1,0/0,0,0"];
+	PD -> wait [ label = "x,1/1,0,0"];
+	PD -> SD [ label = "0,x/0,1,0"];
+	SD -> ID [ label = "x,x/1,0,0"];
+	ID -> ID [ label = "0,x/0,0,0"];
+	
+	ID -> PE [ label = "1,x/1,0,0"];
+	PE -> PE [ label = "1,0/0,0,0"];
+	PE -> wait [ label = "x,1/1,0,0"];
+	PE -> SE [ label = "0,x/0,1,0"];
+	SE -> IE [ label = "x,x/1,0,0"];
+	IE -> IE [ label = "0,x/0,0,0"];
+	
+	IE -> PF [ label = "1,x/1,0,0"];
+	PF -> PF [ label = "1,0/0,0,0"];
+	PF -> wait [ label = "x,1/1,0,0"];
+	PF -> SF [ label = "0,x/0,1,0"];
+	SF -> IF [ label = "x,x/1,0,1"];
+	IF -> IF [ label = "0,x/0,0,0"];
+	
+	IF -> sync [ label = "1,x/1,0,0"];
+}
