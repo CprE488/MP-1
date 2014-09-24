@@ -408,12 +408,13 @@ void generateFrame(frame currentFrame, int* playbackIndex, int* recordIndex)
         /*TODO*/
     }
 
-    PpmAxi->GenerateChannelA = frameToGenerage->channelA;
-    PpmAxi->GenerateChannelB = frameToGenerage->channelB;
-    PpmAxi->GenerateChannelC = frameToGenerage->channelC;
-    PpmAxi->GenerateChannelD = frameToGenerage->channelD;
-    PpmAxi->GenerateChannelE = frameToGenerage->channelE;
-    PpmAxi->GenerateChannelF = frameToGenerage->channelF;
+    //write frameToGenerate to frame buffer
+    PpmAxi->GenerateChannelA = frameToGenerate->channelA;
+    PpmAxi->GenerateChannelB = frameToGenerate->channelB;
+    PpmAxi->GenerateChannelC = frameToGenerate->channelC;
+    PpmAxi->GenerateChannelD = frameToGenerate->channelD;
+    PpmAxi->GenerateChannelE = frameToGenerate->channelE;
+    PpmAxi->GenerateChannelF = frameToGenerate->channelF;
 }
 
 //sets the mode to hardware relay mode (will turn software relay mode off)
