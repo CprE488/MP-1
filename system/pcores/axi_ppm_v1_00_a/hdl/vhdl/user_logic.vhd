@@ -51,8 +51,10 @@
 -- DO NOT EDIT BELOW THIS LINE --------------------
 library ieee;
 use ieee.std_logic_1164.all;
-use ieee.std_logic_arith.all;
-use ieee.std_logic_unsigned.all;
+--use ieee.std_logic_arith.all;
+--use ieee.std_logic_unsigned.all;
+use ieee.numeric_std.all;
+
 
 library proc_common_v3_00_a;
 use proc_common_v3_00_a.proc_common_pkg.all;
@@ -97,7 +99,8 @@ entity user_logic is
   port
   (
     -- ADD USER PORTS BELOW THIS LINE ------------------
-    --USER ports added here
+    PpmIn                           : in std_logic;
+    PpmOut                          : out std_logic;
     -- ADD USER PORTS ABOVE THIS LINE ------------------
 
     -- DO NOT EDIT BELOW THIS LINE ---------------------
@@ -135,9 +138,10 @@ architecture IMP of user_logic is
   -- Signals for user logic slave model s/w accessible register example
   ------------------------------------------
   signal reg_control                    : std_logic_vector(C_SLV_DWIDTH-1 downto 0);
+  signal reg_control_read               : std_logic_vector(C_SLV_DWIDTH-1 downto 0);
   signal reg_capture_count              : std_logic_vector(C_SLV_DWIDTH-1 downto 0);
   signal reg_capture_fsm_state          : std_logic_vector(C_SLV_DWIDTH-1 downto 0);
-  signal reg_generage_fsm_state         : std_logic_vector(C_SLV_DWIDTH-1 downto 0);
+  signal reg_generate_fsm_state         : std_logic_vector(C_SLV_DWIDTH-1 downto 0);
   signal reg_capture_sync_length        : std_logic_vector(C_SLV_DWIDTH-1 downto 0);
   signal reg_generate_idle_length       : std_logic_vector(C_SLV_DWIDTH-1 downto 0);
   signal reg_generate_frame_length      : std_logic_vector(C_SLV_DWIDTH-1 downto 0);
@@ -172,17 +176,247 @@ architecture IMP of user_logic is
   signal slv_read_ack                   : std_logic;
   signal slv_write_ack                  : std_logic;
 
-
---  signal gen_count								 : std_logic_vector(31 downto 0);
---  signal sync_caught							 : std_logic;
---  signal idle_caught							 : std_logic;
---  signal count_reset							 : std_logic;
---  signal latch_register						 : std_logic;
---  signal count_en								 : std_logic;
---  signal gen_ps, gen_ns						 : gen_state_type;									
+    signal Reset : std_logic;
+    signal PpmInFiltered : std_logic;
+    signal CapSync : std_logic;
+    signal CapCountReset : std_logic;
+    signal CapCountEnable : std_logic;
+    signal CapFrameFinished : std_logic;
+    signal CapState : std_logic_vector(31 downto 0);
+    signal CapRegisterNumber : unsigned(2 downto 0);
+	signal CapRegisterLatch : std_logic;
+    signal CapCount : unsigned (31 downto 0);
+    signal CapFrameCount : unsigned (31 downto 0);
+    
+    signal GenTopReached : std_logic;
+    signal GenFrameOver : std_logic;
+    signal GenFrameCountReset : std_logic;
+    signal GenFrameCountEnable : std_logic;
+    signal GenCountReset : std_logic;
+    signal GenCountEnable : std_logic;
+    signal GenRegisterNumber : unsigned(2 downto 0);
+    signal GenPpmOut : std_logic;
+    
+    signal ReadRegisterValue: unsigned(31 downto 0);
+    signal regCaptureSyncLength : unsigned(31 downto 0);
+    signal dummy : unsigned(31 downto 0);
+    signal regCaptureCount: unsigned(31 downto 0);
+    signal regGenerateFrameLength: unsigned(31 downto 0);
+    
+    COMPONENT vens_counter
+    PORT(
+         Clock : IN  std_logic;
+         Reset : IN  std_logic; 
+         Enable : IN  std_logic;
+         Top : IN  unsigned(31 downto 0);
+         Count : OUT  unsigned(31 downto 0);
+         TopReached : OUT  std_logic
+        );
+    END COMPONENT;
+    
+    COMPONENT filter
+    PORT(
+         Clock : IN  std_logic;
+         Reset : IN  std_logic; 
+         DataIn : IN  std_logic;
+         DataOut : OUT  std_logic
+        );
+    END COMPONENT;
+    
+    COMPONENT temp_registers
+    PORT(
+         Clock : IN  std_logic;
+         Reset : IN  std_logic;
+         Value : IN  unsigned(31 downto 0);
+         RegisterNumber : IN  unsigned(2 downto 0);
+         RegisterLatch : IN  std_logic;
+         LatchAll : IN  std_logic;
+         ChannelA : OUT  std_logic_vector(31 downto 0);
+         ChannelB : OUT  std_logic_vector(31 downto 0);
+         ChannelC : OUT  std_logic_vector(31 downto 0);
+         ChannelD : OUT  std_logic_vector(31 downto 0);
+         ChannelE : OUT  std_logic_vector(31 downto 0);
+         ChannelF : OUT  std_logic_vector(31 downto 0)
+        );
+    END COMPONENT;
+    
+    COMPONENT read_registers
+          PORT(Clock : in  STD_LOGIC;
+           Reset : in STD_LOGIC;
+           RegisterNumber : in  UNSIGNED(2 downto 0);
+           IdleLength : in  STD_LOGIC_VECTOR(31 downto 0);
+           ChannelA : in  STD_LOGIC_VECTOR(31 downto 0);
+           ChannelB : in  STD_LOGIC_VECTOR(31 downto 0);
+           ChannelC : in  STD_LOGIC_VECTOR(31 downto 0);
+           ChannelD : in  STD_LOGIC_VECTOR(31 downto 0);
+           ChannelE : in  STD_LOGIC_VECTOR(31 downto 0);
+           ChannelF : in  STD_LOGIC_VECTOR(31 downto 0);
+           Value : out  UNSIGNED(31 downto 0));
+    END COMPONENT;
+    
+    COMPONENT capture_ppm
+    PORT(
+         Clock : IN  std_logic;
+         Reset : IN  std_logic;
+         Ppm : IN  std_logic;
+         Sync : IN  std_logic;
+         CountReset : OUT  std_logic;
+         CountEnable : OUT  std_logic;
+         FrameFinished : OUT  std_logic;
+         State : OUT  std_logic_vector(31 downto 0);
+         RegisterNumber : OUT  unsigned(2 downto 0);
+         RegisterLatch : OUT  std_logic
+        );
+    END COMPONENT;
+    
+    COMPONENT generate_ppm
+    PORT(
+         Clock : IN  std_logic;
+         Reset : IN  std_logic;
+         TopReached : IN  std_logic;
+         FrameOver : IN  std_logic;
+         FrameCountReset : OUT  std_logic;
+         FrameCountEnable : OUT  std_logic;
+         CountReset : OUT  std_logic;
+         CountEnable : OUT  std_logic;
+         RegisterNumber : OUT  UNSIGNED(2 downto 0);
+         State : OUT  std_logic_vector(31 downto 0);
+         PpmOutput : OUT  std_logic
+        );
+    END COMPONENT;    
+    
 begin
 	
-  --USER logic implementation added here
+    filter_ent: filter PORT MAP (
+          Clock => Bus2IP_Clk,
+          Reset => Reset,
+          DataIn => PpmIn,
+          DataOut => PpmInFiltered
+        );
+    
+    counter1: vens_counter PORT MAP (
+          Clock => Bus2IP_Clk,
+          Reset => CapCountReset,
+          Enable => CapCountEnable,
+          Top => regCaptureSyncLength,
+          Count => CapCount,
+          TopReached => CapSync
+        );
+        
+     counter2: vens_counter PORT MAP (
+          Clock => Bus2IP_Clk,
+          Reset => GenCountReset,
+          Enable => GenCountEnable,
+          Top => ReadRegisterValue,
+          Count => open,
+          TopReached => GenTopReached 
+        );
+        
+     counter3: vens_counter PORT MAP (
+          Clock => CapFrameFinished,
+          Reset => Reset,
+          Enable => '1',
+          Top => dummy,
+          Count => regCaptureCount,
+          TopReached => open
+        );
+        
+     counter4: vens_counter PORT MAP (
+          Clock => Bus2IP_Clk, 
+          Reset => GenFrameCountReset,
+          Enable => GenFrameCountEnable,
+          Top => regGenerateFrameLength,
+          Count => open,
+          TopReached => GenFrameOver
+        );
+    
+    temp_reg: temp_registers PORT MAP (
+          Clock => Bus2IP_Clk,
+          Reset => Reset,
+          Value => CapCount,
+          RegisterNumber => CapRegisterNumber,
+          RegisterLatch => CapRegisterLatch,
+          LatchAll => CapFrameFinished,
+          ChannelA => reg_capture_a,
+          ChannelB => reg_capture_b,
+          ChannelC => reg_capture_c,
+          ChannelD => reg_capture_d,
+          ChannelE => reg_capture_e,
+          ChannelF => reg_capture_f
+        );
+        
+     read_reg: read_registers PORT MAP(
+                  Clock => Bus2IP_Clk,
+                  Reset => Reset,
+                  RegisterNumber => GenRegisterNumber,
+                  IdleLength => reg_generate_idle_length,
+                  ChannelA => reg_generate_a,
+                  ChannelB => reg_generate_b,
+                  ChannelC => reg_generate_c,
+                  ChannelD => reg_generate_d,
+                  ChannelE => reg_generate_e,
+                  ChannelF => reg_generate_f,
+                  Value => ReadRegisterValue
+          );
+          
+      capt_ppm: capture_ppm PORT MAP (
+          Clock => Bus2IP_Clk,
+          Reset => Reset,
+          Ppm => PpmInFiltered,
+          Sync => CapSync,
+          CountReset => CapCountReset,
+          CountEnable => CapCountEnable,
+          FrameFinished => CapFrameFinished,
+          State => reg_capture_fsm_state,
+          RegisterNumber => CapRegisterNumber,
+          RegisterLatch => CapRegisterLatch
+        );
+        
+     gen_ppm: generate_ppm PORT MAP (
+          Clock => Bus2IP_Clk,
+          Reset => Reset,
+          TopReached => GenTopReached,
+          FrameOver => GenFrameOver,
+          FrameCountReset => GenFrameCountReset,
+          FrameCountEnable => GenFrameCountEnable,
+          CountReset => GenCountReset,
+          CountEnable => GenCountEnable,
+          RegisterNumber => GenRegisterNumber,
+          State => reg_generate_fsm_state,
+          PpmOutput => GenPpmOut
+        );
+        
+    Reset <= reg_control(2) or not(Bus2IP_Resetn);
+    
+    PpmOut <= (PpmIn and not(reg_control(0))) or (GenPpmOut and reg_control(0));
+        
+    regCaptureSyncLength <= unsigned(reg_capture_sync_length);
+    regCaptureCount <= unsigned(reg_capture_count);
+    regGenerateFrameLength <= unsigned(reg_generate_frame_length);
+    dummy <= x"00000000";
+  FRAME_READY : process(Bus2IP_Clk, CapFrameFinished, GenFrameOver, reg_control) is
+  begin
+    if(rising_edge(Bus2IP_Clk)) then
+        if(reg_control(3) = '0') then
+            if(CapFrameFinished = '1') then
+                reg_control_read(3) <= '1';
+            end if;
+        else
+            reg_control_read(3) <= '0';
+        end if;
+        if(reg_control(4) = '0') then
+            if(GenFrameOver = '1') then
+                reg_control_read(4) <= '1';
+            end if;
+        else
+            reg_control_read(4) <= '0'; 
+        end if;
+    end if;
+  end process FRAME_READY;
+
+    
+   
+  --USER logic implementation added here 
 
   ------------------------------------------
   -- Example code to read/write user logic slave model s/w accessible registers
@@ -213,32 +447,32 @@ begin
 
     if Bus2IP_Clk'event and Bus2IP_Clk = '1' then
       if Bus2IP_Resetn = '0' then
-        reg_control <= (others => '0');
-        reg_capture_count <= (others => '0');
-        reg_capture_fsm_state <= (others => '0');
-        reg_generage_fsm_state <= (others => '0');
-        reg_capture_sync_length <= (others => '0');
-        reg_generate_idle_length <= (others => '0');
-        reg_generate_frame_length <= (others => '0');
+        --reg_control <= (others => '0');
+        --reg_capture_count <= (others => '0');
+        --reg_capture_fsm_state <= (others => '0');
+        --reg_generate_fsm_state <= (others => '0');
+        --reg_capture_sync_length <= (others => '0');
+        --reg_generate_idle_length <= (others => '0');
+        --reg_generate_frame_length <= (others => '0');
         slv_reg7 <= (others => '0');
         slv_reg8 <= (others => '0');
         slv_reg9 <= (others => '0');
-        reg_capture_a <= (others => '0');
-        reg_capture_b <= (others => '0');
-        reg_capture_c <= (others => '0');
-        reg_capture_d <= (others => '0');
-        reg_capture_e <= (others => '0');
-        reg_capture_f <= (others => '0');
+        --reg_capture_a <= (others => '0');
+        --reg_capture_b <= (others => '0');
+        --reg_capture_c <= (others => '0');
+        --reg_capture_d <= (others => '0');
+        --reg_capture_e <= (others => '0');
+        --reg_capture_f <= (others => '0');
         slv_reg16 <= (others => '0');
         slv_reg17 <= (others => '0');
         slv_reg18 <= (others => '0');
         slv_reg19 <= (others => '0');
-        reg_generate_a <= (others => '0');
-        reg_generate_b <= (others => '0');
-        reg_generate_c <= (others => '0');
-        reg_generate_d <= (others => '0');
-        reg_generate_e <= (others => '0');
-        reg_generate_f <= (others => '0');
+        --reg_generate_a <= (others => '0');
+        --reg_generate_b <= (others => '0');
+        --reg_generate_c <= (others => '0');
+        --reg_generate_d <= (others => '0');
+        --reg_generate_e <= (others => '0');
+        --reg_generate_f <= (others => '0');
         slv_reg26 <= (others => '0');
         slv_reg27 <= (others => '0');
         slv_reg28 <= (others => '0');
@@ -256,19 +490,19 @@ begin
           when "01000000000000000000000000000000" =>
             for byte_index in 0 to (C_SLV_DWIDTH/8)-1 loop
               if ( Bus2IP_BE(byte_index) = '1' ) then
-                reg_capture_count(byte_index*8+7 downto byte_index*8) <= Bus2IP_Data(byte_index*8+7 downto byte_index*8);
+                --reg_capture_count(byte_index*8+7 downto byte_index*8) <= Bus2IP_Data(byte_index*8+7 downto byte_index*8);
               end if;
             end loop;
           when "00100000000000000000000000000000" =>
             for byte_index in 0 to (C_SLV_DWIDTH/8)-1 loop
               if ( Bus2IP_BE(byte_index) = '1' ) then
-                reg_capture_fsm_state(byte_index*8+7 downto byte_index*8) <= Bus2IP_Data(byte_index*8+7 downto byte_index*8);
+                --reg_capture_fsm_state(byte_index*8+7 downto byte_index*8) <= Bus2IP_Data(byte_index*8+7 downto byte_index*8);
               end if;
             end loop;
           when "00010000000000000000000000000000" =>
             for byte_index in 0 to (C_SLV_DWIDTH/8)-1 loop
               if ( Bus2IP_BE(byte_index) = '1' ) then
-                reg_generage_fsm_state(byte_index*8+7 downto byte_index*8) <= Bus2IP_Data(byte_index*8+7 downto byte_index*8);
+                --reg_generate_fsm_state(byte_index*8+7 downto byte_index*8) <= Bus2IP_Data(byte_index*8+7 downto byte_index*8);
               end if;
             end loop;
           when "00001000000000000000000000000000" =>
@@ -292,79 +526,79 @@ begin
           when "00000001000000000000000000000000" =>
             for byte_index in 0 to (C_SLV_DWIDTH/8)-1 loop
               if ( Bus2IP_BE(byte_index) = '1' ) then
-                slv_reg7(byte_index*8+7 downto byte_index*8) <= Bus2IP_Data(byte_index*8+7 downto byte_index*8);
+                --slv_reg7(byte_index*8+7 downto byte_index*8) <= Bus2IP_Data(byte_index*8+7 downto byte_index*8);
               end if;
             end loop;
           when "00000000100000000000000000000000" =>
             for byte_index in 0 to (C_SLV_DWIDTH/8)-1 loop
               if ( Bus2IP_BE(byte_index) = '1' ) then
-                slv_reg8(byte_index*8+7 downto byte_index*8) <= Bus2IP_Data(byte_index*8+7 downto byte_index*8);
+                --slv_reg8(byte_index*8+7 downto byte_index*8) <= Bus2IP_Data(byte_index*8+7 downto byte_index*8);
               end if;
             end loop;
           when "00000000010000000000000000000000" =>
             for byte_index in 0 to (C_SLV_DWIDTH/8)-1 loop
               if ( Bus2IP_BE(byte_index) = '1' ) then
-                slv_reg9(byte_index*8+7 downto byte_index*8) <= Bus2IP_Data(byte_index*8+7 downto byte_index*8);
+                --slv_reg9(byte_index*8+7 downto byte_index*8) <= Bus2IP_Data(byte_index*8+7 downto byte_index*8);
               end if;
             end loop;
           when "00000000001000000000000000000000" =>
             for byte_index in 0 to (C_SLV_DWIDTH/8)-1 loop
               if ( Bus2IP_BE(byte_index) = '1' ) then
-                reg_capture_a(byte_index*8+7 downto byte_index*8) <= Bus2IP_Data(byte_index*8+7 downto byte_index*8);
+                --reg_capture_a(byte_index*8+7 downto byte_index*8) <= Bus2IP_Data(byte_index*8+7 downto byte_index*8);
               end if;
             end loop;
           when "00000000000100000000000000000000" =>
             for byte_index in 0 to (C_SLV_DWIDTH/8)-1 loop
               if ( Bus2IP_BE(byte_index) = '1' ) then
-                reg_capture_b(byte_index*8+7 downto byte_index*8) <= Bus2IP_Data(byte_index*8+7 downto byte_index*8);
+                --reg_capture_b(byte_index*8+7 downto byte_index*8) <= Bus2IP_Data(byte_index*8+7 downto byte_index*8);
               end if;
             end loop;
           when "00000000000010000000000000000000" =>
             for byte_index in 0 to (C_SLV_DWIDTH/8)-1 loop
               if ( Bus2IP_BE(byte_index) = '1' ) then
-                reg_capture_c(byte_index*8+7 downto byte_index*8) <= Bus2IP_Data(byte_index*8+7 downto byte_index*8);
+                --reg_capture_c(byte_index*8+7 downto byte_index*8) <= Bus2IP_Data(byte_index*8+7 downto byte_index*8);
               end if;
             end loop;
           when "00000000000001000000000000000000" =>
             for byte_index in 0 to (C_SLV_DWIDTH/8)-1 loop
               if ( Bus2IP_BE(byte_index) = '1' ) then
-                reg_capture_d(byte_index*8+7 downto byte_index*8) <= Bus2IP_Data(byte_index*8+7 downto byte_index*8);
+                --reg_capture_d(byte_index*8+7 downto byte_index*8) <= Bus2IP_Data(byte_index*8+7 downto byte_index*8);
               end if;
             end loop;
           when "00000000000000100000000000000000" =>
             for byte_index in 0 to (C_SLV_DWIDTH/8)-1 loop
               if ( Bus2IP_BE(byte_index) = '1' ) then
-                reg_capture_e(byte_index*8+7 downto byte_index*8) <= Bus2IP_Data(byte_index*8+7 downto byte_index*8);
+                --reg_capture_e(byte_index*8+7 downto byte_index*8) <= Bus2IP_Data(byte_index*8+7 downto byte_index*8);
               end if;
             end loop;
           when "00000000000000010000000000000000" =>
             for byte_index in 0 to (C_SLV_DWIDTH/8)-1 loop
               if ( Bus2IP_BE(byte_index) = '1' ) then
-                reg_capture_f(byte_index*8+7 downto byte_index*8) <= Bus2IP_Data(byte_index*8+7 downto byte_index*8);
+                --reg_capture_f(byte_index*8+7 downto byte_index*8) <= Bus2IP_Data(byte_index*8+7 downto byte_index*8);
               end if;
             end loop;
           when "00000000000000001000000000000000" =>
             for byte_index in 0 to (C_SLV_DWIDTH/8)-1 loop
               if ( Bus2IP_BE(byte_index) = '1' ) then
-                slv_reg16(byte_index*8+7 downto byte_index*8) <= Bus2IP_Data(byte_index*8+7 downto byte_index*8);
+                --slv_reg16(byte_index*8+7 downto byte_index*8) <= Bus2IP_Data(byte_index*8+7 downto byte_index*8);
               end if;
             end loop;
           when "00000000000000000100000000000000" =>
             for byte_index in 0 to (C_SLV_DWIDTH/8)-1 loop
               if ( Bus2IP_BE(byte_index) = '1' ) then
-                slv_reg17(byte_index*8+7 downto byte_index*8) <= Bus2IP_Data(byte_index*8+7 downto byte_index*8);
+                --slv_reg17(byte_index*8+7 downto byte_index*8) <= Bus2IP_Data(byte_index*8+7 downto byte_index*8);
               end if;
             end loop;
           when "00000000000000000010000000000000" =>
             for byte_index in 0 to (C_SLV_DWIDTH/8)-1 loop
               if ( Bus2IP_BE(byte_index) = '1' ) then
-                slv_reg18(byte_index*8+7 downto byte_index*8) <= Bus2IP_Data(byte_index*8+7 downto byte_index*8);
+                --slv_reg18(byte_index*8+7 downto byte_index*8) <= Bus2IP_Data(byte_index*8+7 downto byte_index*8);
               end if;
             end loop;
           when "00000000000000000001000000000000" =>
             for byte_index in 0 to (C_SLV_DWIDTH/8)-1 loop
               if ( Bus2IP_BE(byte_index) = '1' ) then
-                slv_reg19(byte_index*8+7 downto byte_index*8) <= Bus2IP_Data(byte_index*8+7 downto byte_index*8);
+                --slv_reg19(byte_index*8+7 downto byte_index*8) <= Bus2IP_Data(byte_index*8+7 downto byte_index*8);
               end if;
             end loop;
           when "00000000000000000000100000000000" =>
@@ -406,37 +640,37 @@ begin
           when "00000000000000000000000000100000" =>
             for byte_index in 0 to (C_SLV_DWIDTH/8)-1 loop
               if ( Bus2IP_BE(byte_index) = '1' ) then
-                slv_reg26(byte_index*8+7 downto byte_index*8) <= Bus2IP_Data(byte_index*8+7 downto byte_index*8);
+                --slv_reg26(byte_index*8+7 downto byte_index*8) <= Bus2IP_Data(byte_index*8+7 downto byte_index*8);
               end if;
             end loop;
           when "00000000000000000000000000010000" =>
             for byte_index in 0 to (C_SLV_DWIDTH/8)-1 loop
               if ( Bus2IP_BE(byte_index) = '1' ) then
-                slv_reg27(byte_index*8+7 downto byte_index*8) <= Bus2IP_Data(byte_index*8+7 downto byte_index*8);
+                --slv_reg27(byte_index*8+7 downto byte_index*8) <= Bus2IP_Data(byte_index*8+7 downto byte_index*8);
               end if;
             end loop;
           when "00000000000000000000000000001000" =>
             for byte_index in 0 to (C_SLV_DWIDTH/8)-1 loop
               if ( Bus2IP_BE(byte_index) = '1' ) then
-                slv_reg28(byte_index*8+7 downto byte_index*8) <= Bus2IP_Data(byte_index*8+7 downto byte_index*8);
+               -- slv_reg28(byte_index*8+7 downto byte_index*8) <= Bus2IP_Data(byte_index*8+7 downto byte_index*8);
               end if;
             end loop;
           when "00000000000000000000000000000100" =>
             for byte_index in 0 to (C_SLV_DWIDTH/8)-1 loop
               if ( Bus2IP_BE(byte_index) = '1' ) then
-                slv_reg29(byte_index*8+7 downto byte_index*8) <= Bus2IP_Data(byte_index*8+7 downto byte_index*8);
+                --slv_reg29(byte_index*8+7 downto byte_index*8) <= Bus2IP_Data(byte_index*8+7 downto byte_index*8);
               end if;
             end loop;
           when "00000000000000000000000000000010" =>
             for byte_index in 0 to (C_SLV_DWIDTH/8)-1 loop
               if ( Bus2IP_BE(byte_index) = '1' ) then
-                slv_reg30(byte_index*8+7 downto byte_index*8) <= Bus2IP_Data(byte_index*8+7 downto byte_index*8);
+                --slv_reg30(byte_index*8+7 downto byte_index*8) <= Bus2IP_Data(byte_index*8+7 downto byte_index*8);
               end if;
             end loop;
           when "00000000000000000000000000000001" =>
             for byte_index in 0 to (C_SLV_DWIDTH/8)-1 loop
               if ( Bus2IP_BE(byte_index) = '1' ) then
-                slv_reg31(byte_index*8+7 downto byte_index*8) <= Bus2IP_Data(byte_index*8+7 downto byte_index*8);
+                --slv_reg31(byte_index*8+7 downto byte_index*8) <= Bus2IP_Data(byte_index*8+7 downto byte_index*8);
               end if;
             end loop;
           when others => null;
@@ -447,14 +681,14 @@ begin
   end process SLAVE_REG_WRITE_PROC;
 
   -- implement slave model software accessible register(s) read mux
-  SLAVE_REG_READ_PROC : process( slv_reg_read_sel, reg_control, reg_capture_count, reg_capture_fsm_state, reg_generage_fsm_state, reg_capture_sync_length, reg_generate_idle_length, reg_generate_frame_length, slv_reg7, slv_reg8, slv_reg9, reg_capture_a, reg_capture_b, reg_capture_c, reg_capture_d, reg_capture_e, reg_capture_f, slv_reg16, slv_reg17, slv_reg18, slv_reg19, reg_generate_a, reg_generate_b, reg_generate_c, reg_generate_d, reg_generate_e, reg_generate_f, slv_reg26, slv_reg27, slv_reg28, slv_reg29, slv_reg30, slv_reg31 ) is
+  SLAVE_REG_READ_PROC : process( slv_reg_read_sel, reg_control, reg_capture_count, reg_capture_fsm_state, reg_generate_fsm_state, reg_capture_sync_length, reg_generate_idle_length, reg_generate_frame_length, slv_reg7, slv_reg8, slv_reg9, reg_capture_a, reg_capture_b, reg_capture_c, reg_capture_d, reg_capture_e, reg_capture_f, slv_reg16, slv_reg17, slv_reg18, slv_reg19, reg_generate_a, reg_generate_b, reg_generate_c, reg_generate_d, reg_generate_e, reg_generate_f, slv_reg26, slv_reg27, slv_reg28, slv_reg29, slv_reg30, slv_reg31 ) is
   begin
 
     case slv_reg_read_sel is
-      when "10000000000000000000000000000000" => slv_ip2bus_data <= reg_control;
+      when "10000000000000000000000000000000" => slv_ip2bus_data <= reg_control_read;
       when "01000000000000000000000000000000" => slv_ip2bus_data <= reg_capture_count;
       when "00100000000000000000000000000000" => slv_ip2bus_data <= reg_capture_fsm_state;
-      when "00010000000000000000000000000000" => slv_ip2bus_data <= reg_generage_fsm_state;
+      when "00010000000000000000000000000000" => slv_ip2bus_data <= reg_generate_fsm_state;
       when "00001000000000000000000000000000" => slv_ip2bus_data <= reg_capture_sync_length;
       when "00000100000000000000000000000000" => slv_ip2bus_data <= reg_generate_idle_length;
       when "00000010000000000000000000000000" => slv_ip2bus_data <= reg_generate_frame_length;

@@ -1,1 +1,8 @@
+proc_common_v3_00_a	"../../../../../../../../../../../../../remote/Xilinx/14.6/EDK/hw/XilinxProcessorIPLib/pcores/proc_common_v3_00_a/hdl/vhdl/proc_common_pkg.vhd"
+work	"../../hdl/vhdl/capture_ppm.vhd"
 work	"../../hdl/vhdl/filter.vhd"
+work	"../../hdl/vhdl/generate_ppm.vhd"
+work	"../../hdl/vhdl/read_registers.vhd"
+work	"../../hdl/vhdl/temp_registers.vhd"
+axi_ppm_v1_00_a	"../../hdl/vhdl/user_logic.vhd"
+work	"counter.vhd"

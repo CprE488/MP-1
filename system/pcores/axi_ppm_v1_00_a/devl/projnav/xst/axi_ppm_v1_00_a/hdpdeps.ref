@@ -1,0 +1,10 @@
+V3 10
+EN axi_ppm_v1_00_a/user_logic 0 \
+      FL /home/vens/classes/Fall2014/cpre488/labs/mp1/MP-1/system/pcores/axi_ppm_v1_00_a/devl/projnav/../../hdl/vhdl/user_logic.vhd \
+      PB ieee/std_logic_1164 1370735607 PB ieee/std_logic_arith 1370735608 \
+      PB ieee/STD_LOGIC_UNSIGNED 1370735609 LB proc_common_v3_00_a \
+      PB proc_common_v3_00_a/proc_common_pkg 0
+AR axi_ppm_v1_00_a/user_logic/IMP 0 \
+      FL /home/vens/classes/Fall2014/cpre488/labs/mp1/MP-1/system/pcores/axi_ppm_v1_00_a/devl/projnav/../../hdl/vhdl/user_logic.vhd \
+      EN axi_ppm_v1_00_a/user_logic 0 CP filter CP counter CP temp_registers \
+      CP read_registers CP capture_ppm CP generate_ppm

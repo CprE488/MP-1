@@ -1,0 +1,46 @@
+m255
+K3
+13
+cModel Technology
+Z0 d/home/vens/classes/Fall2014/cpre488/labs/mp1/MP-1/system/pcores/axi_ppm_v1_00_a/devl/projnav
+Euser_logic
+Z1 w1411605241
+Z2 DPx19 proc_common_v3_00_a 15 proc_common_pkg 0 22 nVA2gg8b>fmcdoI3?l]3Q1
+Z3 DPx4 ieee 18 std_logic_unsigned 0 22 RYmj;=TK`k=k>D@Cz`zoB3
+Z4 DPx4 ieee 15 std_logic_arith 0 22 4`Y?g_lkdn;7UL9IiJck01
+Z5 DPx3 std 6 textio 0 22 5>J:;AW>W0[[dW0I6EN1Q0
+Z6 DPx4 ieee 14 std_logic_1164 0 22 5=aWaoGZSMWIcH0i^f`XF1
+Z7 d/home/vens/classes/Fall2014/cpre488/labs/mp1/MP-1/system/pcores/axi_ppm_v1_00_a/devl/projnav
+Z8 8../../hdl/vhdl/user_logic.vhd
+Z9 F../../hdl/vhdl/user_logic.vhd
+l0
+L84
+VaV]JMcPR7jGEcId3cTaD^0
+!s100 N[fEK?f<eJ[F?j[oD0;Oh0
+Z10 OL;C;10.1c;51
+31
+!i10b 1
+Z11 !s108 1411608898.210243
+Z12 !s90 -reportprogress|300|-explicit|-93|-work|axi_ppm_v1_00_a|../../hdl/vhdl/user_logic.vhd|
+Z13 !s107 ../../hdl/vhdl/user_logic.vhd|
+Z14 o-explicit -93 -work axi_ppm_v1_00_a
+Z15 tExplicit 1
+Aimp
+R2
+R3
+R4
+R5
+R6
+Z16 DEx4 work 10 user_logic 0 22 aV]JMcPR7jGEcId3cTaD^0
+l285
+L131
+Z17 VEWndR?O:n>RLzAdmkoF1C1
+Z18 !s100 0kE@1:6[?nLMjGUcO[d4z1
+R10
+31
+!i10b 1
+R11
+R12
+R13
+R14
+R15
