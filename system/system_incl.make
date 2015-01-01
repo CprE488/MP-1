@@ -64,7 +64,8 @@ WRAPPER_NGC_FILES = implementation/system_axi4lite_0_wrapper.ngc \
 implementation/system_sws_8bits_wrapper.ngc \
 implementation/system_leds_8bits_wrapper.ngc \
 implementation/system_btns_5bits_wrapper.ngc \
-implementation/system_processing_system7_0_wrapper.ngc
+implementation/system_processing_system7_0_wrapper.ngc \
+implementation/system_axi_ppm_0_wrapper.ngc
 
 POSTSYN_NETLIST = implementation/$(SYSTEM).ngc
 

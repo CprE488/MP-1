@@ -1,3 +1,1139 @@
-20:45:58 **** Incremental Build of configuration Debug for project rc_copter ****
+23:36:08 **** Clean-only build of configuration Debug for project rc_copter ****
+make clean 
+rm -rf  ./src/platform.o ./src/rc_copter.o  ./src/platform.d ./src/rc_copter.d  rc_copter.elf.size  rc_copter.elf
+ 
+23:36:08 **** Clean-only build of project rc_copter_bsp ****
+make -k clean 
+rm -rf ps7_cortexa9_0
+23:36:10 **** Build of project rc_copter_bsp ****
+make -k all 
+libgen -hw ../zed_hw_platform/system.xml\
+	       \
+	       -pe ps7_cortexa9_0 \
+	       -log libgen.log \
+	       system.mss
+libgen
+Xilinx EDK 14.6 Build EDK_P.68d
+Copyright (c) 1995-2012 Xilinx, Inc.  All rights reserved.
+
+Command Line: libgen -hw ../zed_hw_platform/system.xml -pe ps7_cortexa9_0 -log
+libgen.log system.mss 
+
+
+Staging source files.
+Running DRCs.
+Running generate.
+Running post_generate.
+Running include - 'gmake -s include "COMPILER=arm-xilinx-eabi-gcc"
+"ARCHIVER=arm-xilinx-eabi-ar" "COMPILER_FLAGS= -O2 -c"
+"EXTRA_COMPILER_FLAGS=-g"'.
+
+Running libs - 'gmake -s libs "COMPILER=arm-xilinx-eabi-gcc"
+"ARCHIVER=arm-xilinx-eabi-ar" "COMPILER_FLAGS= -O2 -c"
+"EXTRA_COMPILER_FLAGS=-g"'.
+Compiling common
+arm-xilinx-eabi-ar: creating ../../../lib/libxil.a
+Compiling xadc
+Compiling standalone
+Compiling gpio
+Compiling devcfg
+Compiling dmaps
+Compiling emacps
+Compiling gpiops
+Compiling qspips
+Compiling scugic
+Compiling scutimer
+Compiling scuwdt
+Compiling ttcps
+Compiling uartps
+Compiling usbps
+Compiling cpu_cortexa9
+Running execs_generate.
+Finished building libraries
+23:36:52 **** Build of configuration Debug for project rc_copter ****
+make all 
+Building file: ../src/platform.c
+Invoking: ARM gcc compiler
+arm-xilinx-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -I../../rc_copter_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/platform.d" -MT"src/platform.d" -o "src/platform.o" "../src/platform.c"
+Finished building: ../src/platform.c
+ 
+Building file: ../src/rc_copter.c
+Invoking: ARM gcc compiler
+arm-xilinx-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -I../../rc_copter_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/rc_copter.d" -MT"src/rc_copter.d" -o "src/rc_copter.o" "../src/rc_copter.c"
+../src/rc_copter.c: In function 'init':
+../src/rc_copter.c:195:5: warning: implicit declaration of function 'usleep' [-Wimplicit-function-declaration]
+../src/rc_copter.c: In function 'consumeCaptureFrame':
+../src/rc_copter.c:355:17: warning: value computed is not used [-Wunused-value]
+../src/rc_copter.c:378:13: warning: value computed is not used [-Wunused-value]
+../src/rc_copter.c:326:20: warning: variable 'sw' set but not used [-Wunused-but-set-variable]
+../src/rc_copter.c: In function 'generateFrame':
+../src/rc_copter.c:430:13: warning: value computed is not used [-Wunused-value]
+../src/rc_copter.c:389:20: warning: variable 'sw' set but not used [-Wunused-but-set-variable]
+Finished building: ../src/rc_copter.c
+ 
+Building target: rc_copter.elf
+Invoking: ARM gcc linker
+arm-xilinx-eabi-gcc -Wl,-T -Wl,../src/lscript.ld -L../../rc_copter_bsp/ps7_cortexa9_0/lib -o "rc_copter.elf"  ./src/platform.o ./src/rc_copter.o   -Wl,--start-group,-lxil,-lgcc,-lc,--end-group
+Finished building target: rc_copter.elf
+ 
+Invoking: ARM Print Size
+arm-xilinx-eabi-size rc_copter.elf  |tee "rc_copter.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  66208	   2264	 269884	 338356	  529b4	rc_copter.elf
+Finished building: rc_copter.elf.size
+ 
+23:37:15 **** Auto Build of configuration Debug for project rc_copter ****
+make all 
+Building file: ../src/rc_copter.c
+Invoking: ARM gcc compiler
+arm-xilinx-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -I../../rc_copter_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/rc_copter.d" -MT"src/rc_copter.d" -o "src/rc_copter.o" "../src/rc_copter.c"
+../src/rc_copter.c: In function 'init':
+../src/rc_copter.c:195:5: warning: implicit declaration of function 'usleep' [-Wimplicit-function-declaration]
+../src/rc_copter.c: In function 'consumeCaptureFrame':
+../src/rc_copter.c:355:17: warning: value computed is not used [-Wunused-value]
+../src/rc_copter.c:378:13: warning: value computed is not used [-Wunused-value]
+../src/rc_copter.c:326:20: warning: variable 'sw' set but not used [-Wunused-but-set-variable]
+../src/rc_copter.c: In function 'generateFrame':
+../src/rc_copter.c:430:13: warning: value computed is not used [-Wunused-value]
+../src/rc_copter.c:389:20: warning: variable 'sw' set but not used [-Wunused-but-set-variable]
+Finished building: ../src/rc_copter.c
+ 
+Building target: rc_copter.elf
+Invoking: ARM gcc linker
+arm-xilinx-eabi-gcc -Wl,-T -Wl,../src/lscript.ld -L../../rc_copter_bsp/ps7_cortexa9_0/lib -o "rc_copter.elf"  ./src/platform.o ./src/rc_copter.o   -Wl,--start-group,-lxil,-lgcc,-lc,--end-group
+Finished building target: rc_copter.elf
+ 
+Invoking: ARM Print Size
+arm-xilinx-eabi-size rc_copter.elf  |tee "rc_copter.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  66208	   2264	 269884	 338356	  529b4	rc_copter.elf
+Finished building: rc_copter.elf.size
+ 
+23:37:19 **** Incremental Build of configuration Debug for project rc_copter ****
+make all 
+make: Nothing to be done for `all'.
+00:29:17 **** Incremental Build of configuration Debug for project rc_copter ****
+make all 
+make: Nothing to be done for `all'.
+19:32:40 **** Auto Build of project rc_copter_bsp ****
+make -k all 
+Finished building libraries
+19:32:41 **** Auto Build of project rc_copter_bsp ****
+make -k all 
+Finished building libraries
+19:32:41 **** Auto Build of project rc_copter_bsp ****
+make -k all 
+Finished building libraries
+19:32:42 **** Auto Build of project rc_copter_bsp ****
+make -k all 
+Finished building libraries
+19:32:43 **** Auto Build of configuration Debug for project rc_copter ****
+make all 
+make: Nothing to be done for `all'.
+19:39:19 **** Incremental Build of configuration Debug for project rc_copter ****
+make all 
+make: Nothing to be done for `all'.
+19:53:24 **** Auto Build of configuration Debug for project rc_copter ****
+make all 
+Building file: ../src/rc_copter.c
+Invoking: ARM gcc compiler
+arm-xilinx-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -I../../rc_copter_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/rc_copter.d" -MT"src/rc_copter.d" -o "src/rc_copter.o" "../src/rc_copter.c"
+../src/rc_copter.c: In function 'init':
+../src/rc_copter.c:195:5: warning: implicit declaration of function 'usleep' [-Wimplicit-function-declaration]
+../src/rc_copter.c: In function 'consumeCaptureFrame':
+../src/rc_copter.c:355:17: warning: value computed is not used [-Wunused-value]
+../src/rc_copter.c:378:13: warning: value computed is not used [-Wunused-value]
+../src/rc_copter.c:326:20: warning: variable 'sw' set but not used [-Wunused-but-set-variable]
+../src/rc_copter.c: In function 'generateFrame':
+../src/rc_copter.c:430:13: warning: value computed is not used [-Wunused-value]
+../src/rc_copter.c:389:20: warning: variable 'sw' set but not used [-Wunused-but-set-variable]
+Finished building: ../src/rc_copter.c
+ 
+Building target: rc_copter.elf
+Invoking: ARM gcc linker
+arm-xilinx-eabi-gcc -Wl,-T -Wl,../src/lscript.ld -L../../rc_copter_bsp/ps7_cortexa9_0/lib -o "rc_copter.elf"  ./src/platform.o ./src/rc_copter.o   -Wl,--start-group,-lxil,-lgcc,-lc,--end-group
+Finished building target: rc_copter.elf
+ 
+Invoking: ARM Print Size
+arm-xilinx-eabi-size rc_copter.elf  |tee "rc_copter.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  66232	   2264	 269884	 338380	  529cc	rc_copter.elf
+Finished building: rc_copter.elf.size
+ 
+19:53:33 **** Incremental Build of configuration Debug for project rc_copter ****
+make all 
+make: Nothing to be done for `all'.
+19:53:48 **** Incremental Build of configuration Debug for project rc_copter ****
+make all 
+make: Nothing to be done for `all'.
+19:55:37 **** Auto Build of configuration Debug for project rc_copter ****
+make all 
+Building file: ../src/rc_copter.c
+Invoking: ARM gcc compiler
+arm-xilinx-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -I../../rc_copter_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/rc_copter.d" -MT"src/rc_copter.d" -o "src/rc_copter.o" "../src/rc_copter.c"
+../src/rc_copter.c: In function 'init':
+../src/rc_copter.c:195:5: warning: implicit declaration of function 'usleep' [-Wimplicit-function-declaration]
+../src/rc_copter.c: In function 'consumeCaptureFrame':
+../src/rc_copter.c:355:17: warning: value computed is not used [-Wunused-value]
+../src/rc_copter.c:378:13: warning: value computed is not used [-Wunused-value]
+../src/rc_copter.c:326:20: warning: variable 'sw' set but not used [-Wunused-but-set-variable]
+../src/rc_copter.c: In function 'generateFrame':
+../src/rc_copter.c:430:13: warning: value computed is not used [-Wunused-value]
+../src/rc_copter.c:389:20: warning: variable 'sw' set but not used [-Wunused-but-set-variable]
+Finished building: ../src/rc_copter.c
+ 
+Building target: rc_copter.elf
+Invoking: ARM gcc linker
+arm-xilinx-eabi-gcc -Wl,-T -Wl,../src/lscript.ld -L../../rc_copter_bsp/ps7_cortexa9_0/lib -o "rc_copter.elf"  ./src/platform.o ./src/rc_copter.o   -Wl,--start-group,-lxil,-lgcc,-lc,--end-group
+Finished building target: rc_copter.elf
+ 
+Invoking: ARM Print Size
+arm-xilinx-eabi-size rc_copter.elf  |tee "rc_copter.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  66288	   2264	 269884	 338436	  52a04	rc_copter.elf
+Finished building: rc_copter.elf.size
+ 
+19:56:02 **** Auto Build of configuration Debug for project rc_copter ****
+make all 
+Building file: ../src/rc_copter.c
+Invoking: ARM gcc compiler
+arm-xilinx-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -I../../rc_copter_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/rc_copter.d" -MT"src/rc_copter.d" -o "src/rc_copter.o" "../src/rc_copter.c"
+../src/rc_copter.c: In function 'init':
+../src/rc_copter.c:195:5: warning: implicit declaration of function 'usleep' [-Wimplicit-function-declaration]
+../src/rc_copter.c: In function 'consumeCaptureFrame':
+../src/rc_copter.c:355:17: warning: value computed is not used [-Wunused-value]
+../src/rc_copter.c:378:13: warning: value computed is not used [-Wunused-value]
+../src/rc_copter.c:326:20: warning: variable 'sw' set but not used [-Wunused-but-set-variable]
+../src/rc_copter.c: In function 'generateFrame':
+../src/rc_copter.c:430:13: warning: value computed is not used [-Wunused-value]
+../src/rc_copter.c:389:20: warning: variable 'sw' set but not used [-Wunused-but-set-variable]
+Finished building: ../src/rc_copter.c
+ 
+Building target: rc_copter.elf
+Invoking: ARM gcc linker
+arm-xilinx-eabi-gcc -Wl,-T -Wl,../src/lscript.ld -L../../rc_copter_bsp/ps7_cortexa9_0/lib -o "rc_copter.elf"  ./src/platform.o ./src/rc_copter.o   -Wl,--start-group,-lxil,-lgcc,-lc,--end-group
+Finished building target: rc_copter.elf
+ 
+Invoking: ARM Print Size
+arm-xilinx-eabi-size rc_copter.elf  |tee "rc_copter.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  66296	   2264	 269884	 338444	  52a0c	rc_copter.elf
+Finished building: rc_copter.elf.size
+ 
+20:34:18 **** Incremental Build of configuration Debug for project rc_copter ****
+make all 
+make: Nothing to be done for `all'.
+20:37:29 **** Incremental Build of configuration Debug for project rc_copter ****
+make all 
+make: Nothing to be done for `all'.
+20:37:57 **** Incremental Build of configuration Debug for project rc_copter ****
+make all 
+make: Nothing to be done for `all'.
+20:41:30 **** Incremental Build of configuration Debug for project rc_copter ****
+make all 
+make: Nothing to be done for `all'.
+20:43:28 **** Auto Build of configuration Debug for project rc_copter ****
+make all 
+Building file: ../src/rc_copter.c
+Invoking: ARM gcc compiler
+arm-xilinx-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -I../../rc_copter_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/rc_copter.d" -MT"src/rc_copter.d" -o "src/rc_copter.o" "../src/rc_copter.c"
+../src/rc_copter.c: In function 'init':
+../src/rc_copter.c:195:5: warning: implicit declaration of function 'usleep' [-Wimplicit-function-declaration]
+../src/rc_copter.c: In function 'consumeCaptureFrame':
+../src/rc_copter.c:355:17: warning: value computed is not used [-Wunused-value]
+../src/rc_copter.c:378:13: warning: value computed is not used [-Wunused-value]
+../src/rc_copter.c:326:20: warning: variable 'sw' set but not used [-Wunused-but-set-variable]
+../src/rc_copter.c: In function 'generateFrame':
+../src/rc_copter.c:430:13: warning: value computed is not used [-Wunused-value]
+../src/rc_copter.c:389:20: warning: variable 'sw' set but not used [-Wunused-but-set-variable]
+Finished building: ../src/rc_copter.c
+ 
+Building target: rc_copter.elf
+Invoking: ARM gcc linker
+arm-xilinx-eabi-gcc -Wl,-T -Wl,../src/lscript.ld -L../../rc_copter_bsp/ps7_cortexa9_0/lib -o "rc_copter.elf"  ./src/platform.o ./src/rc_copter.o   -Wl,--start-group,-lxil,-lgcc,-lc,--end-group
+Finished building target: rc_copter.elf
+ 
+Invoking: ARM Print Size
+arm-xilinx-eabi-size rc_copter.elf  |tee "rc_copter.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  66240	   2264	 269884	 338388	  529d4	rc_copter.elf
+Finished building: rc_copter.elf.size
+ 
+20:43:30 **** Incremental Build of configuration Debug for project rc_copter ****
+make all 
+make: Nothing to be done for `all'.
+20:44:21 **** Auto Build of configuration Debug for project rc_copter ****
+make all 
+Building file: ../src/rc_copter.c
+Invoking: ARM gcc compiler
+arm-xilinx-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -I../../rc_copter_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/rc_copter.d" -MT"src/rc_copter.d" -o "src/rc_copter.o" "../src/rc_copter.c"
+../src/rc_copter.c: In function 'init':
+../src/rc_copter.c:195:5: warning: implicit declaration of function 'usleep' [-Wimplicit-function-declaration]
+../src/rc_copter.c: In function 'consumeCaptureFrame':
+../src/rc_copter.c:355:17: warning: value computed is not used [-Wunused-value]
+../src/rc_copter.c:378:13: warning: value computed is not used [-Wunused-value]
+../src/rc_copter.c:326:20: warning: variable 'sw' set but not used [-Wunused-but-set-variable]
+../src/rc_copter.c: In function 'generateFrame':
+../src/rc_copter.c:430:13: warning: value computed is not used [-Wunused-value]
+../src/rc_copter.c:389:20: warning: variable 'sw' set but not used [-Wunused-but-set-variable]
+Finished building: ../src/rc_copter.c
+ 
+Building target: rc_copter.elf
+Invoking: ARM gcc linker
+arm-xilinx-eabi-gcc -Wl,-T -Wl,../src/lscript.ld -L../../rc_copter_bsp/ps7_cortexa9_0/lib -o "rc_copter.elf"  ./src/platform.o ./src/rc_copter.o   -Wl,--start-group,-lxil,-lgcc,-lc,--end-group
+Finished building target: rc_copter.elf
+ 
+Invoking: ARM Print Size
+arm-xilinx-eabi-size rc_copter.elf  |tee "rc_copter.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  66208	   2264	 269884	 338356	  529b4	rc_copter.elf
+Finished building: rc_copter.elf.size
+ 
+20:44:49 **** Incremental Build of configuration Debug for project rc_copter ****
+make all 
+make: Nothing to be done for `all'.
+21:00:05 **** Auto Build of configuration Debug for project rc_copter ****
+make all 
+Building file: ../src/rc_copter.c
+Invoking: ARM gcc compiler
+arm-xilinx-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -I../../rc_copter_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/rc_copter.d" -MT"src/rc_copter.d" -o "src/rc_copter.o" "../src/rc_copter.c"
+../src/rc_copter.c: In function 'init':
+../src/rc_copter.c:195:5: warning: implicit declaration of function 'usleep' [-Wimplicit-function-declaration]
+../src/rc_copter.c: In function 'consumeCaptureFrame':
+../src/rc_copter.c:355:17: warning: value computed is not used [-Wunused-value]
+../src/rc_copter.c:378:13: warning: value computed is not used [-Wunused-value]
+../src/rc_copter.c:326:20: warning: variable 'sw' set but not used [-Wunused-but-set-variable]
+../src/rc_copter.c: In function 'generateFrame':
+../src/rc_copter.c:430:13: warning: value computed is not used [-Wunused-value]
+../src/rc_copter.c:389:20: warning: variable 'sw' set but not used [-Wunused-but-set-variable]
+Finished building: ../src/rc_copter.c
+ 
+Building target: rc_copter.elf
+Invoking: ARM gcc linker
+arm-xilinx-eabi-gcc -Wl,-T -Wl,../src/lscript.ld -L../../rc_copter_bsp/ps7_cortexa9_0/lib -o "rc_copter.elf"  ./src/platform.o ./src/rc_copter.o   -Wl,--start-group,-lxil,-lgcc,-lc,--end-group
+Finished building target: rc_copter.elf
+ 
+Invoking: ARM Print Size
+arm-xilinx-eabi-size rc_copter.elf  |tee "rc_copter.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  66208	   2264	 269884	 338356	  529b4	rc_copter.elf
+Finished building: rc_copter.elf.size
+ 
+21:00:07 **** Incremental Build of configuration Debug for project rc_copter ****
+make all 
+make: Nothing to be done for `all'.
+21:00:44 **** Incremental Build of configuration Debug for project rc_copter ****
+make all 
+make: Nothing to be done for `all'.
+21:06:07 **** Auto Build of configuration Debug for project rc_copter ****
+make all 
+Building file: ../src/rc_copter.c
+Invoking: ARM gcc compiler
+arm-xilinx-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -I../../rc_copter_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/rc_copter.d" -MT"src/rc_copter.d" -o "src/rc_copter.o" "../src/rc_copter.c"
+../src/rc_copter.c: In function 'init':
+../src/rc_copter.c:195:5: warning: implicit declaration of function 'usleep' [-Wimplicit-function-declaration]
+../src/rc_copter.c: In function 'consumeCaptureFrame':
+../src/rc_copter.c:355:17: warning: value computed is not used [-Wunused-value]
+../src/rc_copter.c:378:13: warning: value computed is not used [-Wunused-value]
+../src/rc_copter.c:326:20: warning: variable 'sw' set but not used [-Wunused-but-set-variable]
+../src/rc_copter.c: In function 'generateFrame':
+../src/rc_copter.c:430:13: warning: value computed is not used [-Wunused-value]
+../src/rc_copter.c:389:20: warning: variable 'sw' set but not used [-Wunused-but-set-variable]
+Finished building: ../src/rc_copter.c
+ 
+Building target: rc_copter.elf
+Invoking: ARM gcc linker
+arm-xilinx-eabi-gcc -Wl,-T -Wl,../src/lscript.ld -L../../rc_copter_bsp/ps7_cortexa9_0/lib -o "rc_copter.elf"  ./src/platform.o ./src/rc_copter.o   -Wl,--start-group,-lxil,-lgcc,-lc,--end-group
+Finished building target: rc_copter.elf
+ 
+Invoking: ARM Print Size
+arm-xilinx-eabi-size rc_copter.elf  |tee "rc_copter.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  66216	   2264	 269884	 338364	  529bc	rc_copter.elf
+Finished building: rc_copter.elf.size
+ 
+21:06:43 **** Incremental Build of configuration Debug for project rc_copter ****
+make all 
+make: Nothing to be done for `all'.
+21:07:42 **** Auto Build of configuration Debug for project rc_copter ****
+make all 
+Building file: ../src/rc_copter.c
+Invoking: ARM gcc compiler
+arm-xilinx-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -I../../rc_copter_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/rc_copter.d" -MT"src/rc_copter.d" -o "src/rc_copter.o" "../src/rc_copter.c"
+../src/rc_copter.c: In function 'init':
+../src/rc_copter.c:195:5: warning: implicit declaration of function 'usleep' [-Wimplicit-function-declaration]
+../src/rc_copter.c: In function 'consumeCaptureFrame':
+../src/rc_copter.c:355:17: warning: value computed is not used [-Wunused-value]
+../src/rc_copter.c:378:13: warning: value computed is not used [-Wunused-value]
+../src/rc_copter.c:326:20: warning: variable 'sw' set but not used [-Wunused-but-set-variable]
+../src/rc_copter.c: In function 'generateFrame':
+../src/rc_copter.c:430:13: warning: value computed is not used [-Wunused-value]
+../src/rc_copter.c:389:20: warning: variable 'sw' set but not used [-Wunused-but-set-variable]
+Finished building: ../src/rc_copter.c
+ 
+Building target: rc_copter.elf
+Invoking: ARM gcc linker
+arm-xilinx-eabi-gcc -Wl,-T -Wl,../src/lscript.ld -L../../rc_copter_bsp/ps7_cortexa9_0/lib -o "rc_copter.elf"  ./src/platform.o ./src/rc_copter.o   -Wl,--start-group,-lxil,-lgcc,-lc,--end-group
+Finished building target: rc_copter.elf
+ 
+Invoking: ARM Print Size
+arm-xilinx-eabi-size rc_copter.elf  |tee "rc_copter.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  66216	   2264	 269884	 338364	  529bc	rc_copter.elf
+Finished building: rc_copter.elf.size
+ 
+21:07:43 **** Incremental Build of configuration Debug for project rc_copter ****
+make all 
+make: Nothing to be done for `all'.
+21:08:14 **** Auto Build of configuration Debug for project rc_copter ****
+make all 
+Building file: ../src/rc_copter.c
+Invoking: ARM gcc compiler
+arm-xilinx-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -I../../rc_copter_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/rc_copter.d" -MT"src/rc_copter.d" -o "src/rc_copter.o" "../src/rc_copter.c"
+../src/rc_copter.c: In function 'init':
+../src/rc_copter.c:195:5: warning: implicit declaration of function 'usleep' [-Wimplicit-function-declaration]
+../src/rc_copter.c: In function 'consumeCaptureFrame':
+../src/rc_copter.c:355:17: warning: value computed is not used [-Wunused-value]
+../src/rc_copter.c:378:13: warning: value computed is not used [-Wunused-value]
+../src/rc_copter.c:326:20: warning: variable 'sw' set but not used [-Wunused-but-set-variable]
+../src/rc_copter.c: In function 'generateFrame':
+../src/rc_copter.c:430:13: warning: value computed is not used [-Wunused-value]
+../src/rc_copter.c:389:20: warning: variable 'sw' set but not used [-Wunused-but-set-variable]
+Finished building: ../src/rc_copter.c
+ 
+Building target: rc_copter.elf
+Invoking: ARM gcc linker
+arm-xilinx-eabi-gcc -Wl,-T -Wl,../src/lscript.ld -L../../rc_copter_bsp/ps7_cortexa9_0/lib -o "rc_copter.elf"  ./src/platform.o ./src/rc_copter.o   -Wl,--start-group,-lxil,-lgcc,-lc,--end-group
+Finished building target: rc_copter.elf
+ 
+Invoking: ARM Print Size
+arm-xilinx-eabi-size rc_copter.elf  |tee "rc_copter.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  66216	   2264	 269884	 338364	  529bc	rc_copter.elf
+Finished building: rc_copter.elf.size
+ 
+21:08:15 **** Incremental Build of configuration Debug for project rc_copter ****
+make all 
+make: Nothing to be done for `all'.
+21:08:34 **** Auto Build of configuration Debug for project rc_copter ****
+make all 
+Building file: ../src/rc_copter.c
+Invoking: ARM gcc compiler
+arm-xilinx-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -I../../rc_copter_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/rc_copter.d" -MT"src/rc_copter.d" -o "src/rc_copter.o" "../src/rc_copter.c"
+../src/rc_copter.c: In function 'init':
+../src/rc_copter.c:195:5: warning: implicit declaration of function 'usleep' [-Wimplicit-function-declaration]
+../src/rc_copter.c: In function 'consumeCaptureFrame':
+../src/rc_copter.c:355:17: warning: value computed is not used [-Wunused-value]
+../src/rc_copter.c:378:13: warning: value computed is not used [-Wunused-value]
+../src/rc_copter.c:326:20: warning: variable 'sw' set but not used [-Wunused-but-set-variable]
+../src/rc_copter.c: In function 'generateFrame':
+../src/rc_copter.c:430:13: warning: value computed is not used [-Wunused-value]
+../src/rc_copter.c:389:20: warning: variable 'sw' set but not used [-Wunused-but-set-variable]
+Finished building: ../src/rc_copter.c
+ 
+Building target: rc_copter.elf
+Invoking: ARM gcc linker
+arm-xilinx-eabi-gcc -Wl,-T -Wl,../src/lscript.ld -L../../rc_copter_bsp/ps7_cortexa9_0/lib -o "rc_copter.elf"  ./src/platform.o ./src/rc_copter.o   -Wl,--start-group,-lxil,-lgcc,-lc,--end-group
+Finished building target: rc_copter.elf
+ 
+Invoking: ARM Print Size
+arm-xilinx-eabi-size rc_copter.elf  |tee "rc_copter.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  66216	   2264	 269884	 338364	  529bc	rc_copter.elf
+Finished building: rc_copter.elf.size
+ 
+21:08:35 **** Incremental Build of configuration Debug for project rc_copter ****
+make all 
+make: Nothing to be done for `all'.
+21:08:53 **** Auto Build of configuration Debug for project rc_copter ****
+make all 
+Building file: ../src/rc_copter.c
+Invoking: ARM gcc compiler
+arm-xilinx-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -I../../rc_copter_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/rc_copter.d" -MT"src/rc_copter.d" -o "src/rc_copter.o" "../src/rc_copter.c"
+../src/rc_copter.c: In function 'init':
+../src/rc_copter.c:195:5: warning: implicit declaration of function 'usleep' [-Wimplicit-function-declaration]
+../src/rc_copter.c: In function 'consumeCaptureFrame':
+../src/rc_copter.c:355:17: warning: value computed is not used [-Wunused-value]
+../src/rc_copter.c:378:13: warning: value computed is not used [-Wunused-value]
+../src/rc_copter.c:326:20: warning: variable 'sw' set but not used [-Wunused-but-set-variable]
+../src/rc_copter.c: In function 'generateFrame':
+../src/rc_copter.c:430:13: warning: value computed is not used [-Wunused-value]
+../src/rc_copter.c:389:20: warning: variable 'sw' set but not used [-Wunused-but-set-variable]
+Finished building: ../src/rc_copter.c
+ 
+Building target: rc_copter.elf
+Invoking: ARM gcc linker
+arm-xilinx-eabi-gcc -Wl,-T -Wl,../src/lscript.ld -L../../rc_copter_bsp/ps7_cortexa9_0/lib -o "rc_copter.elf"  ./src/platform.o ./src/rc_copter.o   -Wl,--start-group,-lxil,-lgcc,-lc,--end-group
+Finished building target: rc_copter.elf
+ 
+Invoking: ARM Print Size
+arm-xilinx-eabi-size rc_copter.elf  |tee "rc_copter.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  66216	   2264	 269884	 338364	  529bc	rc_copter.elf
+Finished building: rc_copter.elf.size
+ 
+21:08:54 **** Incremental Build of configuration Debug for project rc_copter ****
+make all 
+make: Nothing to be done for `all'.
+21:09:15 **** Auto Build of configuration Debug for project rc_copter ****
+make all 
+Building file: ../src/rc_copter.c
+Invoking: ARM gcc compiler
+arm-xilinx-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -I../../rc_copter_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/rc_copter.d" -MT"src/rc_copter.d" -o "src/rc_copter.o" "../src/rc_copter.c"
+../src/rc_copter.c: In function 'init':
+../src/rc_copter.c:195:5: warning: implicit declaration of function 'usleep' [-Wimplicit-function-declaration]
+../src/rc_copter.c: In function 'consumeCaptureFrame':
+../src/rc_copter.c:355:17: warning: value computed is not used [-Wunused-value]
+../src/rc_copter.c:378:13: warning: value computed is not used [-Wunused-value]
+../src/rc_copter.c:326:20: warning: variable 'sw' set but not used [-Wunused-but-set-variable]
+../src/rc_copter.c: In function 'generateFrame':
+../src/rc_copter.c:430:13: warning: value computed is not used [-Wunused-value]
+../src/rc_copter.c:389:20: warning: variable 'sw' set but not used [-Wunused-but-set-variable]
+Finished building: ../src/rc_copter.c
+ 
+Building target: rc_copter.elf
+Invoking: ARM gcc linker
+arm-xilinx-eabi-gcc -Wl,-T -Wl,../src/lscript.ld -L../../rc_copter_bsp/ps7_cortexa9_0/lib -o "rc_copter.elf"  ./src/platform.o ./src/rc_copter.o   -Wl,--start-group,-lxil,-lgcc,-lc,--end-group
+Finished building target: rc_copter.elf
+ 
+Invoking: ARM Print Size
+arm-xilinx-eabi-size rc_copter.elf  |tee "rc_copter.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  66216	   2264	 269884	 338364	  529bc	rc_copter.elf
+Finished building: rc_copter.elf.size
+ 
+21:09:16 **** Incremental Build of configuration Debug for project rc_copter ****
+make all 
+make: Nothing to be done for `all'.
+21:09:34 **** Auto Build of configuration Debug for project rc_copter ****
+make all 
+Building file: ../src/rc_copter.c
+Invoking: ARM gcc compiler
+arm-xilinx-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -I../../rc_copter_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/rc_copter.d" -MT"src/rc_copter.d" -o "src/rc_copter.o" "../src/rc_copter.c"
+../src/rc_copter.c: In function 'init':
+../src/rc_copter.c:195:5: warning: implicit declaration of function 'usleep' [-Wimplicit-function-declaration]
+../src/rc_copter.c: In function 'consumeCaptureFrame':
+../src/rc_copter.c:355:17: warning: value computed is not used [-Wunused-value]
+../src/rc_copter.c:378:13: warning: value computed is not used [-Wunused-value]
+../src/rc_copter.c:326:20: warning: variable 'sw' set but not used [-Wunused-but-set-variable]
+../src/rc_copter.c: In function 'generateFrame':
+../src/rc_copter.c:430:13: warning: value computed is not used [-Wunused-value]
+../src/rc_copter.c:389:20: warning: variable 'sw' set but not used [-Wunused-but-set-variable]
+Finished building: ../src/rc_copter.c
+ 
+Building target: rc_copter.elf
+Invoking: ARM gcc linker
+arm-xilinx-eabi-gcc -Wl,-T -Wl,../src/lscript.ld -L../../rc_copter_bsp/ps7_cortexa9_0/lib -o "rc_copter.elf"  ./src/platform.o ./src/rc_copter.o   -Wl,--start-group,-lxil,-lgcc,-lc,--end-group
+Finished building target: rc_copter.elf
+ 
+Invoking: ARM Print Size
+arm-xilinx-eabi-size rc_copter.elf  |tee "rc_copter.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  66216	   2264	 269884	 338364	  529bc	rc_copter.elf
+Finished building: rc_copter.elf.size
+ 
+21:09:36 **** Incremental Build of configuration Debug for project rc_copter ****
+make all 
+make: Nothing to be done for `all'.
+21:10:07 **** Auto Build of configuration Debug for project rc_copter ****
+make all 
+Building file: ../src/rc_copter.c
+Invoking: ARM gcc compiler
+arm-xilinx-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -I../../rc_copter_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/rc_copter.d" -MT"src/rc_copter.d" -o "src/rc_copter.o" "../src/rc_copter.c"
+../src/rc_copter.c: In function 'init':
+../src/rc_copter.c:195:5: warning: implicit declaration of function 'usleep' [-Wimplicit-function-declaration]
+../src/rc_copter.c: In function 'consumeCaptureFrame':
+../src/rc_copter.c:355:17: warning: value computed is not used [-Wunused-value]
+../src/rc_copter.c:378:13: warning: value computed is not used [-Wunused-value]
+../src/rc_copter.c:326:20: warning: variable 'sw' set but not used [-Wunused-but-set-variable]
+../src/rc_copter.c: In function 'generateFrame':
+../src/rc_copter.c:430:13: warning: value computed is not used [-Wunused-value]
+../src/rc_copter.c:389:20: warning: variable 'sw' set but not used [-Wunused-but-set-variable]
+Finished building: ../src/rc_copter.c
+ 
+Building target: rc_copter.elf
+Invoking: ARM gcc linker
+arm-xilinx-eabi-gcc -Wl,-T -Wl,../src/lscript.ld -L../../rc_copter_bsp/ps7_cortexa9_0/lib -o "rc_copter.elf"  ./src/platform.o ./src/rc_copter.o   -Wl,--start-group,-lxil,-lgcc,-lc,--end-group
+Finished building target: rc_copter.elf
+ 
+Invoking: ARM Print Size
+arm-xilinx-eabi-size rc_copter.elf  |tee "rc_copter.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  66216	   2264	 269884	 338364	  529bc	rc_copter.elf
+Finished building: rc_copter.elf.size
+ 
+21:10:08 **** Incremental Build of configuration Debug for project rc_copter ****
+make all 
+make: Nothing to be done for `all'.
+21:13:43 **** Auto Build of configuration Debug for project rc_copter ****
+make all 
+Building file: ../src/rc_copter.c
+Invoking: ARM gcc compiler
+arm-xilinx-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -I../../rc_copter_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/rc_copter.d" -MT"src/rc_copter.d" -o "src/rc_copter.o" "../src/rc_copter.c"
+../src/rc_copter.c: In function 'init':
+../src/rc_copter.c:195:5: warning: implicit declaration of function 'usleep' [-Wimplicit-function-declaration]
+../src/rc_copter.c: In function 'consumeCaptureFrame':
+../src/rc_copter.c:355:17: warning: value computed is not used [-Wunused-value]
+../src/rc_copter.c:378:13: warning: value computed is not used [-Wunused-value]
+../src/rc_copter.c:326:20: warning: variable 'sw' set but not used [-Wunused-but-set-variable]
+../src/rc_copter.c: In function 'generateFrame':
+../src/rc_copter.c:430:13: warning: value computed is not used [-Wunused-value]
+../src/rc_copter.c:389:20: warning: variable 'sw' set but not used [-Wunused-but-set-variable]
+Finished building: ../src/rc_copter.c
+ 
+Building target: rc_copter.elf
+Invoking: ARM gcc linker
+arm-xilinx-eabi-gcc -Wl,-T -Wl,../src/lscript.ld -L../../rc_copter_bsp/ps7_cortexa9_0/lib -o "rc_copter.elf"  ./src/platform.o ./src/rc_copter.o   -Wl,--start-group,-lxil,-lgcc,-lc,--end-group
+Finished building target: rc_copter.elf
+ 
+Invoking: ARM Print Size
+arm-xilinx-eabi-size rc_copter.elf  |tee "rc_copter.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  66192	   2264	 269884	 338340	  529a4	rc_copter.elf
+Finished building: rc_copter.elf.size
+ 
+21:13:52 **** Incremental Build of configuration Debug for project rc_copter ****
+make all 
+make: Nothing to be done for `all'.
+21:15:36 **** Auto Build of configuration Debug for project rc_copter ****
+make all 
+Building file: ../src/rc_copter.c
+Invoking: ARM gcc compiler
+arm-xilinx-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -I../../rc_copter_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/rc_copter.d" -MT"src/rc_copter.d" -o "src/rc_copter.o" "../src/rc_copter.c"
+../src/rc_copter.c: In function 'init':
+../src/rc_copter.c:195:5: warning: implicit declaration of function 'usleep' [-Wimplicit-function-declaration]
+../src/rc_copter.c: In function 'consumeCaptureFrame':
+../src/rc_copter.c:355:17: warning: value computed is not used [-Wunused-value]
+../src/rc_copter.c:378:13: warning: value computed is not used [-Wunused-value]
+../src/rc_copter.c:326:20: warning: variable 'sw' set but not used [-Wunused-but-set-variable]
+../src/rc_copter.c: In function 'generateFrame':
+../src/rc_copter.c:430:13: warning: value computed is not used [-Wunused-value]
+../src/rc_copter.c:389:20: warning: variable 'sw' set but not used [-Wunused-but-set-variable]
+Finished building: ../src/rc_copter.c
+ 
+Building target: rc_copter.elf
+Invoking: ARM gcc linker
+arm-xilinx-eabi-gcc -Wl,-T -Wl,../src/lscript.ld -L../../rc_copter_bsp/ps7_cortexa9_0/lib -o "rc_copter.elf"  ./src/platform.o ./src/rc_copter.o   -Wl,--start-group,-lxil,-lgcc,-lc,--end-group
+Finished building target: rc_copter.elf
+ 
+Invoking: ARM Print Size
+arm-xilinx-eabi-size rc_copter.elf  |tee "rc_copter.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  66192	   2264	 269884	 338340	  529a4	rc_copter.elf
+Finished building: rc_copter.elf.size
+ 
+21:19:12 **** Auto Build of configuration Debug for project rc_copter ****
+make all 
+Building file: ../src/rc_copter.c
+Invoking: ARM gcc compiler
+arm-xilinx-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -I../../rc_copter_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/rc_copter.d" -MT"src/rc_copter.d" -o "src/rc_copter.o" "../src/rc_copter.c"
+../src/rc_copter.c: In function 'main':
+../src/rc_copter.c:152:6: warning: implicit declaration of function 'usleep' [-Wimplicit-function-declaration]
+../src/rc_copter.c: In function 'consumeCaptureFrame':
+../src/rc_copter.c:358:17: warning: value computed is not used [-Wunused-value]
+../src/rc_copter.c:381:13: warning: value computed is not used [-Wunused-value]
+../src/rc_copter.c:329:20: warning: variable 'sw' set but not used [-Wunused-but-set-variable]
+../src/rc_copter.c: In function 'generateFrame':
+../src/rc_copter.c:433:13: warning: value computed is not used [-Wunused-value]
+../src/rc_copter.c:392:20: warning: variable 'sw' set but not used [-Wunused-but-set-variable]
+Finished building: ../src/rc_copter.c
+ 
+Building target: rc_copter.elf
+Invoking: ARM gcc linker
+arm-xilinx-eabi-gcc -Wl,-T -Wl,../src/lscript.ld -L../../rc_copter_bsp/ps7_cortexa9_0/lib -o "rc_copter.elf"  ./src/platform.o ./src/rc_copter.o   -Wl,--start-group,-lxil,-lgcc,-lc,--end-group
+Finished building target: rc_copter.elf
+ 
+Invoking: ARM Print Size
+arm-xilinx-eabi-size rc_copter.elf  |tee "rc_copter.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  66200	   2264	 269884	 338348	  529ac	rc_copter.elf
+Finished building: rc_copter.elf.size
+ 
+21:19:58 **** Incremental Build of configuration Debug for project rc_copter ****
+make all 
+make: Nothing to be done for `all'.
+22:00:48 **** Incremental Build of configuration Debug for project rc_copter ****
+make all 
+make: Nothing to be done for `all'.
+22:01:01 **** Incremental Build of configuration Debug for project rc_copter ****
+make all 
+make: Nothing to be done for `all'.
+22:03:24 **** Incremental Build of configuration Debug for project rc_copter ****
+make all 
+make: Nothing to be done for `all'.
+22:04:18 **** Auto Build of configuration Debug for project rc_copter ****
+make all 
+Building file: ../src/rc_copter.c
+Invoking: ARM gcc compiler
+arm-xilinx-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -I../../rc_copter_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/rc_copter.d" -MT"src/rc_copter.d" -o "src/rc_copter.o" "../src/rc_copter.c"
+../src/rc_copter.c: In function 'main':
+../src/rc_copter.c:152:6: warning: implicit declaration of function 'usleep' [-Wimplicit-function-declaration]
+../src/rc_copter.c: In function 'consumeCaptureFrame':
+../src/rc_copter.c:358:17: warning: value computed is not used [-Wunused-value]
+../src/rc_copter.c:381:13: warning: value computed is not used [-Wunused-value]
+../src/rc_copter.c:329:20: warning: variable 'sw' set but not used [-Wunused-but-set-variable]
+../src/rc_copter.c: In function 'generateFrame':
+../src/rc_copter.c:433:13: warning: value computed is not used [-Wunused-value]
+../src/rc_copter.c:392:20: warning: variable 'sw' set but not used [-Wunused-but-set-variable]
+Finished building: ../src/rc_copter.c
+ 
+Building target: rc_copter.elf
+Invoking: ARM gcc linker
+arm-xilinx-eabi-gcc -Wl,-T -Wl,../src/lscript.ld -L../../rc_copter_bsp/ps7_cortexa9_0/lib -o "rc_copter.elf"  ./src/platform.o ./src/rc_copter.o   -Wl,--start-group,-lxil,-lgcc,-lc,--end-group
+Finished building target: rc_copter.elf
+ 
+Invoking: ARM Print Size
+arm-xilinx-eabi-size rc_copter.elf  |tee "rc_copter.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  66200	   2264	 269884	 338348	  529ac	rc_copter.elf
+Finished building: rc_copter.elf.size
+ 
+22:04:21 **** Incremental Build of configuration Debug for project rc_copter ****
+make all 
+make: Nothing to be done for `all'.
+22:04:40 **** Auto Build of configuration Debug for project rc_copter ****
+make all 
+Building file: ../src/rc_copter.c
+Invoking: ARM gcc compiler
+arm-xilinx-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -I../../rc_copter_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/rc_copter.d" -MT"src/rc_copter.d" -o "src/rc_copter.o" "../src/rc_copter.c"
+../src/rc_copter.c: In function 'main':
+../src/rc_copter.c:152:6: warning: implicit declaration of function 'usleep' [-Wimplicit-function-declaration]
+../src/rc_copter.c: In function 'consumeCaptureFrame':
+../src/rc_copter.c:358:17: warning: value computed is not used [-Wunused-value]
+../src/rc_copter.c:381:13: warning: value computed is not used [-Wunused-value]
+../src/rc_copter.c:329:20: warning: variable 'sw' set but not used [-Wunused-but-set-variable]
+../src/rc_copter.c: In function 'generateFrame':
+../src/rc_copter.c:433:13: warning: value computed is not used [-Wunused-value]
+../src/rc_copter.c:392:20: warning: variable 'sw' set but not used [-Wunused-but-set-variable]
+Finished building: ../src/rc_copter.c
+ 
+Building target: rc_copter.elf
+Invoking: ARM gcc linker
+arm-xilinx-eabi-gcc -Wl,-T -Wl,../src/lscript.ld -L../../rc_copter_bsp/ps7_cortexa9_0/lib -o "rc_copter.elf"  ./src/platform.o ./src/rc_copter.o   -Wl,--start-group,-lxil,-lgcc,-lc,--end-group
+Finished building target: rc_copter.elf
+ 
+Invoking: ARM Print Size
+arm-xilinx-eabi-size rc_copter.elf  |tee "rc_copter.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  66200	   2264	 269884	 338348	  529ac	rc_copter.elf
+Finished building: rc_copter.elf.size
+ 
+22:05:04 **** Auto Build of configuration Debug for project rc_copter ****
+make all 
+Building file: ../src/rc_copter.c
+Invoking: ARM gcc compiler
+arm-xilinx-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -I../../rc_copter_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/rc_copter.d" -MT"src/rc_copter.d" -o "src/rc_copter.o" "../src/rc_copter.c"
+../src/rc_copter.c: In function 'main':
+../src/rc_copter.c:152:6: warning: implicit declaration of function 'usleep' [-Wimplicit-function-declaration]
+../src/rc_copter.c: In function 'consumeCaptureFrame':
+../src/rc_copter.c:358:17: warning: value computed is not used [-Wunused-value]
+../src/rc_copter.c:381:13: warning: value computed is not used [-Wunused-value]
+../src/rc_copter.c:329:20: warning: variable 'sw' set but not used [-Wunused-but-set-variable]
+../src/rc_copter.c: In function 'generateFrame':
+../src/rc_copter.c:434:13: warning: value computed is not used [-Wunused-value]
+../src/rc_copter.c:392:20: warning: variable 'sw' set but not used [-Wunused-but-set-variable]
+Finished building: ../src/rc_copter.c
+ 
+Building target: rc_copter.elf
+Invoking: ARM gcc linker
+arm-xilinx-eabi-gcc -Wl,-T -Wl,../src/lscript.ld -L../../rc_copter_bsp/ps7_cortexa9_0/lib -o "rc_copter.elf"  ./src/platform.o ./src/rc_copter.o   -Wl,--start-group,-lxil,-lgcc,-lc,--end-group
+Finished building target: rc_copter.elf
+ 
+Invoking: ARM Print Size
+arm-xilinx-eabi-size rc_copter.elf  |tee "rc_copter.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  66224	   2264	 269884	 338372	  529c4	rc_copter.elf
+Finished building: rc_copter.elf.size
+ 
+22:05:07 **** Incremental Build of configuration Debug for project rc_copter ****
+make all 
+make: Nothing to be done for `all'.
+22:06:04 **** Auto Build of configuration Debug for project rc_copter ****
+make all 
+Building file: ../src/rc_copter.c
+Invoking: ARM gcc compiler
+arm-xilinx-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -I../../rc_copter_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/rc_copter.d" -MT"src/rc_copter.d" -o "src/rc_copter.o" "../src/rc_copter.c"
+../src/rc_copter.c: In function 'main':
+../src/rc_copter.c:152:6: warning: implicit declaration of function 'usleep' [-Wimplicit-function-declaration]
+../src/rc_copter.c: In function 'consumeCaptureFrame':
+../src/rc_copter.c:358:17: warning: value computed is not used [-Wunused-value]
+../src/rc_copter.c:381:13: warning: value computed is not used [-Wunused-value]
+../src/rc_copter.c:329:20: warning: variable 'sw' set but not used [-Wunused-but-set-variable]
+../src/rc_copter.c: In function 'generateFrame':
+../src/rc_copter.c:434:13: warning: value computed is not used [-Wunused-value]
+../src/rc_copter.c:392:20: warning: variable 'sw' set but not used [-Wunused-but-set-variable]
+Finished building: ../src/rc_copter.c
+ 
+Building target: rc_copter.elf
+Invoking: ARM gcc linker
+arm-xilinx-eabi-gcc -Wl,-T -Wl,../src/lscript.ld -L../../rc_copter_bsp/ps7_cortexa9_0/lib -o "rc_copter.elf"  ./src/platform.o ./src/rc_copter.o   -Wl,--start-group,-lxil,-lgcc,-lc,--end-group
+Finished building target: rc_copter.elf
+ 
+Invoking: ARM Print Size
+arm-xilinx-eabi-size rc_copter.elf  |tee "rc_copter.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  66224	   2264	 269884	 338372	  529c4	rc_copter.elf
+Finished building: rc_copter.elf.size
+ 
+22:06:06 **** Incremental Build of configuration Debug for project rc_copter ****
+make all 
+make: Nothing to be done for `all'.
+22:06:40 **** Auto Build of configuration Debug for project rc_copter ****
+make all 
+Building file: ../src/rc_copter.c
+Invoking: ARM gcc compiler
+arm-xilinx-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -I../../rc_copter_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/rc_copter.d" -MT"src/rc_copter.d" -o "src/rc_copter.o" "../src/rc_copter.c"
+../src/rc_copter.c: In function 'main':
+../src/rc_copter.c:152:6: warning: implicit declaration of function 'usleep' [-Wimplicit-function-declaration]
+../src/rc_copter.c: In function 'consumeCaptureFrame':
+../src/rc_copter.c:358:17: warning: value computed is not used [-Wunused-value]
+../src/rc_copter.c:381:13: warning: value computed is not used [-Wunused-value]
+../src/rc_copter.c:329:20: warning: variable 'sw' set but not used [-Wunused-but-set-variable]
+../src/rc_copter.c: In function 'generateFrame':
+../src/rc_copter.c:434:13: warning: value computed is not used [-Wunused-value]
+../src/rc_copter.c:392:20: warning: variable 'sw' set but not used [-Wunused-but-set-variable]
+Finished building: ../src/rc_copter.c
+ 
+Building target: rc_copter.elf
+Invoking: ARM gcc linker
+arm-xilinx-eabi-gcc -Wl,-T -Wl,../src/lscript.ld -L../../rc_copter_bsp/ps7_cortexa9_0/lib -o "rc_copter.elf"  ./src/platform.o ./src/rc_copter.o   -Wl,--start-group,-lxil,-lgcc,-lc,--end-group
+Finished building target: rc_copter.elf
+ 
+Invoking: ARM Print Size
+arm-xilinx-eabi-size rc_copter.elf  |tee "rc_copter.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  66224	   2264	 269884	 338372	  529c4	rc_copter.elf
+Finished building: rc_copter.elf.size
+ 
+22:06:51 **** Incremental Build of configuration Debug for project rc_copter ****
+make all 
+make: Nothing to be done for `all'.
+22:08:04 **** Auto Build of configuration Debug for project rc_copter ****
+make all 
+Building file: ../src/rc_copter.c
+Invoking: ARM gcc compiler
+arm-xilinx-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -I../../rc_copter_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/rc_copter.d" -MT"src/rc_copter.d" -o "src/rc_copter.o" "../src/rc_copter.c"
+../src/rc_copter.c: In function 'main':
+../src/rc_copter.c:152:6: warning: implicit declaration of function 'usleep' [-Wimplicit-function-declaration]
+../src/rc_copter.c: In function 'consumeCaptureFrame':
+../src/rc_copter.c:358:17: warning: value computed is not used [-Wunused-value]
+../src/rc_copter.c:381:13: warning: value computed is not used [-Wunused-value]
+../src/rc_copter.c:329:20: warning: variable 'sw' set but not used [-Wunused-but-set-variable]
+../src/rc_copter.c: In function 'generateFrame':
+../src/rc_copter.c:434:13: warning: value computed is not used [-Wunused-value]
+../src/rc_copter.c:392:20: warning: variable 'sw' set but not used [-Wunused-but-set-variable]
+Finished building: ../src/rc_copter.c
+ 
+Building target: rc_copter.elf
+Invoking: ARM gcc linker
+arm-xilinx-eabi-gcc -Wl,-T -Wl,../src/lscript.ld -L../../rc_copter_bsp/ps7_cortexa9_0/lib -o "rc_copter.elf"  ./src/platform.o ./src/rc_copter.o   -Wl,--start-group,-lxil,-lgcc,-lc,--end-group
+Finished building target: rc_copter.elf
+ 
+Invoking: ARM Print Size
+arm-xilinx-eabi-size rc_copter.elf  |tee "rc_copter.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  66224	   2264	 269884	 338372	  529c4	rc_copter.elf
+Finished building: rc_copter.elf.size
+ 
+22:08:14 **** Auto Build of configuration Debug for project rc_copter ****
+make all 
+Building file: ../src/rc_copter.c
+Invoking: ARM gcc compiler
+arm-xilinx-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -I../../rc_copter_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/rc_copter.d" -MT"src/rc_copter.d" -o "src/rc_copter.o" "../src/rc_copter.c"
+../src/rc_copter.c: In function 'main':
+../src/rc_copter.c:152:6: warning: implicit declaration of function 'usleep' [-Wimplicit-function-declaration]
+../src/rc_copter.c: In function 'consumeCaptureFrame':
+../src/rc_copter.c:358:17: warning: value computed is not used [-Wunused-value]
+../src/rc_copter.c:381:13: warning: value computed is not used [-Wunused-value]
+../src/rc_copter.c:329:20: warning: variable 'sw' set but not used [-Wunused-but-set-variable]
+../src/rc_copter.c: In function 'generateFrame':
+../src/rc_copter.c:434:13: warning: value computed is not used [-Wunused-value]
+../src/rc_copter.c:392:20: warning: variable 'sw' set but not used [-Wunused-but-set-variable]
+Finished building: ../src/rc_copter.c
+ 
+Building target: rc_copter.elf
+Invoking: ARM gcc linker
+arm-xilinx-eabi-gcc -Wl,-T -Wl,../src/lscript.ld -L../../rc_copter_bsp/ps7_cortexa9_0/lib -o "rc_copter.elf"  ./src/platform.o ./src/rc_copter.o   -Wl,--start-group,-lxil,-lgcc,-lc,--end-group
+Finished building target: rc_copter.elf
+ 
+Invoking: ARM Print Size
+arm-xilinx-eabi-size rc_copter.elf  |tee "rc_copter.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  66224	   2264	 269884	 338372	  529c4	rc_copter.elf
+Finished building: rc_copter.elf.size
+ 
+22:08:16 **** Incremental Build of configuration Debug for project rc_copter ****
+make all 
+make: Nothing to be done for `all'.
+22:10:57 **** Auto Build of configuration Debug for project rc_copter ****
+make all 
+Building file: ../src/rc_copter.c
+Invoking: ARM gcc compiler
+arm-xilinx-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -I../../rc_copter_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/rc_copter.d" -MT"src/rc_copter.d" -o "src/rc_copter.o" "../src/rc_copter.c"
+../src/rc_copter.c: In function 'main':
+../src/rc_copter.c:152:6: warning: implicit declaration of function 'usleep' [-Wimplicit-function-declaration]
+../src/rc_copter.c: In function 'consumeCaptureFrame':
+../src/rc_copter.c:378:17: warning: value computed is not used [-Wunused-value]
+../src/rc_copter.c:401:13: warning: value computed is not used [-Wunused-value]
+../src/rc_copter.c:349:20: warning: variable 'sw' set but not used [-Wunused-but-set-variable]
+../src/rc_copter.c: In function 'generateFrame':
+../src/rc_copter.c:454:13: warning: value computed is not used [-Wunused-value]
+../src/rc_copter.c:412:20: warning: variable 'sw' set but not used [-Wunused-but-set-variable]
+Finished building: ../src/rc_copter.c
+ 
+Building target: rc_copter.elf
+Invoking: ARM gcc linker
+arm-xilinx-eabi-gcc -Wl,-T -Wl,../src/lscript.ld -L../../rc_copter_bsp/ps7_cortexa9_0/lib -o "rc_copter.elf"  ./src/platform.o ./src/rc_copter.o   -Wl,--start-group,-lxil,-lgcc,-lc,--end-group
+Finished building target: rc_copter.elf
+ 
+Invoking: ARM Print Size
+arm-xilinx-eabi-size rc_copter.elf  |tee "rc_copter.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  66368	   2264	 269884	 338516	  52a54	rc_copter.elf
+Finished building: rc_copter.elf.size
+ 
+22:11:01 **** Incremental Build of configuration Debug for project rc_copter ****
+make all 
+make: Nothing to be done for `all'.
+22:11:29 **** Auto Build of configuration Debug for project rc_copter ****
+make all 
+Building file: ../src/rc_copter.c
+Invoking: ARM gcc compiler
+arm-xilinx-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -I../../rc_copter_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/rc_copter.d" -MT"src/rc_copter.d" -o "src/rc_copter.o" "../src/rc_copter.c"
+../src/rc_copter.c: In function 'main':
+../src/rc_copter.c:152:6: warning: implicit declaration of function 'usleep' [-Wimplicit-function-declaration]
+../src/rc_copter.c: In function 'consumeCaptureFrame':
+../src/rc_copter.c:378:17: warning: value computed is not used [-Wunused-value]
+../src/rc_copter.c:401:13: warning: value computed is not used [-Wunused-value]
+../src/rc_copter.c:349:20: warning: variable 'sw' set but not used [-Wunused-but-set-variable]
+../src/rc_copter.c: In function 'generateFrame':
+../src/rc_copter.c:454:13: warning: value computed is not used [-Wunused-value]
+../src/rc_copter.c:412:20: warning: variable 'sw' set but not used [-Wunused-but-set-variable]
+Finished building: ../src/rc_copter.c
+ 
+Building target: rc_copter.elf
+Invoking: ARM gcc linker
+arm-xilinx-eabi-gcc -Wl,-T -Wl,../src/lscript.ld -L../../rc_copter_bsp/ps7_cortexa9_0/lib -o "rc_copter.elf"  ./src/platform.o ./src/rc_copter.o   -Wl,--start-group,-lxil,-lgcc,-lc,--end-group
+Finished building target: rc_copter.elf
+ 
+Invoking: ARM Print Size
+arm-xilinx-eabi-size rc_copter.elf  |tee "rc_copter.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  66368	   2264	 269884	 338516	  52a54	rc_copter.elf
+Finished building: rc_copter.elf.size
+ 
+22:11:36 **** Incremental Build of configuration Debug for project rc_copter ****
+make all 
+make: Nothing to be done for `all'.
+22:13:22 **** Incremental Build of configuration Debug for project rc_copter ****
+make all 
+make: Nothing to be done for `all'.
+22:15:58 **** Auto Build of configuration Debug for project rc_copter ****
+make all 
+Building file: ../src/rc_copter.c
+Invoking: ARM gcc compiler
+arm-xilinx-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -I../../rc_copter_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/rc_copter.d" -MT"src/rc_copter.d" -o "src/rc_copter.o" "../src/rc_copter.c"
+../src/rc_copter.c: In function 'main':
+../src/rc_copter.c:152:6: warning: implicit declaration of function 'usleep' [-Wimplicit-function-declaration]
+../src/rc_copter.c: In function 'consumeCaptureFrame':
+../src/rc_copter.c:378:17: warning: value computed is not used [-Wunused-value]
+../src/rc_copter.c:402:13: warning: value computed is not used [-Wunused-value]
+../src/rc_copter.c:349:20: warning: variable 'sw' set but not used [-Wunused-but-set-variable]
+../src/rc_copter.c: In function 'generateFrame':
+../src/rc_copter.c:455:13: warning: value computed is not used [-Wunused-value]
+../src/rc_copter.c:413:20: warning: variable 'sw' set but not used [-Wunused-but-set-variable]
+Finished building: ../src/rc_copter.c
+ 
+Building target: rc_copter.elf
+Invoking: ARM gcc linker
+arm-xilinx-eabi-gcc -Wl,-T -Wl,../src/lscript.ld -L../../rc_copter_bsp/ps7_cortexa9_0/lib -o "rc_copter.elf"  ./src/platform.o ./src/rc_copter.o   -Wl,--start-group,-lxil,-lgcc,-lc,--end-group
+Finished building target: rc_copter.elf
+ 
+Invoking: ARM Print Size
+arm-xilinx-eabi-size rc_copter.elf  |tee "rc_copter.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  66376	   2264	 269884	 338524	  52a5c	rc_copter.elf
+Finished building: rc_copter.elf.size
+ 
+22:16:06 **** Incremental Build of configuration Debug for project rc_copter ****
+make all 
+make: Nothing to be done for `all'.
+22:16:58 **** Auto Build of configuration Debug for project rc_copter ****
+make all 
+Building file: ../src/rc_copter.c
+Invoking: ARM gcc compiler
+arm-xilinx-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -I../../rc_copter_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/rc_copter.d" -MT"src/rc_copter.d" -o "src/rc_copter.o" "../src/rc_copter.c"
+../src/rc_copter.c: In function 'main':
+../src/rc_copter.c:152:6: warning: implicit declaration of function 'usleep' [-Wimplicit-function-declaration]
+../src/rc_copter.c: In function 'consumeCaptureFrame':
+../src/rc_copter.c:378:17: warning: value computed is not used [-Wunused-value]
+../src/rc_copter.c:349:20: warning: variable 'sw' set but not used [-Wunused-but-set-variable]
+../src/rc_copter.c: In function 'generateFrame':
+../src/rc_copter.c:455:13: warning: value computed is not used [-Wunused-value]
+../src/rc_copter.c:413:20: warning: variable 'sw' set but not used [-Wunused-but-set-variable]
+Finished building: ../src/rc_copter.c
+ 
+Building target: rc_copter.elf
+Invoking: ARM gcc linker
+arm-xilinx-eabi-gcc -Wl,-T -Wl,../src/lscript.ld -L../../rc_copter_bsp/ps7_cortexa9_0/lib -o "rc_copter.elf"  ./src/platform.o ./src/rc_copter.o   -Wl,--start-group,-lxil,-lgcc,-lc,--end-group
+Finished building target: rc_copter.elf
+ 
+Invoking: ARM Print Size
+arm-xilinx-eabi-size rc_copter.elf  |tee "rc_copter.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  66384	   2264	 269884	 338532	  52a64	rc_copter.elf
+Finished building: rc_copter.elf.size
+ 
+22:17:02 **** Incremental Build of configuration Debug for project rc_copter ****
+make all 
+make: Nothing to be done for `all'.
+22:18:30 **** Auto Build of configuration Debug for project rc_copter ****
+make all 
+Building file: ../src/rc_copter.c
+Invoking: ARM gcc compiler
+arm-xilinx-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -I../../rc_copter_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/rc_copter.d" -MT"src/rc_copter.d" -o "src/rc_copter.o" "../src/rc_copter.c"
+../src/rc_copter.c: In function 'main':
+../src/rc_copter.c:152:6: warning: implicit declaration of function 'usleep' [-Wimplicit-function-declaration]
+../src/rc_copter.c: In function 'consumeCaptureFrame':
+../src/rc_copter.c:358:17: warning: value computed is not used [-Wunused-value]
+../src/rc_copter.c:329:20: warning: variable 'sw' set but not used [-Wunused-but-set-variable]
+../src/rc_copter.c: In function 'generateFrame':
+../src/rc_copter.c:435:13: warning: value computed is not used [-Wunused-value]
+../src/rc_copter.c:393:20: warning: variable 'sw' set but not used [-Wunused-but-set-variable]
+Finished building: ../src/rc_copter.c
+ 
+Building target: rc_copter.elf
+Invoking: ARM gcc linker
+arm-xilinx-eabi-gcc -Wl,-T -Wl,../src/lscript.ld -L../../rc_copter_bsp/ps7_cortexa9_0/lib -o "rc_copter.elf"  ./src/platform.o ./src/rc_copter.o   -Wl,--start-group,-lxil,-lgcc,-lc,--end-group
+Finished building target: rc_copter.elf
+ 
+Invoking: ARM Print Size
+arm-xilinx-eabi-size rc_copter.elf  |tee "rc_copter.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  66240	   2264	 269884	 338388	  529d4	rc_copter.elf
+Finished building: rc_copter.elf.size
+ 
+22:19:42 **** Auto Build of configuration Debug for project rc_copter ****
+make all 
+Building file: ../src/rc_copter.c
+Invoking: ARM gcc compiler
+arm-xilinx-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -I../../rc_copter_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/rc_copter.d" -MT"src/rc_copter.d" -o "src/rc_copter.o" "../src/rc_copter.c"
+../src/rc_copter.c: In function 'main':
+../src/rc_copter.c:152:6: warning: implicit declaration of function 'usleep' [-Wimplicit-function-declaration]
+../src/rc_copter.c: In function 'consumeCaptureFrame':
+../src/rc_copter.c:358:17: warning: value computed is not used [-Wunused-value]
+../src/rc_copter.c:329:20: warning: variable 'sw' set but not used [-Wunused-but-set-variable]
+../src/rc_copter.c: In function 'generateFrame':
+../src/rc_copter.c:393:20: warning: variable 'sw' set but not used [-Wunused-but-set-variable]
+Finished building: ../src/rc_copter.c
+ 
+Building target: rc_copter.elf
+Invoking: ARM gcc linker
+arm-xilinx-eabi-gcc -Wl,-T -Wl,../src/lscript.ld -L../../rc_copter_bsp/ps7_cortexa9_0/lib -o "rc_copter.elf"  ./src/platform.o ./src/rc_copter.o   -Wl,--start-group,-lxil,-lgcc,-lc,--end-group
+Finished building target: rc_copter.elf
+ 
+Invoking: ARM Print Size
+arm-xilinx-eabi-size rc_copter.elf  |tee "rc_copter.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  66256	   2264	 269884	 338404	  529e4	rc_copter.elf
+Finished building: rc_copter.elf.size
+ 
+22:19:45 **** Incremental Build of configuration Debug for project rc_copter ****
+make all 
+make: Nothing to be done for `all'.
+22:22:07 **** Auto Build of configuration Debug for project rc_copter ****
+make all 
+Building file: ../src/rc_copter.c
+Invoking: ARM gcc compiler
+arm-xilinx-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -I../../rc_copter_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/rc_copter.d" -MT"src/rc_copter.d" -o "src/rc_copter.o" "../src/rc_copter.c"
+../src/rc_copter.c: In function 'main':
+../src/rc_copter.c:152:6: warning: implicit declaration of function 'usleep' [-Wimplicit-function-declaration]
+../src/rc_copter.c: In function 'consumeCaptureFrame':
+../src/rc_copter.c:358:17: warning: value computed is not used [-Wunused-value]
+../src/rc_copter.c:329:20: warning: variable 'sw' set but not used [-Wunused-but-set-variable]
+../src/rc_copter.c: In function 'generateFrame':
+../src/rc_copter.c:393:20: warning: variable 'sw' set but not used [-Wunused-but-set-variable]
+Finished building: ../src/rc_copter.c
+ 
+Building target: rc_copter.elf
+Invoking: ARM gcc linker
+arm-xilinx-eabi-gcc -Wl,-T -Wl,../src/lscript.ld -L../../rc_copter_bsp/ps7_cortexa9_0/lib -o "rc_copter.elf"  ./src/platform.o ./src/rc_copter.o   -Wl,--start-group,-lxil,-lgcc,-lc,--end-group
+Finished building target: rc_copter.elf
+ 
+Invoking: ARM Print Size
+arm-xilinx-eabi-size rc_copter.elf  |tee "rc_copter.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  66256	   2264	 269884	 338404	  529e4	rc_copter.elf
+Finished building: rc_copter.elf.size
+ 
+22:22:14 **** Incremental Build of configuration Debug for project rc_copter ****
+make all 
+make: Nothing to be done for `all'.
+22:29:53 **** Incremental Build of configuration Debug for project rc_copter ****
+make all 
+make: Nothing to be done for `all'.
+22:55:44 **** Incremental Build of configuration Debug for project rc_copter ****
+make all 
+make: Nothing to be done for `all'.
+22:57:24 **** Incremental Build of configuration Debug for project rc_copter ****
+make all 
+make: Nothing to be done for `all'.
+22:59:24 **** Auto Build of configuration Debug for project rc_copter ****
+make all 
+Building file: ../src/rc_copter.c
+Invoking: ARM gcc compiler
+arm-xilinx-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -I../../rc_copter_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/rc_copter.d" -MT"src/rc_copter.d" -o "src/rc_copter.o" "../src/rc_copter.c"
+../src/rc_copter.c: In function 'main':
+../src/rc_copter.c:152:6: warning: implicit declaration of function 'usleep' [-Wimplicit-function-declaration]
+../src/rc_copter.c: In function 'consumeCaptureFrame':
+../src/rc_copter.c:358:17: warning: value computed is not used [-Wunused-value]
+../src/rc_copter.c:329:20: warning: variable 'sw' set but not used [-Wunused-but-set-variable]
+../src/rc_copter.c: In function 'generateFrame':
+../src/rc_copter.c:393:20: warning: variable 'sw' set but not used [-Wunused-but-set-variable]
+Finished building: ../src/rc_copter.c
+ 
+Building target: rc_copter.elf
+Invoking: ARM gcc linker
+arm-xilinx-eabi-gcc -Wl,-T -Wl,../src/lscript.ld -L../../rc_copter_bsp/ps7_cortexa9_0/lib -o "rc_copter.elf"  ./src/platform.o ./src/rc_copter.o   -Wl,--start-group,-lxil,-lgcc,-lc,--end-group
+Finished building target: rc_copter.elf
+ 
+Invoking: ARM Print Size
+arm-xilinx-eabi-size rc_copter.elf  |tee "rc_copter.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  66264	   2264	 269884	 338412	  529ec	rc_copter.elf
+Finished building: rc_copter.elf.size
+ 
+22:59:51 **** Incremental Build of configuration Debug for project rc_copter ****
+make all 
+make: Nothing to be done for `all'.
+23:01:03 **** Auto Build of configuration Debug for project rc_copter ****
+make all 
+Building file: ../src/rc_copter.c
+Invoking: ARM gcc compiler
+arm-xilinx-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -I../../rc_copter_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/rc_copter.d" -MT"src/rc_copter.d" -o "src/rc_copter.o" "../src/rc_copter.c"
+../src/rc_copter.c: In function 'main':
+../src/rc_copter.c:152:6: warning: implicit declaration of function 'usleep' [-Wimplicit-function-declaration]
+../src/rc_copter.c: In function 'consumeCaptureFrame':
+../src/rc_copter.c:358:17: warning: value computed is not used [-Wunused-value]
+../src/rc_copter.c:329:20: warning: variable 'sw' set but not used [-Wunused-but-set-variable]
+../src/rc_copter.c: In function 'generateFrame':
+../src/rc_copter.c:393:20: warning: variable 'sw' set but not used [-Wunused-but-set-variable]
+Finished building: ../src/rc_copter.c
+ 
+Building target: rc_copter.elf
+Invoking: ARM gcc linker
+arm-xilinx-eabi-gcc -Wl,-T -Wl,../src/lscript.ld -L../../rc_copter_bsp/ps7_cortexa9_0/lib -o "rc_copter.elf"  ./src/platform.o ./src/rc_copter.o   -Wl,--start-group,-lxil,-lgcc,-lc,--end-group
+Finished building target: rc_copter.elf
+ 
+Invoking: ARM Print Size
+arm-xilinx-eabi-size rc_copter.elf  |tee "rc_copter.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  66264	   2264	 269884	 338412	  529ec	rc_copter.elf
+Finished building: rc_copter.elf.size
+ 
+23:01:09 **** Incremental Build of configuration Debug for project rc_copter ****
+make all 
+make: Nothing to be done for `all'.
+23:29:31 **** Incremental Build of configuration Debug for project rc_copter ****
 make all 
 make: Nothing to be done for `all'.

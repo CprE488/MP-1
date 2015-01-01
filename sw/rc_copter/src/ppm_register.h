@@ -10,7 +10,7 @@
 #define PPM_REGISTER_H
 
 /// The base address of the PPM_AXI registers
-#define PPM_REGISTER_ADDRESS 0x40000000
+#define PPM_REGISTER_ADDRESS 0x7DE00000
 
 /// Register layout for the PPM_AXI module
 struct PPM_REGISTER_STRUCT

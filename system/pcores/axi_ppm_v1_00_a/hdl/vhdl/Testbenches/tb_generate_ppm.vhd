@@ -35,7 +35,7 @@ USE ieee.numeric_std.ALL;
 ENTITY tb_generate_ppm IS
 END tb_generate_ppm;
  
-ARCHITECTURE behavior OF tb_generate_ppm IS 
+ARCHITECTURE behavior OF tb_generate_ppm IS   
  
     -- Component Declaration for the Unit Under Test (UUT)
  
@@ -55,7 +55,7 @@ ARCHITECTURE behavior OF tb_generate_ppm IS
         );
     END COMPONENT;
     
-    COMPONENT counter
+    COMPONENT vens_counter
     PORT(
          Clock : IN  std_logic;
          Reset : IN  std_logic;
@@ -127,7 +127,7 @@ BEGIN
           PpmOutput => PpmOut
         );
 
-    counter3: counter PORT MAP (
+    counter3: vens_counter PORT MAP (
           Clock => Clock,
           Reset => FrameCountReset,
           Enable => FrameCountEnable,
@@ -136,7 +136,7 @@ BEGIN
           TopReached => FrameOver
     );
     
-    counter2: counter PORT MAP (
+    counter2: vens_counter PORT MAP (
           Clock => Clock,
           Reset => CountReset,
           Enable => CountEnable,

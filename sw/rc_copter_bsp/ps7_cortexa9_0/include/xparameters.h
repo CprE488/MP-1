@@ -20,6 +20,11 @@
 /******************************************************************/
 
 
+/* Definitions for peripheral AXI_PPM_0 */
+#define XPAR_AXI_PPM_0_BASEADDR 0x7DE00000
+#define XPAR_AXI_PPM_0_HIGHADDR 0x7DE0FFFF
+
+
 /* Definitions for peripheral PS7_AFI_0 */
 #define XPAR_PS7_AFI_0_S_AXI_BASEADDR 0xF8008000
 #define XPAR_PS7_AFI_0_S_AXI_HIGHADDR 0xF8008FFF
@@ -63,11 +68,27 @@
 /* Definitions for peripheral PS7_RAM_0 */
 #define XPAR_PS7_RAM_0_S_AXI_BASEADDR 0x00000000
 #define XPAR_PS7_RAM_0_S_AXI_HIGHADDR 0x0002FFFF
+#define XPAR_PS7_RAM_0_S_AXI_HP0_HIGHOCM_BASEADDR 0xFFFC0000
+#define XPAR_PS7_RAM_0_S_AXI_HP0_HIGHOCM_HIGHADDR 0xFFFFFDFF
+#define XPAR_PS7_RAM_0_S_AXI_HP1_HIGHOCM_BASEADDR 0xFFFC0000
+#define XPAR_PS7_RAM_0_S_AXI_HP1_HIGHOCM_HIGHADDR 0xFFFFFDFF
+#define XPAR_PS7_RAM_0_S_AXI_HP2_HIGHOCM_BASEADDR 0xFFFC0000
+#define XPAR_PS7_RAM_0_S_AXI_HP2_HIGHOCM_HIGHADDR 0xFFFFFDFF
+#define XPAR_PS7_RAM_0_S_AXI_HP3_HIGHOCM_BASEADDR 0xFFFC0000
+#define XPAR_PS7_RAM_0_S_AXI_HP3_HIGHOCM_HIGHADDR 0xFFFFFDFF
 
 
 /* Definitions for peripheral PS7_RAM_1 */
 #define XPAR_PS7_RAM_1_S_AXI_BASEADDR 0xFFFF0000
 #define XPAR_PS7_RAM_1_S_AXI_HIGHADDR 0xFFFFFDFF
+#define XPAR_PS7_RAM_1_S_AXI_HP0_HIGHOCM_BASEADDR 0xFFFC0000
+#define XPAR_PS7_RAM_1_S_AXI_HP0_HIGHOCM_HIGHADDR 0xFFFFFDFF
+#define XPAR_PS7_RAM_1_S_AXI_HP1_HIGHOCM_BASEADDR 0xFFFC0000
+#define XPAR_PS7_RAM_1_S_AXI_HP1_HIGHOCM_HIGHADDR 0xFFFFFDFF
+#define XPAR_PS7_RAM_1_S_AXI_HP2_HIGHOCM_BASEADDR 0xFFFC0000
+#define XPAR_PS7_RAM_1_S_AXI_HP2_HIGHOCM_HIGHADDR 0xFFFFFDFF
+#define XPAR_PS7_RAM_1_S_AXI_HP3_HIGHOCM_BASEADDR 0xFFFC0000
+#define XPAR_PS7_RAM_1_S_AXI_HP3_HIGHOCM_HIGHADDR 0xFFFFFDFF
 
 
 /* Definitions for peripheral PS7_SD_0 */
@@ -78,6 +99,59 @@
 /* Definitions for peripheral PS7_SLCR_0 */
 #define XPAR_PS7_SLCR_0_S_AXI_BASEADDR 0xF8000000
 #define XPAR_PS7_SLCR_0_S_AXI_HIGHADDR 0xF8000FFF
+
+
+/******************************************************************/
+
+/* Definitions for driver GPIO */
+#define XPAR_XGPIO_NUM_INSTANCES 3
+
+/* Definitions for peripheral BTNS_5BITS */
+#define XPAR_BTNS_5BITS_BASEADDR 0x41240000
+#define XPAR_BTNS_5BITS_HIGHADDR 0x4124FFFF
+#define XPAR_BTNS_5BITS_DEVICE_ID 0
+#define XPAR_BTNS_5BITS_INTERRUPT_PRESENT 0
+#define XPAR_BTNS_5BITS_IS_DUAL 0
+
+
+/* Definitions for peripheral LEDS_8BITS */
+#define XPAR_LEDS_8BITS_BASEADDR 0x41220000
+#define XPAR_LEDS_8BITS_HIGHADDR 0x4122FFFF
+#define XPAR_LEDS_8BITS_DEVICE_ID 1
+#define XPAR_LEDS_8BITS_INTERRUPT_PRESENT 0
+#define XPAR_LEDS_8BITS_IS_DUAL 0
+
+
+/* Definitions for peripheral SWS_8BITS */
+#define XPAR_SWS_8BITS_BASEADDR 0x41200000
+#define XPAR_SWS_8BITS_HIGHADDR 0x4120FFFF
+#define XPAR_SWS_8BITS_DEVICE_ID 2
+#define XPAR_SWS_8BITS_INTERRUPT_PRESENT 0
+#define XPAR_SWS_8BITS_IS_DUAL 0
+
+
+/******************************************************************/
+
+/* Canonical definitions for peripheral BTNS_5BITS */
+#define XPAR_GPIO_0_BASEADDR 0x41240000
+#define XPAR_GPIO_0_HIGHADDR 0x4124FFFF
+#define XPAR_GPIO_0_DEVICE_ID XPAR_BTNS_5BITS_DEVICE_ID
+#define XPAR_GPIO_0_INTERRUPT_PRESENT 0
+#define XPAR_GPIO_0_IS_DUAL 0
+
+/* Canonical definitions for peripheral LEDS_8BITS */
+#define XPAR_GPIO_1_BASEADDR 0x41220000
+#define XPAR_GPIO_1_HIGHADDR 0x4122FFFF
+#define XPAR_GPIO_1_DEVICE_ID XPAR_LEDS_8BITS_DEVICE_ID
+#define XPAR_GPIO_1_INTERRUPT_PRESENT 0
+#define XPAR_GPIO_1_IS_DUAL 0
+
+/* Canonical definitions for peripheral SWS_8BITS */
+#define XPAR_GPIO_2_BASEADDR 0x41200000
+#define XPAR_GPIO_2_HIGHADDR 0x4120FFFF
+#define XPAR_GPIO_2_DEVICE_ID XPAR_SWS_8BITS_DEVICE_ID
+#define XPAR_GPIO_2_INTERRUPT_PRESENT 0
+#define XPAR_GPIO_2_IS_DUAL 0
 
 
 /******************************************************************/
@@ -190,7 +264,7 @@
 #define XPAR_PS7_QSPI_0_DEVICE_ID 0
 #define XPAR_PS7_QSPI_0_BASEADDR 0xE000D000
 #define XPAR_PS7_QSPI_0_HIGHADDR 0xE000DFFF
-#define XPAR_PS7_QSPI_0_QSPI_CLK_FREQ_HZ 190476196
+#define XPAR_PS7_QSPI_0_QSPI_CLK_FREQ_HZ 200000000
 #define XPAR_PS7_QSPI_0_QSPI_MODE 0
 
 
@@ -200,9 +274,17 @@
 #define XPAR_XQSPIPS_0_DEVICE_ID XPAR_PS7_QSPI_0_DEVICE_ID
 #define XPAR_XQSPIPS_0_BASEADDR 0xE000D000
 #define XPAR_XQSPIPS_0_HIGHADDR 0xE000DFFF
-#define XPAR_XQSPIPS_0_QSPI_CLK_FREQ_HZ 190476196
+#define XPAR_XQSPIPS_0_QSPI_CLK_FREQ_HZ 200000000
 #define XPAR_XQSPIPS_0_QSPI_MODE 0
 
+
+/******************************************************************/
+
+/* Definitions for Fabric interrupts connected to ps7_scugic_0 */
+
+/******************************************************************/
+
+/* Canonical definitions for Fabric interrupts connected to ps7_scugic_0 */
 
 /******************************************************************/
 

@@ -1,0 +1,163 @@
+22:43:29.424 INFO  - Processing command line option -hwspec /home/vens/classes/Fall2014/cpre488/labs/mp1/MP-1/system/SDK/SDK_Export/hw/system.xml. 
+22:43:31.078 INFO  - The hardware specification for project 'zed_hw_platform' is different from /home/vens/classes/Fall2014/cpre488/labs/mp1/MP-1/system/SDK/SDK_Export/hw/system.xml. 
+22:43:31.404 INFO  - Copied contents of /home/vens/classes/Fall2014/cpre488/labs/mp1/MP-1/system/SDK/SDK_Export/hw/system.xml into /zed_hw_platform/system.xml. 
+22:43:32.163 INFO  - Copied contents of /home/vens/classes/Fall2014/cpre488/labs/mp1/MP-1/system/SDK/SDK_Export/hw/system.bit into /zed_hw_platform/system.bit. 
+22:43:33.449 INFO  - Copied contents of /home/vens/classes/Fall2014/cpre488/labs/mp1/MP-1/system/SDK/SDK_Export/hw/ps7_init.c into /zed_hw_platform/ps7_init.c. 
+22:43:33.505 INFO  - Copied contents of /home/vens/classes/Fall2014/cpre488/labs/mp1/MP-1/system/SDK/SDK_Export/hw/ps7_init.h into /zed_hw_platform/ps7_init.h. 
+22:43:34.880 INFO  - Copied contents of /home/vens/classes/Fall2014/cpre488/labs/mp1/MP-1/system/SDK/SDK_Export/hw/ps7_init.html into /zed_hw_platform/ps7_init.html. 
+22:43:35.367 INFO  - Copied contents of /home/vens/classes/Fall2014/cpre488/labs/mp1/MP-1/system/SDK/SDK_Export/hw/ps7_init.tcl into /zed_hw_platform/ps7_init.tcl. 
+22:43:35.613 INFO  - Synchronizing projects in the workspace with the hardware platform specification changes. 
+22:43:36.969 INFO  - Updating MSS for Board Support Package Project: rc_copter_bsp.
+		 The following new driver assignments were made:
+			Peripheral Instance: axi_ppm_0, driver: generic_v1_00_a.
+			Peripheral Instance: btns_5bits, driver: gpio_v3_01_a.
+			Peripheral Instance: leds_8bits, driver: gpio_v3_01_a.
+			Peripheral Instance: sws_8bits, driver: gpio_v3_01_a.
+ 
+22:44:25.059 INFO  - Updating hardware inferred compiler options for rc_copter. 
+22:44:25.102 INFO  - Clearing existing target manager status. 
+22:44:41.819 ERROR - Unexpected error while parsing XMD response ￿: com.google.gson.JsonSyntaxException: com.google.gson.stream.MalformedJsonException: invalid number or unquoted string near  
+20:23:02.115 INFO  - Processing command line option -hwspec /home/vens/classes/Fall2014/cpre488/labs/mp1/MP-1/system/SDK/SDK_Export/hw/system.xml. 
+20:48:58.156 ERROR - Unexpected error while parsing XMD response ￿: com.google.gson.JsonSyntaxException: com.google.gson.stream.MalformedJsonException: invalid number or unquoted string near  
+20:52:54.911 INFO  - FPGA configured successfully with bitstream "/home/vens/classes/Fall2014/cpre488/labs/mp1/MP-1/sw/zed_hw_platform/system.bit" 
+20:56:21.752 INFO  - Processor reset is completed for ps7_cortexa9_0 
+20:56:21.852 INFO  - PS initialization will be done as it is not done before. 
+20:56:21.857 INFO  - Running PS initialization.... 
+20:56:22.913 INFO  - ps7_init is completed. 
+20:56:23.013 INFO  - ps7_post_config is completed. 
+20:56:23.029 INFO  - PS Initialization is complete. 
+20:57:20.011 INFO  - ps7_cortexa9_0 Processor is in use. Please stop existing Run or Debug sessions before launching. 
+20:57:25.114 ERROR - Unexpected error while opening JTAG UART:  java.lang.RuntimeException: Error while opening JTAG UART server: MDM Uart NOT Present in the System
+Could not detect MDM peripheral on hardware. Please check:
+    1. If FPGA is configured correctly
+    2. MDM Core is instantiated in the design
+    3. If the correct FPGA is referred, in case of multiple FPGAs
+    4. If the correct MDM is referred, in case of a multiple MDM system
+    
+
+	at com.xilinx.sdk.targetmanager.internal.TM.startJTAGUARTServer(Unknown Source)
+	at com.xilinx.sdk.debug.core.internal.comm.JTAGUARTStreamsProxy.<init>(Unknown Source)
+
+20:57:25.512 INFO  - Processor reset is completed for ps7_cortexa9_0 
+21:02:25.801 INFO  - FPGA configured successfully with bitstream "/home/vens/classes/Fall2014/cpre488/labs/mp1/MP-1/sw/zed_hw_platform/system.bit" 
+21:02:35.175 INFO  - ps7_cortexa9_0 Processor is in use. Please stop existing Run or Debug sessions before launching. 
+21:02:38.277 ERROR - Unexpected error while launching program. java.lang.RuntimeException: No Active System
+
+	at com.xilinx.sdk.targetmanager.internal.TM.stop(Unknown Source)
+	at com.xilinx.sdk.targetmanager.internal.CPURunSession.terminate(Unknown Source)
+
+21:04:33.573 INFO  - Time out for XMD transaction is 60000
+If you want to increase the timeout value, goto Windows-> Preferences -> Xilinx SDK -> XMD Startup 
+21:04:33.574 ERROR - Timeout occured while waiting to get reply for command "xconnect arm hw  -cable type xilinx_tcf url TCP:co2041-10.ece.iastate.edu:50001 -debugdevice cpunr 1 devicenr 1" 
+22:27:35.767 WARN  - Unable to obtain port 2350 for use by XMD, java.net.BindException: Address already in use 
+22:28:41.776 INFO  - FPGA configured successfully with bitstream "/home/vens/classes/Fall2014/cpre488/labs/mp1/MP-1/sw/zed_hw_platform/system.bit" 
+22:30:30.653 INFO  - Processor reset is completed for ps7_cortexa9_0 
+22:30:30.753 INFO  - PS initialization will be done as it is not done before. 
+22:30:30.765 INFO  - Running PS initialization.... 
+22:30:31.801 INFO  - ps7_init is completed. 
+22:30:31.901 INFO  - ps7_post_config is completed. 
+22:30:32.001 INFO  - PS Initialization is complete. 
+22:32:16.443 INFO  - Processor reset is completed for ps7_cortexa9_0 
+22:32:51.115 INFO  - ps7_cortexa9_0 Processor is in use. Please stop existing Run or Debug sessions before launching. 
+22:32:54.320 INFO  - Processor reset is completed for ps7_cortexa9_0 
+22:33:26.183 INFO  - Processor reset is completed for ps7_cortexa9_0 
+22:37:24.643 INFO  - Processor reset is completed for ps7_cortexa9_0 
+22:38:33.184 INFO  - Processor reset is completed for ps7_cortexa9_0 
+22:39:05.081 INFO  - Processor reset is completed for ps7_cortexa9_0 
+22:42:09.932 INFO  - Processor reset is completed for ps7_cortexa9_0 
+22:45:59.599 INFO  - Processor reset is completed for ps7_cortexa9_0 
+22:47:54.739 INFO  - Processor reset is completed for ps7_cortexa9_0 
+22:48:45.575 INFO  - Processor reset is completed for ps7_cortexa9_0 
+22:49:11.532 INFO  - Processor reset is completed for ps7_cortexa9_0 
+22:52:36.011 INFO  - ps7_cortexa9_0 Processor is in use. Please stop existing Run or Debug sessions before launching. 
+22:52:39.413 INFO  - Processor reset is completed for ps7_cortexa9_0 
+22:59:25.582 INFO  - Processor reset is completed for ps7_cortexa9_0 
+23:01:01.580 INFO  - Processor reset is completed for ps7_cortexa9_0 
+23:03:05.100 INFO  - Processor reset is completed for ps7_cortexa9_0 
+23:03:48.292 INFO  - Processor reset is completed for ps7_cortexa9_0 
+23:09:08.387 INFO  - Processor reset is completed for ps7_cortexa9_0 
+23:09:38.754 INFO  - Processor reset is completed for ps7_cortexa9_0 
+23:16:04.646 INFO  - Processor reset is completed for ps7_cortexa9_0 
+23:16:31.005 INFO  - Processor reset is completed for ps7_cortexa9_0 
+23:17:57.508 INFO  - Processor reset is completed for ps7_cortexa9_0 
+23:19:35.408 INFO  - Processor reset is completed for ps7_cortexa9_0 
+23:23:16.574 INFO  - Processor reset is completed for ps7_cortexa9_0 
+23:23:37.443 INFO  - Processor reset is completed for ps7_cortexa9_0 
+23:28:39.757 INFO  - Processor reset is completed for ps7_cortexa9_0 
+23:29:08.647 INFO  - Processor reset is completed for ps7_cortexa9_0 
+23:31:13.563 INFO  - Processor reset is completed for ps7_cortexa9_0 
+23:31:26.345 INFO  - Processor reset is completed for ps7_cortexa9_0 
+23:33:24.513 INFO  - Processor reset is completed for ps7_cortexa9_0 
+23:33:46.078 INFO  - Processor reset is completed for ps7_cortexa9_0 
+23:34:45.015 INFO  - ps7_cortexa9_0 Processor is in use. Please stop existing Run or Debug sessions before launching. 
+23:34:48.403 INFO  - Processor reset is completed for ps7_cortexa9_0 
+23:35:03.841 INFO  - Processor reset is completed for ps7_cortexa9_0 
+23:37:21.914 INFO  - Processor reset is completed for ps7_cortexa9_0 
+00:29:20.848 INFO  - Processor reset is completed for ps7_cortexa9_0 
+19:32:37.013 INFO  - Processing command line option -hwspec /home/vens/classes/Fall2014/cpre488/labs/mp1/MP-1/system/SDK/SDK_Export/hw/system.xml. 
+19:32:39.139 INFO  - The hardware specification for project 'zed_hw_platform' is different from /home/vens/classes/Fall2014/cpre488/labs/mp1/MP-1/system/SDK/SDK_Export/hw/system.xml. 
+19:32:39.401 INFO  - Copied contents of /home/vens/classes/Fall2014/cpre488/labs/mp1/MP-1/system/SDK/SDK_Export/hw/system.xml into /zed_hw_platform/system.xml. 
+19:32:40.081 INFO  - Copied contents of /home/vens/classes/Fall2014/cpre488/labs/mp1/MP-1/system/SDK/SDK_Export/hw/system.bit into /zed_hw_platform/system.bit. 
+19:32:41.121 INFO  - Copied contents of /home/vens/classes/Fall2014/cpre488/labs/mp1/MP-1/system/SDK/SDK_Export/hw/ps7_init.c into /zed_hw_platform/ps7_init.c. 
+19:32:41.351 INFO  - Copied contents of /home/vens/classes/Fall2014/cpre488/labs/mp1/MP-1/system/SDK/SDK_Export/hw/ps7_init.h into /zed_hw_platform/ps7_init.h. 
+19:32:41.696 INFO  - Copied contents of /home/vens/classes/Fall2014/cpre488/labs/mp1/MP-1/system/SDK/SDK_Export/hw/ps7_init.html into /zed_hw_platform/ps7_init.html. 
+19:32:41.969 INFO  - Copied contents of /home/vens/classes/Fall2014/cpre488/labs/mp1/MP-1/system/SDK/SDK_Export/hw/ps7_init.tcl into /zed_hw_platform/ps7_init.tcl. 
+19:32:42.482 INFO  - Synchronizing projects in the workspace with the hardware platform specification changes. 
+19:32:45.086 INFO  - Updating hardware inferred compiler options for rc_copter. 
+19:32:45.091 INFO  - Clearing existing target manager status. 
+19:39:14.828 INFO  - FPGA configured successfully with bitstream "/home/vens/classes/Fall2014/cpre488/labs/mp1/MP-1/sw/zed_hw_platform/system.bit" 
+19:39:22.220 INFO  - Processor reset is completed for ps7_cortexa9_0 
+19:39:22.320 INFO  - PS initialization will be done as it is not done before. 
+19:39:22.324 INFO  - Running PS initialization.... 
+19:39:23.339 INFO  - ps7_init is completed. 
+19:39:23.439 INFO  - ps7_post_config is completed. 
+19:39:23.539 INFO  - PS Initialization is complete. 
+19:53:36.658 INFO  - Processor reset is completed for ps7_cortexa9_0 
+19:53:49.860 INFO  - Processor reset is completed for ps7_cortexa9_0 
+20:34:21.126 INFO  - Processor reset is completed for ps7_cortexa9_0 
+20:37:31.898 INFO  - Processor reset is completed for ps7_cortexa9_0 
+20:38:00.146 INFO  - Processor reset is completed for ps7_cortexa9_0 
+20:41:33.132 INFO  - Processor reset is completed for ps7_cortexa9_0 
+20:43:33.523 INFO  - Processor reset is completed for ps7_cortexa9_0 
+20:44:52.635 INFO  - Processor reset is completed for ps7_cortexa9_0 
+21:00:10.501 INFO  - Processor reset is completed for ps7_cortexa9_0 
+21:00:45.400 INFO  - Processor reset is completed for ps7_cortexa9_0 
+21:06:45.888 INFO  - Processor reset is completed for ps7_cortexa9_0 
+21:07:46.398 INFO  - Processor reset is completed for ps7_cortexa9_0 
+21:08:18.572 INFO  - Processor reset is completed for ps7_cortexa9_0 
+21:08:37.899 INFO  - Processor reset is completed for ps7_cortexa9_0 
+21:08:57.065 INFO  - Processor reset is completed for ps7_cortexa9_0 
+21:09:19.200 INFO  - Processor reset is completed for ps7_cortexa9_0 
+21:09:39.519 INFO  - Processor reset is completed for ps7_cortexa9_0 
+21:10:11.573 INFO  - Processor reset is completed for ps7_cortexa9_0 
+21:13:55.143 INFO  - Processor reset is completed for ps7_cortexa9_0 
+21:19:59.041 INFO  - ps7_cortexa9_0 Processor is in use. Please stop existing Run or Debug sessions before launching. 
+21:20:05.444 INFO  - Processor reset is completed for ps7_cortexa9_0 
+22:00:51.584 INFO  - Processor reset is completed for ps7_cortexa9_0 
+22:01:01.841 INFO  - ps7_cortexa9_0 Processor is in use. Please stop existing Run or Debug sessions before launching. 
+22:01:07.144 INFO  - Processor reset is completed for ps7_cortexa9_0 
+22:03:26.852 INFO  - Processor reset is completed for ps7_cortexa9_0 
+22:04:24.430 INFO  - Processor reset is completed for ps7_cortexa9_0 
+22:05:09.968 INFO  - Processor reset is completed for ps7_cortexa9_0 
+22:06:08.965 INFO  - Processor reset is completed for ps7_cortexa9_0 
+22:06:54.661 INFO  - Processor reset is completed for ps7_cortexa9_0 
+22:08:19.298 INFO  - Processor reset is completed for ps7_cortexa9_0 
+22:11:01.932 INFO  - ps7_cortexa9_0 Processor is in use. Please stop existing Run or Debug sessions before launching. 
+22:11:04.432 INFO  - Processor reset is completed for ps7_cortexa9_0 
+22:11:38.978 INFO  - Processor reset is completed for ps7_cortexa9_0 
+22:13:25.462 INFO  - Processor reset is completed for ps7_cortexa9_0 
+22:16:09.405 INFO  - Processor reset is completed for ps7_cortexa9_0 
+22:17:05.070 INFO  - Processor reset is completed for ps7_cortexa9_0 
+22:19:48.481 INFO  - Processor reset is completed for ps7_cortexa9_0 
+22:22:15.867 INFO  - Processor reset is completed for ps7_cortexa9_0 
+22:29:56.431 INFO  - Processor reset is completed for ps7_cortexa9_0 
+22:55:47.307 INFO  - Processor reset is completed for ps7_cortexa9_0 
+22:57:26.778 INFO  - Processor reset is completed for ps7_cortexa9_0 
+22:59:53.107 INFO  - Processor reset is completed for ps7_cortexa9_0 
+23:01:11.101 INFO  - Processor reset is completed for ps7_cortexa9_0 
+23:29:34.146 INFO  - Processor reset is completed for ps7_cortexa9_0 
+00:46:17.702 ERROR - Unable to disconnect from existing targets java.lang.NullPointerException
+	at com.xilinx.sdk.targetmanager.internal.json.XMDJSONProcess.issueCommand(Unknown Source)
+	at com.xilinx.sdk.targetmanager.internal.TM.disconnectTarget(Unknown Source)
+
+00:46:17.707 ERROR - Unexpected error while parsing XMD response ￿: com.google.gson.JsonSyntaxException: com.google.gson.stream.MalformedJsonException: invalid number or unquoted string near  

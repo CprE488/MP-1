@@ -49,17 +49,21 @@ architecture Behavioral of capture_ppm is
 									PULSE_E, SAVE_E, IDLE_E, PULSE_F, SAVE_F, IDLE_F);
 
     signal PS, NS                   : state_type;
+    signal CountResetTmp        : std_logic;
 begin
 sync_proc: process(Clock, Reset, NS)
         begin
             if (Reset = '1') then PS <= RESET_STATE;
-            elsif (rising_edge(Clock)) then PS <= NS;
-            end if;
+                CountReset <= '0';
+            elsif (rising_edge(Clock)) then 
+                PS <= NS;
+                CountReset <= CountResetTmp;
+            end if; 
         end process sync_proc; 
 
         comb_proc: process(PS, Ppm, Sync)
         begin
-            CountReset <= '0';
+            CountResetTmp  <= '0';
             CountEnable <= '0';
             FrameFinished <= '0';
             RegisterNumber <= to_unsigned(0, 3);
@@ -72,12 +76,12 @@ sync_proc: process(Clock, Reset, NS)
                     State <= x"00000000";
                     if (Ppm = '0') then
                         NS <= RESET_STATE;  
-                        CountReset <= '0'; 
+                        CountResetTmp  <= '0'; 
                         RegisterLatch <= '0';
                         FrameFinished <= '0';
 				    else                                    
 				        NS <= SYNC_STATE;   
-				        CountReset <= '1'; 
+				        CountResetTmp  <= '1'; 
 				        RegisterLatch <= '0';
 				        FrameFinished <= '0';
 				    end if;
@@ -87,17 +91,17 @@ sync_proc: process(Clock, Reset, NS)
                     State <= x"00000001";
 				    if (Sync = '1') then
                         NS <= SYNC_WAIT;  
-                        CountReset <= '1'; 
+                        CountResetTmp  <= '1'; 
                         RegisterLatch <= '0';
                         FrameFinished <= '0';
                     elsif (Ppm = '1') then
                         NS <= SYNC_STATE;  
-                        CountReset <= '0'; 
+                        CountResetTmp  <= '0'; 
                         RegisterLatch <= '0';
                         FrameFinished <= '0';
                     else
                         NS <= SYNC_MISS;  
-                        CountReset <= '1'; 
+                        CountResetTmp  <= '1'; 
                         RegisterLatch <= '0';
                         FrameFinished <= '0';
                     end if;
@@ -107,12 +111,12 @@ sync_proc: process(Clock, Reset, NS)
                     State <= x"00000002";
 				    if (Ppm = '0') then
                         NS <= SYNC_MISS;  
-                        CountReset <= '0'; 
+                        CountResetTmp  <= '0'; 
                         RegisterLatch <= '0';
                         FrameFinished <= '0';
                     else
                         NS <= SYNC_STATE;  
-                        CountReset <= '1'; 
+                        CountResetTmp  <= '1'; 
                         RegisterLatch <= '0';
                         FrameFinished <= '0';
                     end if;
@@ -122,12 +126,12 @@ sync_proc: process(Clock, Reset, NS)
                     State <= x"00000003";
                     if (Ppm = '1') then
                         NS <= SYNC_WAIT;  
-                        CountReset <= '0'; 
+                        CountResetTmp  <= '0'; 
                         RegisterLatch <= '0';
                         FrameFinished <= '0';
                     else
                         NS <= IDLE_SYNC;  
-                        CountReset <= '0'; 
+                        CountResetTmp  <= '0'; 
                         RegisterLatch <= '0';
                         FrameFinished <= '0';
                     end if;
@@ -137,12 +141,12 @@ sync_proc: process(Clock, Reset, NS)
                     State <= x"00000004";
                     if (Ppm = '0') then
                         NS <= IDLE_SYNC;  
-                        CountReset <= '0'; 
+                        CountResetTmp  <= '0'; 
                         RegisterLatch <= '0';
                         FrameFinished <= '0';
 				    else
                         NS <= PULSE_A;  
-                        CountReset <= '1'; 
+                        CountResetTmp  <= '1'; 
                         RegisterLatch <= '0';
                         FrameFinished <= '0';
                     end if;
@@ -154,17 +158,17 @@ sync_proc: process(Clock, Reset, NS)
                     State <= x"00000005";
                     if (Sync = '1') then
                         NS <= SYNC_WAIT;  
-                        CountReset <= '1'; 
+                        CountResetTmp  <= '1'; 
                         RegisterLatch <= '0';
                         FrameFinished <= '0';
                     elsif (Ppm = '1') then
                         NS <= PULSE_A;  
-                        CountReset <= '0'; 
+                        CountResetTmp  <= '0'; 
                         RegisterLatch <= '0';
                         FrameFinished <= '0';
                     else
                         NS <= SAVE_A;  
-                        CountReset <= '0'; 
+                        CountResetTmp  <= '0'; 
                         RegisterLatch <= '1';
                         FrameFinished <= '0';
                     end if;
@@ -173,7 +177,7 @@ sync_proc: process(Clock, Reset, NS)
                     RegisterNumber <= to_unsigned(0, 3);
                     State <= x"00000006";
                     NS <= IDLE_A;  
-                    CountReset <= '1'; 
+                    CountResetTmp  <= '1'; 
                     RegisterLatch <= '0';
                     FrameFinished <= '0';
                 when IDLE_A =>
@@ -181,12 +185,12 @@ sync_proc: process(Clock, Reset, NS)
                     RegisterNumber <= to_unsigned(0, 3);
                     if (Ppm = '0') then
                         NS <= IDLE_A;  
-                        CountReset <= '0'; 
+                        CountResetTmp  <= '0'; 
                         RegisterLatch <= '0';
                         FrameFinished <= '0';
                     else
                         NS <= PULSE_B;  
-                        CountReset <= '1'; 
+                        CountResetTmp  <= '1'; 
                         RegisterLatch <= '0';
                         FrameFinished <= '0';
                     end if;
@@ -198,17 +202,17 @@ sync_proc: process(Clock, Reset, NS)
                     State <= x"00000007";
                     if (Sync = '1') then
                         NS <= SYNC_WAIT;  
-                        CountReset <= '1'; 
+                        CountResetTmp  <= '1'; 
                         RegisterLatch <= '0';
                         FrameFinished <= '0';
                     elsif (Ppm = '1') then
                         NS <= PULSE_B;  
-                        CountReset <= '0'; 
+                        CountResetTmp  <= '0'; 
                         RegisterLatch <= '0';
                         FrameFinished <= '0';
                     else
                         NS <= SAVE_B;  
-                        CountReset <= '0'; 
+                        CountResetTmp  <= '0'; 
                         RegisterLatch <= '1';
                         FrameFinished <= '0';
                     end if;
@@ -217,7 +221,7 @@ sync_proc: process(Clock, Reset, NS)
                     RegisterNumber <= to_unsigned(1, 3);
                     State <= x"00000008";
                     NS <= IDLE_B;  
-                    CountReset <= '1'; 
+                    CountResetTmp  <= '1'; 
                     RegisterLatch <= '0';
                     FrameFinished <= '0';
                 when IDLE_B =>
@@ -226,12 +230,12 @@ sync_proc: process(Clock, Reset, NS)
                     State <= x"00000009";
                     if (Ppm = '0') then
                         NS <= IDLE_B;  
-                        CountReset <= '0'; 
+                        CountResetTmp  <= '0'; 
                         RegisterLatch <= '0';
                         FrameFinished <= '0';
                     else
                         NS <= PULSE_C;  
-                        CountReset <= '1'; 
+                        CountResetTmp  <= '1'; 
                         RegisterLatch <= '0';
                         FrameFinished <= '0';
                     end if;
@@ -243,17 +247,17 @@ sync_proc: process(Clock, Reset, NS)
                     State <= x"0000000A";
                     if (Sync = '1') then
                         NS <= SYNC_WAIT;  
-                        CountReset <= '1'; 
+                        CountResetTmp  <= '1'; 
                         RegisterLatch <= '0';
                         FrameFinished <= '0';
                     elsif (Ppm = '1') then
                         NS <= PULSE_C;  
-                        CountReset <= '0'; 
+                        CountResetTmp  <= '0'; 
                         RegisterLatch <= '0';
                         FrameFinished <= '0';
                     else
                         NS <= SAVE_C;  
-                        CountReset <= '0'; 
+                        CountResetTmp  <= '0'; 
                         RegisterLatch <= '1';
                         FrameFinished <= '0';
                     end if;
@@ -262,7 +266,7 @@ sync_proc: process(Clock, Reset, NS)
                     RegisterNumber <= to_unsigned(2, 3);
                     State <= x"0000000B";
                     NS <= IDLE_C;  
-                    CountReset <= '1'; 
+                    CountResetTmp  <= '1'; 
                     RegisterLatch <= '0';
                     FrameFinished <= '0';
                 when IDLE_C =>
@@ -271,12 +275,12 @@ sync_proc: process(Clock, Reset, NS)
                     State <= x"0000000C";
                     if (Ppm = '0') then
                         NS <= IDLE_C;  
-                        CountReset <= '0'; 
+                        CountResetTmp  <= '0'; 
                         RegisterLatch <= '0';
                         FrameFinished <= '0';
                     else
                         NS <= PULSE_D;  
-                        CountReset <= '1'; 
+                        CountResetTmp  <= '1'; 
                         RegisterLatch <= '0';
                         FrameFinished <= '0';
                     end if;
@@ -288,17 +292,17 @@ sync_proc: process(Clock, Reset, NS)
                     State <= x"0000000D";
                     if (Sync = '1') then
                         NS <= SYNC_WAIT;  
-                        CountReset <= '1'; 
+                        CountResetTmp  <= '1'; 
                         RegisterLatch <= '0';
                         FrameFinished <= '0';
                     elsif (Ppm = '1') then
                         NS <= PULSE_D;  
-                        CountReset <= '0'; 
+                        CountResetTmp  <= '0'; 
                         RegisterLatch <= '0';
                         FrameFinished <= '0';
                     else
                         NS <= SAVE_D;  
-                        CountReset <= '0'; 
+                        CountResetTmp  <= '0'; 
                         RegisterLatch <= '1';
                         FrameFinished <= '0';
                     end if;
@@ -307,7 +311,7 @@ sync_proc: process(Clock, Reset, NS)
                     RegisterNumber <= to_unsigned(3, 3);
                     State <= x"0000000E";
                     NS <= IDLE_D;  
-                    CountReset <= '1'; 
+                    CountResetTmp  <= '1'; 
                     RegisterLatch <= '0';
                     FrameFinished <= '0';
                 when IDLE_D =>
@@ -316,12 +320,12 @@ sync_proc: process(Clock, Reset, NS)
                     State <= x"0000000F";
                     if (Ppm = '0') then
                         NS <= IDLE_D;  
-                        CountReset <= '0'; 
+                        CountResetTmp  <= '0'; 
                         RegisterLatch <= '0';
                         FrameFinished <= '0';
                     else
                         NS <= PULSE_E;  
-                        CountReset <= '1'; 
+                        CountResetTmp  <= '1'; 
                         RegisterLatch <= '0';
                         FrameFinished <= '0';
                     end if;
@@ -333,17 +337,17 @@ sync_proc: process(Clock, Reset, NS)
                     State <= x"00000010";
                     if (Sync = '1') then
                         NS <= SYNC_WAIT;  
-                        CountReset <= '1'; 
+                        CountResetTmp  <= '1'; 
                         RegisterLatch <= '0';
                         FrameFinished <= '0';
                     elsif (Ppm = '1') then
                         NS <= PULSE_E;  
-                        CountReset <= '0'; 
+                        CountResetTmp  <= '0'; 
                         RegisterLatch <= '0';
                         FrameFinished <= '0';
                     else
                         NS <= SAVE_E;  
-                        CountReset <= '0'; 
+                        CountResetTmp  <= '0'; 
                         RegisterLatch <= '1';
                         FrameFinished <= '0';
                     end if;
@@ -352,7 +356,7 @@ sync_proc: process(Clock, Reset, NS)
                     RegisterNumber <= to_unsigned(4, 3);
                     State <= x"00000011";
                     NS <= IDLE_E;  
-                    CountReset <= '1'; 
+                    CountResetTmp  <= '1'; 
                     RegisterLatch <= '0';
                     FrameFinished <= '0';
                 when IDLE_E =>
@@ -361,12 +365,12 @@ sync_proc: process(Clock, Reset, NS)
                     State <= x"00000012";
                     if (Ppm = '0') then
                         NS <= IDLE_E;  
-                        CountReset <= '0'; 
+                        CountResetTmp  <= '0'; 
                         RegisterLatch <= '0';
                         FrameFinished <= '0';
                     else
                         NS <= PULSE_F;  
-                        CountReset <= '1'; 
+                        CountResetTmp  <= '1'; 
                         RegisterLatch <= '0';
                         FrameFinished <= '0';
                     end if;
@@ -378,17 +382,17 @@ sync_proc: process(Clock, Reset, NS)
                     State <= x"00000013";
                     if (Sync = '1') then
                         NS <= SYNC_WAIT;  
-                        CountReset <= '1'; 
+                        CountResetTmp  <= '1'; 
                         RegisterLatch <= '0';
                         FrameFinished <= '0';
                     elsif (Ppm = '1') then
                         NS <= PULSE_F;  
-                        CountReset <= '0'; 
+                        CountResetTmp  <= '0'; 
                         RegisterLatch <= '0';
                         FrameFinished <= '0';
                     else
                         NS <= SAVE_F;  
-                        CountReset <= '0'; 
+                        CountResetTmp  <= '0'; 
                         RegisterLatch <= '1';
                         FrameFinished <= '0';
                     end if;
@@ -397,7 +401,7 @@ sync_proc: process(Clock, Reset, NS)
                     RegisterNumber <= to_unsigned(5, 3);
                     State <= x"00000014";
                     NS <= IDLE_F;  
-                    CountReset <= '1'; 
+                    CountResetTmp  <= '1'; 
                     RegisterLatch <= '0';
                     FrameFinished <= '1';
                 when IDLE_F =>
@@ -406,12 +410,12 @@ sync_proc: process(Clock, Reset, NS)
                     State <= x"00000015";
                     if (Ppm = '0') then
                         NS <= IDLE_F;  
-                        CountReset <= '0'; 
+                        CountResetTmp  <= '0'; 
                         RegisterLatch <= '0';
                         FrameFinished <= '0';
                     else
                         NS <= PULSE_F;  
-                        CountReset <= '1'; 
+                        CountResetTmp  <= '1'; 
                         RegisterLatch <= '0';
                         FrameFinished <= '0';
                     end if;
@@ -420,7 +424,7 @@ sync_proc: process(Clock, Reset, NS)
                     CountEnable <= '0';
                     RegisterNumber <= to_unsigned(0, 3);
                     NS <= RESET_STATE;  
-                    CountReset <= '0'; 
+                    CountResetTmp  <= '0'; 
                     RegisterLatch <= '0';
                     FrameFinished <= '0';
                     

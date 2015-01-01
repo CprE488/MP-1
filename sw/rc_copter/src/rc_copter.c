@@ -43,18 +43,19 @@
 
 /*optimization definitions*/
 #define PLAYBACK_NUM_FRAMES 10000
+#define REG_WRITE_WAIT 1000
 #define PLAYBACK_FRAME_SKIP 0           //not implemented yet
 
 /*button and switch definitions*/
-#define SW0 0x80
-#define SW1 0x00
-#define SW2 0x00
-#define SW3 0x00
-#define SW4 0x00
+#define SW0 0x01
+#define SW1 0x02
+#define SW2 0x04
+#define SW3 0x08
+#define SW4 0x10
 
 #define BTNU 0x10
 #define BTNR 0x08
-#define BTNC 0x06
+#define BTNC 0x01
 #define BTNL 0x04
 #define BTND 0x02
 
@@ -111,7 +112,7 @@ void setSoftwareRelayMode();
 void fsmCheck();
 
 //prints all six channels of given frame via uart printf
-void printFrame(frame pf);
+void printFrame(frame * pf);
 
 /*end prototypes*/
 
@@ -146,42 +147,73 @@ int main()
     //infinite control loop
     while(1)
     {
+
+    	//slow DOWN!
+    	usleep(20000);
+
         //check buttons and switches and adjust mode accordingly
         if(checkInputs())
         {
             //if check inputs returns -1 break out of control loop and exit program
+        	print("Goodbye!\n");
             break;
         }
 
     	//check for capture frame to be consumed
-    	if(PpmAxi->ControlBits.captureFrameReady)
+    	if(1 || PpmAxi->ControlBits.captureFrameReady)
     	{
     		//function that handles all necessary logic (for each mode) for received frame
     		currentFrame = consumeCaptureFrame(&recordIndex);
     	}
 
     	//check if hardware is ready for a new frame
-        if(PpmAxi->ControlBits.generateFrameReady)
+        if(1 || PpmAxi->ControlBits.generateFrameReady)
         {
             //function that handles all logic for interacting with the generateFrame registers
             generateFrame(currentFrame, &playbackIndex, &recordIndex);
         }
 
         //if in software debug mode, print out changes to finite state machines
-        if(mode.SoftwareDebugMode)
+        if(mode.softwareDebugMode)
         {
-            fsmCheck();
+            //fsmCheck();
         }
     }
 
     return 0;
 }
 
+#define MS_TO_CLK(x) ((unsigned int)(x*100000))
+
+inline unsigned int ms_to_clk(float number)
+{
+	return number * 100000;
+}
+
 //initializes registers
 void init()
 {
 	//initialize our hardware registers
-    /*TODO*/
+    PpmAxi->ControlBits.SoftwareRelayMode = 1;
+    usleep(REG_WRITE_WAIT);
+    PpmAxi->CaptureSyncLength = ms_to_clk(4);
+    usleep(REG_WRITE_WAIT);
+    PpmAxi->GenerateIdleLength = ms_to_clk(.32);
+    usleep(REG_WRITE_WAIT);
+    PpmAxi->GenerateFrameLength = ms_to_clk(20.056);
+    usleep(REG_WRITE_WAIT);
+    PpmAxi->GenerateChannelA = ms_to_clk(1.5);
+    usleep(REG_WRITE_WAIT);
+    PpmAxi->GenerateChannelB = ms_to_clk(1);
+    usleep(REG_WRITE_WAIT);
+    PpmAxi->GenerateChannelC = ms_to_clk(.5);
+    usleep(REG_WRITE_WAIT);
+    PpmAxi->GenerateChannelD = ms_to_clk(.75);
+    usleep(REG_WRITE_WAIT);
+    PpmAxi->GenerateChannelE = ms_to_clk(1.25);
+    usleep(REG_WRITE_WAIT);
+    PpmAxi->GenerateChannelF = ms_to_clk(2);
+    usleep(REG_WRITE_WAIT);
 }
 
 //checks buttons and switches and changes mode accordingly
@@ -207,17 +239,23 @@ int checkInputs()
     //set relay mode based off of switch 0
     if(sw & SW0)
     {
-        if(mode.softwareDebugMode)
-            printf("Entering software relay mode.\n");
+    	if(mode.relayMode != 1)
+    	{
+            if(mode.softwareDebugMode)
+                printf("Entering software relay mode.\n");
 
-        setSoftwareRelayMode();
+            setSoftwareRelayMode();
+    	}
     }
     else
     {
-        if(mode.softwareDebugMode)
-            printf("Entering hardware relay mode.\n");
+    	if(mode.relayMode != 0)
+    	{
+            if(mode.softwareDebugMode)
+                printf("Entering hardware relay mode.\n");
 
-        setHardwareRelayMode();
+            setHardwareRelayMode();
+    	}
     }
 
     //set debug mode based off of switch 1
@@ -285,7 +323,7 @@ int checkInputs()
 }
 
 //performs necessary logic when consuming captured frame
-frame consumeFrame(int* recordIndex)
+frame consumeCaptureFrame(int* recordIndex)
 {
     //variables to store button and switch states
     uint32_t btns, sw;
@@ -296,17 +334,17 @@ frame consumeFrame(int* recordIndex)
 
     //create and fill frame
     frame currentFrame;
-    currentFrame.channelA = PpmAxi.CaptureChannelA;
-    currentFrame.channelB = PpmAxi.CaptureChannelB;
-    currentFrame.channelC = PpmAxi.CaptureChannelC;
-    currentFrame.channelD = PpmAxi.CaptureChannelD;
-    currentFrame.channelE = PpmAxi.CaptureChannelE;
-    currentFrame.channelF = PpmAxi.CaptureChannelF;
+    currentFrame.channelA = PpmAxi->CaptureChannelA;
+    currentFrame.channelB = PpmAxi->CaptureChannelB;
+    currentFrame.channelC = PpmAxi->CaptureChannelC;
+    currentFrame.channelD = PpmAxi->CaptureChannelD;
+    currentFrame.channelE = PpmAxi->CaptureChannelE;
+    currentFrame.channelF = PpmAxi->CaptureChannelF;
 
     //if in software debug mode, print frame
-    if(mode.SoftwareDebugMode)
+    if(mode.softwareDebugMode)
     {
-        printFrame(currentFrame);
+        //printFrame(&currentFrame);
     }
 
     //if in software record mode handle recording/rewinding based off of button input
@@ -315,17 +353,18 @@ frame consumeFrame(int* recordIndex)
         //if btnd is clicked, record
         if(btns & BTND)
         {
-            if(*recordIndex > PLAYBACK_NUM_FRAMES)
+            if(*recordIndex >= PLAYBACK_NUM_FRAMES)
             {
                 *recordIndex--;
 
-                if(mode.SoftwareDebugMode)
+                if(mode.softwareDebugMode)
                 {
                     printf("recording has reached end of allocated memory, setting to last recordable index, please rewind\n");
                 }
             }
 
-            playbackBuffer[*recordIndex++] = frame;
+            playbackBuffer[*recordIndex] = currentFrame;
+            *recordIndex = *recordIndex + 1;
         }
 
         //if btnu is clicked, rewind recording
@@ -335,12 +374,12 @@ frame consumeFrame(int* recordIndex)
             {
                 *recordIndex = 1;
 
-                if(mode.SoftwareDebugMode)
+                if(mode.softwareDebugMode)
                 {
                     printf("rewind has reached beginning of allocated memory.\n");
                 }
             }
-            *recordIndex--;
+            *recordIndex = *recordIndex - 1;
         }
     }
 
@@ -361,22 +400,29 @@ void generateFrame(frame currentFrame, int* playbackIndex, int* recordIndex)
 
     //if we are in software play mode, check inputs to see if we should
     //play our buffer
-    if(mode.SoftwarePlayMode)
+    if(mode.softwarePlayMode)
     {
         //if btnr is pressed, than play the playback buffer
         if(btns & BTNR)
         {
             //if we are outside of play bounds, set play to last frame
-            if(*recordIndex < *playbackIndex)
+            if(*recordIndex <= *playbackIndex)
             {
-                *playbackIndex = *recordIndex;
-                if(mode.SoftwareDebugMode)
+                *playbackIndex = *recordIndex - 1;
+                if(mode.softwareDebugMode)
                 {
                     printf("playback outside of recording, rewinding to last recorded frame.\n");
                 }
             }
 
-            frameToGenerate = playbackBuffer[*playbackIndex++];
+            frameToGenerate = playbackBuffer[*playbackIndex];
+            *playbackIndex = *playbackIndex + 1;
+        }
+
+        //else, pass along the captured frame
+        else
+        {
+            frameToGenerate = currentFrame;
         }
 
         //if btnl is pressed, then rewind the playback index
@@ -386,13 +432,13 @@ void generateFrame(frame currentFrame, int* playbackIndex, int* recordIndex)
             if(*playbackIndex < 1)
             {
                 *playbackIndex = 1;
-                if(mode.SoftwareDebugMode)
+                if(mode.softwareDebugMode)
                 {
                     printf("rewinding playback has reached the beginning of allocated memory.\n");
                 }
             }
 
-            *playbackIndex--;
+            *playbackIndex = *playbackIndex - 1;
         }
     }
 
@@ -409,12 +455,18 @@ void generateFrame(frame currentFrame, int* playbackIndex, int* recordIndex)
     }
 
     //write frameToGenerate to frame buffer
-    PpmAxi->GenerateChannelA = frameToGenerate->channelA;
-    PpmAxi->GenerateChannelB = frameToGenerate->channelB;
-    PpmAxi->GenerateChannelC = frameToGenerate->channelC;
-    PpmAxi->GenerateChannelD = frameToGenerate->channelD;
-    PpmAxi->GenerateChannelE = frameToGenerate->channelE;
-    PpmAxi->GenerateChannelF = frameToGenerate->channelF;
+    PpmAxi->GenerateChannelA = frameToGenerate.channelA;
+    usleep(REG_WRITE_WAIT);
+    PpmAxi->GenerateChannelB = frameToGenerate.channelB;
+    usleep(REG_WRITE_WAIT);
+    PpmAxi->GenerateChannelC = frameToGenerate.channelC;
+    usleep(REG_WRITE_WAIT);
+    PpmAxi->GenerateChannelD = frameToGenerate.channelD;
+    usleep(REG_WRITE_WAIT);
+    PpmAxi->GenerateChannelE = frameToGenerate.channelE;
+    usleep(REG_WRITE_WAIT);
+    PpmAxi->GenerateChannelF = frameToGenerate.channelF;
+    usleep(REG_WRITE_WAIT);
 }
 
 //sets the mode to hardware relay mode (will turn software relay mode off)
@@ -424,6 +476,7 @@ void setHardwareRelayMode()
 
 	//set hardware features
 	PpmAxi->ControlBits.SoftwareRelayMode = 0;
+	usleep(REG_WRITE_WAIT);
 }
 
 //sets the mode to software relay mode (will turn hardware relay mode off)
@@ -433,28 +486,31 @@ void setSoftwareRelayMode()
 
 	//set hardware features
 	PpmAxi->ControlBits.SoftwareRelayMode = 1;
+	usleep(REG_WRITE_WAIT);
 }
 
 //prints out changes to capture and generate fsm states
 void fsmCheck()
 {
-	static unsigned int prevCaptureFsm = 0, prevGenerateFsm = 0;
+	static unsigned int prevCaptureFsm = 0, prevGenerateFsm = 0, captureFsm, generateFsm;
 
-	if(PpmAxi->CaptureFsmState != prevCaptureFsm)
+	captureFsm = PpmAxi->CaptureFsmState;
+	if(captureFsm != prevCaptureFsm)
 	{
-		printf("Capture FSM State changed: %d\n", PpmAxi->CaptureFsmState);
-		prevCaptureFsm = PpmAxi->CaptureFsmState;
+		printf("Capture FSM State changed: %d\n", captureFsm);
+		prevCaptureFsm = captureFsm;
 	}
 
-	if(PpmAxi->GenerateFsmState != prevGenerateFsm)
+	generateFsm = PpmAxi->GenerateFsmState;
+	if(generateFsm != prevGenerateFsm)
 	{
-		printf("Generate FSM State changed: %d\n", PpmAxi->GenerateFsmState);
-		prevGenerateFsm = PpmAxi->GenerateFsmState;
+		printf("Generate FSM State changed: %d\n", generateFsm);
+		prevGenerateFsm = generateFsm;
 	}
 }
 
 //prints all six channels of given frame via uart printf
-void printFrame(frame pf)
+void printFrame(frame * pf)
 {
 	printf("Captured Frame: %d %d %d %d %d %d\n", 	pf->channelA,
 													pf->channelB,

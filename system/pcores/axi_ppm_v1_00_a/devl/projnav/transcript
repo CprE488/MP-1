@@ -19,6 +19,15 @@
 # -- Compiling package proc_common_pkg
 # -- Compiling package body proc_common_pkg
 # -- Loading package proc_common_pkg
+# ** Warning: (vlib-34) Library already exists at "axi_ppm_v1_00_a".
+# Model Technology ModelSim SE-64 vcom 10.1c Compiler 2012.07 Jul 27 2012
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Compiling entity vens_counter
+# -- Compiling architecture Behavioral of vens_counter
+# ** Warning: (vlib-34) Library already exists at "axi_ppm_v1_00_a".
 # Model Technology ModelSim SE-64 vcom 10.1c Compiler 2012.07 Jul 27 2012
 # -- Loading package STANDARD
 # -- Loading package TEXTIO
@@ -26,6 +35,7 @@
 # -- Loading package NUMERIC_STD
 # -- Compiling entity temp_registers
 # -- Compiling architecture Behavioral of temp_registers
+# ** Warning: (vlib-34) Library already exists at "axi_ppm_v1_00_a".
 # Model Technology ModelSim SE-64 vcom 10.1c Compiler 2012.07 Jul 27 2012
 # -- Loading package STANDARD
 # -- Loading package TEXTIO
@@ -33,6 +43,7 @@
 # -- Loading package NUMERIC_STD
 # -- Compiling entity read_registers
 # -- Compiling architecture Behavioral of read_registers
+# ** Warning: (vlib-34) Library already exists at "axi_ppm_v1_00_a".
 # Model Technology ModelSim SE-64 vcom 10.1c Compiler 2012.07 Jul 27 2012
 # -- Loading package STANDARD
 # -- Loading package TEXTIO
@@ -40,12 +51,14 @@
 # -- Loading package NUMERIC_STD
 # -- Compiling entity generate_ppm
 # -- Compiling architecture Behavioral of generate_ppm
+# ** Warning: (vlib-34) Library already exists at "axi_ppm_v1_00_a".
 # Model Technology ModelSim SE-64 vcom 10.1c Compiler 2012.07 Jul 27 2012
 # -- Loading package STANDARD
 # -- Loading package TEXTIO
 # -- Loading package std_logic_1164
 # -- Compiling entity filter
 # -- Compiling architecture Behavioral of filter
+# ** Warning: (vlib-34) Library already exists at "axi_ppm_v1_00_a".
 # Model Technology ModelSim SE-64 vcom 10.1c Compiler 2012.07 Jul 27 2012
 # -- Loading package STANDARD
 # -- Loading package TEXTIO
@@ -53,252 +66,7 @@
 # -- Loading package NUMERIC_STD
 # -- Compiling entity capture_ppm
 # -- Compiling architecture Behavioral of capture_ppm
-# Model Technology ModelSim SE-64 vcom 10.1c Compiler 2012.07 Jul 27 2012
-# -- Loading package STANDARD
-# -- Loading package TEXTIO
-# -- Loading package std_logic_1164
-# -- Loading package NUMERIC_STD
-# -- Compiling entity counter
-# -- Compiling architecture Behavioral of counter
-# Model Technology ModelSim SE-64 vcom 10.1c Compiler 2012.07 Jul 27 2012
-# -- Loading package STANDARD
-# -- Loading package TEXTIO
-# -- Loading package std_logic_1164
-# -- Loading package std_logic_arith
-# -- Loading package STD_LOGIC_UNSIGNED
-# -- Loading package proc_common_pkg
-# -- Compiling entity user_logic
-# -- Compiling architecture IMP of user_logic
-# Model Technology ModelSim SE-64 vcom 10.1c Compiler 2012.07 Jul 27 2012
-# -- Loading package STANDARD
-# -- Loading package TEXTIO
-# -- Loading package std_logic_1164
-# -- Loading package NUMERIC_STD
-# -- Compiling entity tb_user_logic
-# -- Compiling architecture behavior of tb_user_logic
-# vsim -lib work -voptargs=\"+acc\" -t 1ps work.tb_user_logic 
-# Loading std.standard
-# Loading std.textio(body)
-# Loading ieee.std_logic_1164(body)
-# Loading ieee.numeric_std(body)
-# Loading work.tb_user_logic(behavior)#1
-# ** Warning: (vsim-3473) Component instance "uut : user_logic" is not bound.
-#    Time: 0 ps  Iteration: 0  Instance: /tb_user_logic File: ../../hdl/vhdl/Testbenches/tb_user_logic.vhd
-# ** Error: Unable to lock WLF file "vsim.wlf". Retrying 1 times, errno 11
-# ** Error: Unable to lock WLF file "vsim.wlf". Retrying 2 times, errno 11
-# ** Error: Unable to lock WLF file "vsim.wlf". Retrying 3 times, errno 11
-# ** Error: Cannot lock WLF file: "vsim.wlf"
-#           errno 11: Resource temporarily unavailable.
-# ** Warning: (vsim-WLF-5000) WLF file currently in use: vsim.wlf
-#           File in use by: vens  Hostname: research-1.ece.iastate.edu  ProcessID: 14379
-#           Attempting to use alternate WLF file "./wlftu6JSSq".
-# ** Warning: (vsim-WLF-5001) Could not open WLF file: vsim.wlf
-#           Using alternate file: ./wlftu6JSSq
-# .main_pane.wave.interior.cs.body.pw.wf
-# .main_pane.structure.interior.cs.body.struct
-# .main_pane.objects.interior.cs.body.tree
-do {tb_user_logic.fdo}
-# ** Warning: (vlib-34) Library already exists at "work".
-# ** Warning: (vlib-34) Library already exists at "proc_common_v3_00_a".
-# Model Technology ModelSim SE-64 vcom 10.1c Compiler 2012.07 Jul 27 2012
-# -- Loading package STANDARD
-# -- Loading package TEXTIO
-# -- Loading package std_logic_1164
-# -- Loading package std_logic_arith
-# -- Loading package STD_LOGIC_UNSIGNED
-# -- Compiling package proc_common_pkg
-# -- Compiling package body proc_common_pkg
-# -- Loading package proc_common_pkg
-# Model Technology ModelSim SE-64 vcom 10.1c Compiler 2012.07 Jul 27 2012
-# -- Loading package STANDARD
-# -- Loading package TEXTIO
-# -- Loading package std_logic_1164
-# -- Loading package NUMERIC_STD
-# -- Compiling entity temp_registers
-# -- Compiling architecture Behavioral of temp_registers
-# Model Technology ModelSim SE-64 vcom 10.1c Compiler 2012.07 Jul 27 2012
-# -- Loading package STANDARD
-# -- Loading package TEXTIO
-# -- Loading package std_logic_1164
-# -- Loading package NUMERIC_STD
-# -- Compiling entity read_registers
-# -- Compiling architecture Behavioral of read_registers
-# Model Technology ModelSim SE-64 vcom 10.1c Compiler 2012.07 Jul 27 2012
-# -- Loading package STANDARD
-# -- Loading package TEXTIO
-# -- Loading package std_logic_1164
-# -- Loading package NUMERIC_STD
-# -- Compiling entity generate_ppm
-# -- Compiling architecture Behavioral of generate_ppm
-# Model Technology ModelSim SE-64 vcom 10.1c Compiler 2012.07 Jul 27 2012
-# -- Loading package STANDARD
-# -- Loading package TEXTIO
-# -- Loading package std_logic_1164
-# -- Compiling entity filter
-# -- Compiling architecture Behavioral of filter
-# Model Technology ModelSim SE-64 vcom 10.1c Compiler 2012.07 Jul 27 2012
-# -- Loading package STANDARD
-# -- Loading package TEXTIO
-# -- Loading package std_logic_1164
-# -- Loading package NUMERIC_STD
-# -- Compiling entity capture_ppm
-# -- Compiling architecture Behavioral of capture_ppm
-# Model Technology ModelSim SE-64 vcom 10.1c Compiler 2012.07 Jul 27 2012
-# -- Loading package STANDARD
-# -- Loading package TEXTIO
-# -- Loading package std_logic_1164
-# -- Loading package NUMERIC_STD
-# -- Compiling entity counter
-# -- Compiling architecture Behavioral of counter
-# Model Technology ModelSim SE-64 vcom 10.1c Compiler 2012.07 Jul 27 2012
-# -- Loading package STANDARD
-# -- Loading package TEXTIO
-# -- Loading package std_logic_1164
-# -- Loading package std_logic_arith
-# -- Loading package STD_LOGIC_UNSIGNED
-# -- Loading package proc_common_pkg
-# -- Compiling entity user_logic
-# ** Error: ../../hdl/vhdl/user_logic.vhd(106): (vcom-1136) Unknown identifier "Bus2IP_Clk".
-# ** Error: ../../hdl/vhdl/user_logic.vhd(106): Bad resolution function (STD_LOGIC) for type (error).
-# ** Error: ../../hdl/vhdl/user_logic.vhd(106): near ":": expecting ';' or ')'
-# ** Error: /remote/Modelsim/10.1c/modeltech/linux_x86_64/vcom failed.
-# Error in macro ./tb_user_logic.fdo line 31
-# /remote/Modelsim/10.1c/modeltech/linux_x86_64/vcom failed.
-#     while executing
-# "vcom -explicit  -93 "../../hdl/vhdl/user_logic.vhd""
-do {tb_user_logic.fdo}
-# ** Warning: (vlib-34) Library already exists at "work".
-# ** Warning: (vlib-34) Library already exists at "proc_common_v3_00_a".
-# Model Technology ModelSim SE-64 vcom 10.1c Compiler 2012.07 Jul 27 2012
-# -- Loading package STANDARD
-# -- Loading package TEXTIO
-# -- Loading package std_logic_1164
-# -- Loading package std_logic_arith
-# -- Loading package STD_LOGIC_UNSIGNED
-# -- Compiling package proc_common_pkg
-# -- Compiling package body proc_common_pkg
-# -- Loading package proc_common_pkg
-# Model Technology ModelSim SE-64 vcom 10.1c Compiler 2012.07 Jul 27 2012
-# -- Loading package STANDARD
-# -- Loading package TEXTIO
-# -- Loading package std_logic_1164
-# -- Loading package NUMERIC_STD
-# -- Compiling entity temp_registers
-# -- Compiling architecture Behavioral of temp_registers
-# Model Technology ModelSim SE-64 vcom 10.1c Compiler 2012.07 Jul 27 2012
-# -- Loading package STANDARD
-# -- Loading package TEXTIO
-# -- Loading package std_logic_1164
-# -- Loading package NUMERIC_STD
-# -- Compiling entity read_registers
-# -- Compiling architecture Behavioral of read_registers
-# Model Technology ModelSim SE-64 vcom 10.1c Compiler 2012.07 Jul 27 2012
-# -- Loading package STANDARD
-# -- Loading package TEXTIO
-# -- Loading package std_logic_1164
-# -- Loading package NUMERIC_STD
-# -- Compiling entity generate_ppm
-# -- Compiling architecture Behavioral of generate_ppm
-# Model Technology ModelSim SE-64 vcom 10.1c Compiler 2012.07 Jul 27 2012
-# -- Loading package STANDARD
-# -- Loading package TEXTIO
-# -- Loading package std_logic_1164
-# -- Compiling entity filter
-# -- Compiling architecture Behavioral of filter
-# Model Technology ModelSim SE-64 vcom 10.1c Compiler 2012.07 Jul 27 2012
-# -- Loading package STANDARD
-# -- Loading package TEXTIO
-# -- Loading package std_logic_1164
-# -- Loading package NUMERIC_STD
-# -- Compiling entity capture_ppm
-# -- Compiling architecture Behavioral of capture_ppm
-# Model Technology ModelSim SE-64 vcom 10.1c Compiler 2012.07 Jul 27 2012
-# -- Loading package STANDARD
-# -- Loading package TEXTIO
-# -- Loading package std_logic_1164
-# -- Loading package NUMERIC_STD
-# -- Compiling entity counter
-# -- Compiling architecture Behavioral of counter
-# Model Technology ModelSim SE-64 vcom 10.1c Compiler 2012.07 Jul 27 2012
-# -- Loading package STANDARD
-# -- Loading package TEXTIO
-# -- Loading package std_logic_1164
-# -- Loading package std_logic_arith
-# -- Loading package STD_LOGIC_UNSIGNED
-# -- Loading package proc_common_pkg
-# -- Compiling entity user_logic
-# -- Compiling architecture IMP of user_logic
-# Model Technology ModelSim SE-64 vcom 10.1c Compiler 2012.07 Jul 27 2012
-# -- Loading package STANDARD
-# -- Loading package TEXTIO
-# -- Loading package std_logic_1164
-# -- Loading package NUMERIC_STD
-# -- Compiling entity tb_user_logic
-# -- Compiling architecture behavior of tb_user_logic
-# vsim -lib work -voptargs=\"+acc\" -t 1ps work.tb_user_logic 
-# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
-# ** Error: ../../hdl/vhdl/user_logic.vhd(328): (vopt-1133) Type mismatch for port "Top" in component "counter" when binding to entity "counter".
-# ** Error: ../../hdl/vhdl/user_logic.vhd(328): (vopt-1133) Type mismatch for port "Count" in component "counter" when binding to entity "counter".
-# ** Error: ../../hdl/vhdl/user_logic.vhd(343): (vopt-1133) Type mismatch for port "Value" in component "temp_registers" when binding to entity "temp_registers".
-# ** Error: ../../hdl/vhdl/user_logic.vhd(343): (vopt-1133) Type mismatch for port "RegisterNumber" in component "temp_registers" when binding to entity "temp_registers".
-# ** Error: ../../hdl/vhdl/temp_registers.vhd(47): Vopt Compiler exiting
-# Error loading design
-# Error: Error loading design 
-#        Pausing macro execution 
-# MACRO ./tb_user_logic.fdo PAUSED at line 36
-do {tb_user_logic.fdo}
-# ** Warning: (vlib-34) Library already exists at "work".
-# ** Warning: (vlib-34) Library already exists at "proc_common_v3_00_a".
-# Model Technology ModelSim SE-64 vcom 10.1c Compiler 2012.07 Jul 27 2012
-# -- Loading package STANDARD
-# -- Loading package TEXTIO
-# -- Loading package std_logic_1164
-# -- Loading package std_logic_arith
-# -- Loading package STD_LOGIC_UNSIGNED
-# -- Compiling package proc_common_pkg
-# -- Compiling package body proc_common_pkg
-# -- Loading package proc_common_pkg
-# Model Technology ModelSim SE-64 vcom 10.1c Compiler 2012.07 Jul 27 2012
-# -- Loading package STANDARD
-# -- Loading package TEXTIO
-# -- Loading package std_logic_1164
-# -- Loading package NUMERIC_STD
-# -- Compiling entity temp_registers
-# -- Compiling architecture Behavioral of temp_registers
-# Model Technology ModelSim SE-64 vcom 10.1c Compiler 2012.07 Jul 27 2012
-# -- Loading package STANDARD
-# -- Loading package TEXTIO
-# -- Loading package std_logic_1164
-# -- Loading package NUMERIC_STD
-# -- Compiling entity read_registers
-# -- Compiling architecture Behavioral of read_registers
-# Model Technology ModelSim SE-64 vcom 10.1c Compiler 2012.07 Jul 27 2012
-# -- Loading package STANDARD
-# -- Loading package TEXTIO
-# -- Loading package std_logic_1164
-# -- Loading package NUMERIC_STD
-# -- Compiling entity generate_ppm
-# -- Compiling architecture Behavioral of generate_ppm
-# Model Technology ModelSim SE-64 vcom 10.1c Compiler 2012.07 Jul 27 2012
-# -- Loading package STANDARD
-# -- Loading package TEXTIO
-# -- Loading package std_logic_1164
-# -- Compiling entity filter
-# -- Compiling architecture Behavioral of filter
-# Model Technology ModelSim SE-64 vcom 10.1c Compiler 2012.07 Jul 27 2012
-# -- Loading package STANDARD
-# -- Loading package TEXTIO
-# -- Loading package std_logic_1164
-# -- Loading package NUMERIC_STD
-# -- Compiling entity capture_ppm
-# -- Compiling architecture Behavioral of capture_ppm
-# Model Technology ModelSim SE-64 vcom 10.1c Compiler 2012.07 Jul 27 2012
-# -- Loading package STANDARD
-# -- Loading package TEXTIO
-# -- Loading package std_logic_1164
-# -- Loading package NUMERIC_STD
-# -- Compiling entity counter
-# -- Compiling architecture Behavioral of counter
+# ** Warning: (vlib-34) Library already exists at "axi_ppm_v1_00_a".
 # Model Technology ModelSim SE-64 vcom 10.1c Compiler 2012.07 Jul 27 2012
 # -- Loading package STANDARD
 # -- Loading package TEXTIO
@@ -346,201 +114,3 @@ do {tb_user_logic.fdo}
 #    Time: 5 ns  Iteration: 1  Instance: /tb_user_logic/uut/counter1
 # ** Warning: NUMERIC_STD.">=": metavalue detected, returning FALSE
 #    Time: 15 ns  Iteration: 1  Instance: /tb_user_logic/uut/counter4
-do {tb_user_logic.fdo}
-# ** Warning: (vlib-34) Library already exists at "work".
-# ** Warning: (vlib-34) Library already exists at "proc_common_v3_00_a".
-# Model Technology ModelSim SE-64 vcom 10.1c Compiler 2012.07 Jul 27 2012
-# -- Loading package STANDARD
-# -- Loading package TEXTIO
-# -- Loading package std_logic_1164
-# -- Loading package std_logic_arith
-# -- Loading package STD_LOGIC_UNSIGNED
-# -- Compiling package proc_common_pkg
-# -- Compiling package body proc_common_pkg
-# -- Loading package proc_common_pkg
-# Model Technology ModelSim SE-64 vcom 10.1c Compiler 2012.07 Jul 27 2012
-# -- Loading package STANDARD
-# -- Loading package TEXTIO
-# -- Loading package std_logic_1164
-# -- Loading package NUMERIC_STD
-# -- Compiling entity temp_registers
-# -- Compiling architecture Behavioral of temp_registers
-# Model Technology ModelSim SE-64 vcom 10.1c Compiler 2012.07 Jul 27 2012
-# -- Loading package STANDARD
-# -- Loading package TEXTIO
-# -- Loading package std_logic_1164
-# -- Loading package NUMERIC_STD
-# -- Compiling entity read_registers
-# -- Compiling architecture Behavioral of read_registers
-# Model Technology ModelSim SE-64 vcom 10.1c Compiler 2012.07 Jul 27 2012
-# -- Loading package STANDARD
-# -- Loading package TEXTIO
-# -- Loading package std_logic_1164
-# -- Loading package NUMERIC_STD
-# -- Compiling entity generate_ppm
-# -- Compiling architecture Behavioral of generate_ppm
-# Model Technology ModelSim SE-64 vcom 10.1c Compiler 2012.07 Jul 27 2012
-# -- Loading package STANDARD
-# -- Loading package TEXTIO
-# -- Loading package std_logic_1164
-# -- Compiling entity filter
-# -- Compiling architecture Behavioral of filter
-# Model Technology ModelSim SE-64 vcom 10.1c Compiler 2012.07 Jul 27 2012
-# -- Loading package STANDARD
-# -- Loading package TEXTIO
-# -- Loading package std_logic_1164
-# -- Loading package NUMERIC_STD
-# -- Compiling entity capture_ppm
-# -- Compiling architecture Behavioral of capture_ppm
-# Model Technology ModelSim SE-64 vcom 10.1c Compiler 2012.07 Jul 27 2012
-# -- Loading package STANDARD
-# -- Loading package TEXTIO
-# -- Loading package std_logic_1164
-# -- Loading package NUMERIC_STD
-# -- Compiling entity counter
-# -- Compiling architecture Behavioral of counter
-# Model Technology ModelSim SE-64 vcom 10.1c Compiler 2012.07 Jul 27 2012
-# -- Loading package STANDARD
-# -- Loading package TEXTIO
-# -- Loading package std_logic_1164
-# -- Loading package NUMERIC_STD
-# -- Loading package std_logic_arith
-# -- Loading package STD_LOGIC_UNSIGNED
-# -- Loading package proc_common_pkg
-# -- Compiling entity user_logic
-# -- Compiling architecture IMP of user_logic
-# Model Technology ModelSim SE-64 vcom 10.1c Compiler 2012.07 Jul 27 2012
-# -- Loading package STANDARD
-# -- Loading package TEXTIO
-# -- Loading package std_logic_1164
-# -- Loading package NUMERIC_STD
-# -- Compiling entity tb_user_logic
-# -- Compiling architecture behavior of tb_user_logic
-# vsim -lib work -voptargs=\"+acc\" -t 1ps work.tb_user_logic 
-# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
-# Loading std.standard
-# Loading std.textio(body)
-# Loading ieee.std_logic_1164(body)
-# Loading ieee.numeric_std(body)
-# Loading work.tb_user_logic(behavior)#1
-# Loading ieee.std_logic_arith(body)
-# Loading ieee.std_logic_unsigned(body)
-# Loading proc_common_v3_00_a.proc_common_pkg(body)
-# Loading work.user_logic(imp)#1
-# Loading work.filter(behavioral)#1
-# Loading work.counter(behavioral)#1
-# Loading work.temp_registers(behavioral)#1
-# Loading work.read_registers(behavioral)#1
-# Loading work.capture_ppm(behavioral)#1
-# Loading work.generate_ppm(behavioral)#1
-# .main_pane.wave.interior.cs.body.pw.wf
-# .main_pane.structure.interior.cs.body.struct
-# .main_pane.objects.interior.cs.body.tree
-# ** Warning: NUMERIC_STD.">=": metavalue detected, returning FALSE
-#    Time: 5 ns  Iteration: 1  Instance: /tb_user_logic/uut/counter4
-# ** Warning: NUMERIC_STD.">=": metavalue detected, returning FALSE
-#    Time: 5 ns  Iteration: 1  Instance: /tb_user_logic/uut/counter2
-# ** Warning: NUMERIC_STD.">=": metavalue detected, returning FALSE
-#    Time: 5 ns  Iteration: 1  Instance: /tb_user_logic/uut/counter1
-# ** Warning: NUMERIC_STD.">=": metavalue detected, returning FALSE
-#    Time: 15 ns  Iteration: 1  Instance: /tb_user_logic/uut/counter4
-run
-do {tb_user_logic.fdo}
-# ** Warning: (vlib-34) Library already exists at "work".
-# ** Warning: (vlib-34) Library already exists at "proc_common_v3_00_a".
-# Model Technology ModelSim SE-64 vcom 10.1c Compiler 2012.07 Jul 27 2012
-# -- Loading package STANDARD
-# -- Loading package TEXTIO
-# -- Loading package std_logic_1164
-# -- Loading package std_logic_arith
-# -- Loading package STD_LOGIC_UNSIGNED
-# -- Compiling package proc_common_pkg
-# -- Compiling package body proc_common_pkg
-# -- Loading package proc_common_pkg
-# Model Technology ModelSim SE-64 vcom 10.1c Compiler 2012.07 Jul 27 2012
-# -- Loading package STANDARD
-# -- Loading package TEXTIO
-# -- Loading package std_logic_1164
-# -- Loading package NUMERIC_STD
-# -- Compiling entity temp_registers
-# -- Compiling architecture Behavioral of temp_registers
-# Model Technology ModelSim SE-64 vcom 10.1c Compiler 2012.07 Jul 27 2012
-# -- Loading package STANDARD
-# -- Loading package TEXTIO
-# -- Loading package std_logic_1164
-# -- Loading package NUMERIC_STD
-# -- Compiling entity read_registers
-# -- Compiling architecture Behavioral of read_registers
-# Model Technology ModelSim SE-64 vcom 10.1c Compiler 2012.07 Jul 27 2012
-# -- Loading package STANDARD
-# -- Loading package TEXTIO
-# -- Loading package std_logic_1164
-# -- Loading package NUMERIC_STD
-# -- Compiling entity generate_ppm
-# -- Compiling architecture Behavioral of generate_ppm
-# Model Technology ModelSim SE-64 vcom 10.1c Compiler 2012.07 Jul 27 2012
-# -- Loading package STANDARD
-# -- Loading package TEXTIO
-# -- Loading package std_logic_1164
-# -- Compiling entity filter
-# -- Compiling architecture Behavioral of filter
-# Model Technology ModelSim SE-64 vcom 10.1c Compiler 2012.07 Jul 27 2012
-# -- Loading package STANDARD
-# -- Loading package TEXTIO
-# -- Loading package std_logic_1164
-# -- Loading package NUMERIC_STD
-# -- Compiling entity capture_ppm
-# -- Compiling architecture Behavioral of capture_ppm
-# Model Technology ModelSim SE-64 vcom 10.1c Compiler 2012.07 Jul 27 2012
-# -- Loading package STANDARD
-# -- Loading package TEXTIO
-# -- Loading package std_logic_1164
-# -- Loading package NUMERIC_STD
-# -- Compiling entity counter
-# -- Compiling architecture Behavioral of counter
-# Model Technology ModelSim SE-64 vcom 10.1c Compiler 2012.07 Jul 27 2012
-# -- Loading package STANDARD
-# -- Loading package TEXTIO
-# -- Loading package std_logic_1164
-# -- Loading package NUMERIC_STD
-# -- Loading package std_logic_arith
-# -- Loading package STD_LOGIC_UNSIGNED
-# -- Loading package proc_common_pkg
-# -- Compiling entity user_logic
-# -- Compiling architecture IMP of user_logic
-# Model Technology ModelSim SE-64 vcom 10.1c Compiler 2012.07 Jul 27 2012
-# -- Loading package STANDARD
-# -- Loading package TEXTIO
-# -- Loading package std_logic_1164
-# -- Loading package NUMERIC_STD
-# -- Compiling entity tb_user_logic
-# -- Compiling architecture behavior of tb_user_logic
-# vsim -lib work -voptargs=\"+acc\" -t 1ps work.tb_user_logic 
-# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
-# Loading std.standard
-# Loading std.textio(body)
-# Loading ieee.std_logic_1164(body)
-# Loading ieee.numeric_std(body)
-# Loading work.tb_user_logic(behavior)#1
-# Loading ieee.std_logic_arith(body)
-# Loading ieee.std_logic_unsigned(body)
-# Loading proc_common_v3_00_a.proc_common_pkg(body)
-# Loading work.user_logic(imp)#1
-# Loading work.filter(behavioral)#1
-# Loading work.counter(behavioral)#1
-# Loading work.temp_registers(behavioral)#1
-# Loading work.read_registers(behavioral)#1
-# Loading work.capture_ppm(behavioral)#1
-# Loading work.generate_ppm(behavioral)#1
-# .main_pane.wave.interior.cs.body.pw.wf
-# .main_pane.structure.interior.cs.body.struct
-# .main_pane.objects.interior.cs.body.tree
-# ** Warning: NUMERIC_STD.">=": metavalue detected, returning FALSE
-#    Time: 5 ns  Iteration: 1  Instance: /tb_user_logic/uut/counter4
-# ** Warning: NUMERIC_STD.">=": metavalue detected, returning FALSE
-#    Time: 5 ns  Iteration: 1  Instance: /tb_user_logic/uut/counter2
-# ** Warning: NUMERIC_STD.">=": metavalue detected, returning FALSE
-#    Time: 5 ns  Iteration: 1  Instance: /tb_user_logic/uut/counter1
-# ** Warning: NUMERIC_STD.">=": metavalue detected, returning FALSE
-#    Time: 15 ns  Iteration: 1  Instance: /tb_user_logic/uut/counter4
-run

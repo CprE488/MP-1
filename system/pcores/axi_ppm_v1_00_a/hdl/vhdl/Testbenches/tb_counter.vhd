@@ -39,7 +39,7 @@ ARCHITECTURE behavior OF tb_counter IS
  
     -- Component Declaration for the Unit Under Test (UUT)
  
-    COMPONENT counter
+    COMPONENT vens_counter
     PORT(
          Clock : IN  std_logic;
          Reset : IN  std_logic;
@@ -67,7 +67,7 @@ ARCHITECTURE behavior OF tb_counter IS
 BEGIN
  
 	-- Instantiate the Unit Under Test (UUT)
-   uut: counter PORT MAP (
+   uut: vens_counter PORT MAP (
           Clock => Clock,
           Reset => Reset,
           Enable => Enable,

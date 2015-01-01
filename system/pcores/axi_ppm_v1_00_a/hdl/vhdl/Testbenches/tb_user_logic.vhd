@@ -122,7 +122,7 @@
         wait for 100 ns; -- wait until global set/reset completes
             Bus2IP_Resetn <= '1';
             Bus2IP_WrCE <= "10000000000000000000000000000000";
-            Bus2IP_Data <= (others => '0');
+            Bus2IP_Data <= "00000000000000000000000000000001";--(others => '0');
             Bus2IP_BE <= "1111";
         wait for Clock_period;
             Bus2IP_WrCE <= "00000000000000000000000000000000";

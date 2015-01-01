@@ -4,28 +4,28 @@ K3
 cModel Technology
 Z0 d/home/vens/classes/Fall2014/cpre488/labs/mp1/MP-1/system/pcores/axi_ppm_v1_00_a/devl/projnav
 T_opt
-Vkkc^BfgWeS_GlRh0<;3A41
-04 15 8 work tb_generate_ppm behavior 1
-=1-000000000000-54233c53-1f695-382b
+V?7GZNnai[8gOm4@7I248[2
+04 13 8 work tb_user_logic behavior 1
+=1-000000000000-5429f1f7-390d7-2667
 Z1 o-quiet -auto_acc_if_foreign -work work +acc
 n@_opt
 Z2 OL;O;10.1c;51
-Z3 d/home/vens/classes/Fall2014/cpre488/labs/mp1/MP-1/system/pcores/axi_ppm_v1_00_a/devl/projnav
 T_opt1
-V=<l=:SZL33?@FYEi:mYzm3
-04 16 8 work tb_temp_register behavior 1
-=1-000000000000-542349f5-52a9b-4315
+VImOH_OEal4N<PC3>9oQ9o3
+04 15 8 work tb_generate_ppm behavior 1
+=1-000000000000-5428ecc2-ba3ff-33f7
 R1
 n@_opt1
 R2
-R3
+Z3 d/home/vens/classes/Fall2014/cpre488/labs/mp1/MP-1/system/pcores/axi_ppm_v1_00_a/devl/projnav
 T_opt2
-V5mBWz8H]96M`5R>_ghNm02
-04 13 8 work tb_user_logic behavior 1
-=1-000000000000-54237591-a3575-6937
+VmU`17<9n80mA_Wj13LTiR0
+04 10 8 work tb_counter behavior 1
+=1-000000000000-5428f331-e1783-39c2
 R1
 n@_opt2
 R2
+R3
 Ecapture_ppm
 Z4 w1411603744
 Z5 DPx4 ieee 11 numeric_std 0 22 O3PF8EB`?j9=z7KT`fn941
@@ -148,7 +148,7 @@ L32
 VTK]SXzCDd?df>=o=Y]4Oi0
 R10
 31
-Z31 !s108 1411609998.802807
+Z31 !s108 1411968931.295024
 Z32 !s90 -reportprogress|300|-explicit|-93|../../hdl/vhdl/generate_ppm.vhd|
 Z33 !s107 ../../hdl/vhdl/generate_ppm.vhd|
 R14
@@ -185,7 +185,7 @@ L32
 VAcVKad:lKA^eiXk@d9`^B1
 R10
 31
-Z37 !s108 1411609998.560264
+Z37 !s108 1411968930.344651
 Z38 !s90 -reportprogress|300|-explicit|-93|../../hdl/vhdl/read_registers.vhd|
 Z39 !s107 ../../hdl/vhdl/read_registers.vhd|
 R14
@@ -209,22 +209,59 @@ R14
 R15
 !s100 l[_fiVa6^4>7[^1;E54EO1
 !i10b 1
-Etb_counter
-Z40 w1411527235
+Etb_capture
+Z40 w1411967725
 R5
 R6
 R7
 R3
-Z41 8../../hdl/vhdl/Testbenches/tb_counter.vhd
-Z42 F../../hdl/vhdl/Testbenches/tb_counter.vhd
+Z41 8../../hdl/vhdl/Testbenches/tb_capture.vhd
+Z42 F../../hdl/vhdl/Testbenches/tb_capture.vhd
+l0
+L7
+V1jm2;^AIeXzGA[l2ikhHG2
+R10
+31
+Z43 !s108 1411967735.676146
+Z44 !s90 -reportprogress|300|-explicit|-93|../../hdl/vhdl/Testbenches/tb_capture.vhd|
+Z45 !s107 ../../hdl/vhdl/Testbenches/tb_capture.vhd|
+R14
+R15
+!s100 YbiIiZi84MN2[Og[?dV801
+!i10b 1
+Abehavior
+R5
+R6
+R7
+DEx4 work 10 tb_capture 0 22 1jm2;^AIeXzGA[l2ikhHG2
+l151
+L10
+VK31TGMzHiQA=9OLE4B8HO0
+R10
+31
+R43
+R44
+R45
+R14
+R15
+!s100 3MEfN0?fO;NG[;BFo6P2c3
+!i10b 1
+Etb_counter
+Z46 w1411969793
+R5
+R6
+R7
+R3
+Z47 8../../hdl/vhdl/Testbenches/tb_counter.vhd
+Z48 F../../hdl/vhdl/Testbenches/tb_counter.vhd
 l0
 L35
 VnKZENhBA2?b7PU:ghPfa>0
 R10
 31
-Z43 !s108 1411527269.126133
-Z44 !s90 -reportprogress|300|-explicit|-93|../../hdl/vhdl/Testbenches/tb_counter.vhd|
-Z45 !s107 ../../hdl/vhdl/Testbenches/tb_counter.vhd|
+Z49 !s108 1411969841.465778
+Z50 !s90 -reportprogress|300|-explicit|-93|../../hdl/vhdl/Testbenches/tb_counter.vhd|
+Z51 !s107 ../../hdl/vhdl/Testbenches/tb_counter.vhd|
 R14
 R15
 !s100 P<aJdTdIHTSnZLKN0lNa<0
@@ -236,31 +273,31 @@ R7
 DEx4 work 10 tb_counter 0 22 nKZENhBA2?b7PU:ghPfa>0
 l67
 L38
-VK4TmYD=QV[]RY<9NKT1NK1
+V5RT0Y]zhVVbLzS_L1XIbG0
 R10
 31
-R43
-R44
-R45
+R49
+R50
+R51
 R14
 R15
-!s100 C7Pz]A=Cc:L@h6^PWIFaQ2
+!s100 3l`cCK>^JbGYi]502`SYg2
 !i10b 1
 Etb_filter
-Z46 w1411531299
+Z52 w1411531299
 R6
 R7
 R3
-Z47 8../../hdl/vhdl/Testbenches/tb_filter.vhd
-Z48 F../../hdl/vhdl/Testbenches/tb_filter.vhd
+Z53 8../../hdl/vhdl/Testbenches/tb_filter.vhd
+Z54 F../../hdl/vhdl/Testbenches/tb_filter.vhd
 l0
 L35
 V<I5E2>aFOC6GBZVY7M1Hi3
 R10
 31
-Z49 !s108 1411531583.238688
-Z50 !s90 -reportprogress|300|-explicit|-93|../../hdl/vhdl/Testbenches/tb_filter.vhd|
-Z51 !s107 ../../hdl/vhdl/Testbenches/tb_filter.vhd|
+Z55 !s108 1411531583.238688
+Z56 !s90 -reportprogress|300|-explicit|-93|../../hdl/vhdl/Testbenches/tb_filter.vhd|
+Z57 !s107 ../../hdl/vhdl/Testbenches/tb_filter.vhd|
 R14
 R15
 !s100 ll`]BNHc07n`RUl;>g5YE3
@@ -274,29 +311,29 @@ L38
 V11E]4^MWl9K;ijkXmS>b50
 R10
 31
-R49
-R50
-R51
+R55
+R56
+R57
 R14
 R15
 !s100 kgePHChb4Y[lY<G9NCB@^3
 !i10b 1
 Etb_generate_ppm
-Z52 w1411594190
+Z58 w1411968879
 R5
 R6
 R7
 R3
-Z53 8../../hdl/vhdl/tb_generate_ppm.vhd
-Z54 F../../hdl/vhdl/tb_generate_ppm.vhd
+Z59 8../../hdl/vhdl/Testbenches/tb_generate_ppm.vhd
+Z60 F../../hdl/vhdl/Testbenches/tb_generate_ppm.vhd
 l0
 L35
 VQFYbad=`O0feY2H<NAXa63
 R10
 31
-Z55 !s108 1411595346.056204
-Z56 !s90 -reportprogress|300|-explicit|-93|../../hdl/vhdl/tb_generate_ppm.vhd|
-Z57 !s107 ../../hdl/vhdl/tb_generate_ppm.vhd|
+Z61 !s108 1411968931.746724
+Z62 !s90 -reportprogress|300|-explicit|-93|../../hdl/vhdl/Testbenches/tb_generate_ppm.vhd|
+Z63 !s107 ../../hdl/vhdl/Testbenches/tb_generate_ppm.vhd|
 R14
 R15
 !s100 ^;b_1nn5C<i080UO0Cm]Z3
@@ -308,32 +345,32 @@ R7
 DEx4 work 15 tb_generate_ppm 0 22 QFYbad=`O0feY2H<NAXa63
 l113
 L38
-VmHTjD0LU>[jIo^X]WNe;N1
+V>0G:>Bh7bfmBKcSogi6DT2
 R10
 31
-R55
-R56
-R57
+R61
+R62
+R63
 R14
 R15
-!s100 9Hka_Dzhk_kL>YTGN_HAd3
+!s100 XGlU2Q:FRdZCG@PCQB`Y80
 !i10b 1
 Etb_temp_register
-Z58 w1411598829
+Z64 w1411598829
 R5
 R6
 R7
 R3
-Z59 8../../hdl/vhdl/Testbenches/tb_temp_register.vhd
-Z60 F../../hdl/vhdl/Testbenches/tb_temp_register.vhd
+Z65 8../../hdl/vhdl/Testbenches/tb_temp_register.vhd
+Z66 F../../hdl/vhdl/Testbenches/tb_temp_register.vhd
 l0
 L35
 VPl2A9=[Rz>8UU]dX5kR4E2
 R10
 31
-Z61 !s108 1411598837.082555
-Z62 !s90 -reportprogress|300|-explicit|-93|../../hdl/vhdl/Testbenches/tb_temp_register.vhd|
-Z63 !s107 ../../hdl/vhdl/Testbenches/tb_temp_register.vhd|
+Z67 !s108 1411598837.082555
+Z68 !s90 -reportprogress|300|-explicit|-93|../../hdl/vhdl/Testbenches/tb_temp_register.vhd|
+Z69 !s107 ../../hdl/vhdl/Testbenches/tb_temp_register.vhd|
 R14
 R15
 !s100 XFcSQ60iLm@W6K7CYAz6K0
@@ -348,29 +385,29 @@ L38
 V3?Z=e6Lg`M?h@QJaYBj=_0
 R10
 31
-R61
-R62
-R63
+R67
+R68
+R69
 R14
 R15
 !s100 8Do@nQn@JViW^`mG_3LeV0
 !i10b 1
 Etb_user_logic
-Z64 w1411609988
+Z70 w1411966286
 R5
 R6
 R7
 R3
-Z65 8../../hdl/vhdl/Testbenches/tb_user_logic.vhd
-Z66 F../../hdl/vhdl/Testbenches/tb_user_logic.vhd
+Z71 8../../hdl/vhdl/Testbenches/tb_user_logic.vhd
+Z72 F../../hdl/vhdl/Testbenches/tb_user_logic.vhd
 l0
 L7
 VMzD9[:AmRjZ31PmH6GA>61
 R10
 31
-Z67 !s108 1411610000.222318
-Z68 !s90 -reportprogress|300|-explicit|-93|../../hdl/vhdl/Testbenches/tb_user_logic.vhd|
-Z69 !s107 ../../hdl/vhdl/Testbenches/tb_user_logic.vhd|
+Z73 !s108 1412035062.752000
+Z74 !s90 -reportprogress|300|-explicit|-93|../../hdl/vhdl/Testbenches/tb_user_logic.vhd|
+Z75 !s107 ../../hdl/vhdl/Testbenches/tb_user_logic.vhd|
 R14
 R15
 !s100 b273f7WD2Ho55[nKA`L6@3
@@ -382,32 +419,32 @@ R7
 DEx4 work 13 tb_user_logic 0 22 MzD9[:AmRjZ31PmH6GA>61
 l64
 L10
-VOA@MEI9RG=XZD<PJjfALU2
+V]VTi@azjgLSH7OD_cbB@B0
 R10
 31
-R67
-R68
-R69
+R73
+R74
+R75
 R14
 R15
-!s100 KX?GWd@CR3IM9CE<n2mf;2
+!s100 Hl:IP8d5kb1=XMPf]dSJ@0
 !i10b 1
 Etemp_registers
-Z70 w1411598716
+Z76 w1411598716
 R5
 R6
 R7
 R3
-Z71 8../../hdl/vhdl/temp_registers.vhd
-Z72 F../../hdl/vhdl/temp_registers.vhd
+Z77 8../../hdl/vhdl/temp_registers.vhd
+Z78 F../../hdl/vhdl/temp_registers.vhd
 l0
 L32
 VCmkIFf2j@VDMed]99C`N[2
 R10
 31
-Z73 !s108 1411609998.254388
-Z74 !s90 -reportprogress|300|-explicit|-93|../../hdl/vhdl/temp_registers.vhd|
-Z75 !s107 ../../hdl/vhdl/temp_registers.vhd|
+Z79 !s108 1411609998.254388
+Z80 !s90 -reportprogress|300|-explicit|-93|../../hdl/vhdl/temp_registers.vhd|
+Z81 !s107 ../../hdl/vhdl/temp_registers.vhd|
 R14
 R15
 !s100 0XAP82nY@FlhM@mf9k6I[2
@@ -422,29 +459,29 @@ L47
 V5SMg[:;h4jcCTfDgVO]B<2
 R10
 31
-R73
-R74
-R75
+R79
+R80
+R81
 R14
 R15
 !s100 8PIY;eW1KJjU1W@FDVlP12
 !i10b 1
 Etestbench
-Z76 w1411589887
+Z82 w1411589887
 R5
 R6
 R7
 R3
-Z77 8../../hdl/vhdl/Testbenches/tb_read_registers.vhd
-Z78 F../../hdl/vhdl/Testbenches/tb_read_registers.vhd
+Z83 8../../hdl/vhdl/Testbenches/tb_read_registers.vhd
+Z84 F../../hdl/vhdl/Testbenches/tb_read_registers.vhd
 l0
 L7
 Vjc?06^Fo5`U>9HPmW9n]`2
 R10
 31
-Z79 !s108 1411593449.485599
-Z80 !s90 -reportprogress|300|-explicit|-93|../../hdl/vhdl/Testbenches/tb_read_registers.vhd|
-Z81 !s107 ../../hdl/vhdl/Testbenches/tb_read_registers.vhd|
+Z85 !s108 1411593449.485599
+Z86 !s90 -reportprogress|300|-explicit|-93|../../hdl/vhdl/Testbenches/tb_read_registers.vhd|
+Z87 !s107 ../../hdl/vhdl/Testbenches/tb_read_registers.vhd|
 R14
 R15
 !s100 :PgYGLIb51E^PC50jf0SP1
@@ -459,40 +496,40 @@ L10
 VY=9T4X`71UJ4dBC5AZN6L1
 R10
 31
-R79
-R80
-R81
+R85
+R86
+R87
 R14
 R15
 !s100 @F7?eRUOi=g^mO@KfJXo`3
 !i10b 1
 Euser_logic
-Z82 w1411609905
-Z83 DPx4 ieee 18 std_logic_unsigned 0 22 RYmj;=TK`k=k>D@Cz`zoB3
-Z84 DPx4 ieee 15 std_logic_arith 0 22 4`Y?g_lkdn;7UL9IiJck01
-Z85 DPx19 proc_common_v3_00_a 15 proc_common_pkg 0 22 nVA2gg8b>fmcdoI3?l]3Q1
+Z88 w1411609905
+Z89 DPx4 ieee 18 std_logic_unsigned 0 22 RYmj;=TK`k=k>D@Cz`zoB3
+Z90 DPx4 ieee 15 std_logic_arith 0 22 4`Y?g_lkdn;7UL9IiJck01
+Z91 DPx19 proc_common_v3_00_a 15 proc_common_pkg 0 22 nVA2gg8b>fmcdoI3?l]3Q1
 R5
 R6
 R7
 R3
-Z86 8../../hdl/vhdl/user_logic.vhd
-Z87 F../../hdl/vhdl/user_logic.vhd
+Z92 8../../hdl/vhdl/user_logic.vhd
+Z93 F../../hdl/vhdl/user_logic.vhd
 l0
 L86
 VGzWdFddhA<6kcfQefL`Zg1
 R10
 31
-Z88 !s108 1411609999.903779
-Z89 !s90 -reportprogress|300|-explicit|-93|../../hdl/vhdl/user_logic.vhd|
-Z90 !s107 ../../hdl/vhdl/user_logic.vhd|
+Z94 !s108 1411609999.903779
+Z95 !s90 -reportprogress|300|-explicit|-93|../../hdl/vhdl/user_logic.vhd|
+Z96 !s107 ../../hdl/vhdl/user_logic.vhd|
 R14
 R15
 !s100 ^_Gho3X0dGGnT_hG]`KmL3
 !i10b 1
 Aimp
-R83
-R84
-R85
+R89
+R90
+R91
 R5
 R6
 R7
@@ -502,10 +539,47 @@ L133
 VDE8l5^DS8zV[5?i@X3OFB0
 R10
 31
-R88
-R89
-R90
+R94
+R95
+R96
 R14
 R15
 !s100 2C@:?N1bIIbok97Bhl>H82
+!i10b 1
+Evens_counter
+Z97 w1411613609
+R5
+R6
+R7
+R3
+Z98 8../../hdl/vhdl/vens_counter.vhd
+Z99 F../../hdl/vhdl/vens_counter.vhd
+l0
+L32
+VYoD?GGIf=9KfLQ]z<UdBi3
+R10
+31
+Z100 !s108 1411969840.778149
+Z101 !s90 -reportprogress|300|-explicit|-93|../../hdl/vhdl/vens_counter.vhd|
+Z102 !s107 ../../hdl/vhdl/vens_counter.vhd|
+R14
+R15
+!s100 j`DFXj<V^JCLcCW32k:fo0
+!i10b 1
+Abehavioral
+R5
+R6
+R7
+DEx4 work 12 vens_counter 0 22 YoD?GGIf=9KfLQ]z<UdBi3
+l44
+L41
+VJN>f5VV[Vj5ZZ29knMU?a3
+R10
+31
+R100
+R101
+R102
+R14
+R15
+!s100 EdmG1m:b>GlT9bB3Tkn^l3
 !i10b 1
